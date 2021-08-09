@@ -7,6 +7,8 @@ export const injectSampleData = () => {
 
 
     changeCurrentUser(usersArray[0]);
+
+    console.log(currentUser);
 };
 
 
@@ -34,7 +36,9 @@ const loadUserData = () => {
     if (currentUser !== {}) {
         // load overview data
         // load repo data
-        currentProjectsArray = currentUser.projectsData;
+
+        // currentProjectsArray = currentUser.projectsData;
+
         // load packages data
     };
 };
@@ -43,7 +47,9 @@ const saveUserData = () => {
     if (currentUser !== {}) {
         // save overview data
         // save repo data
-        currentUser.projectsData = currentProjectsArray;
+
+        // currentUser.projectsData = currentProjectsArray;
+
         // save packages data
     };
 };
