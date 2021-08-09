@@ -47,16 +47,3 @@ const saveUserData = () => {
         // save packages data
     };
 };
-
-
-
-
-
-// Project Page
-
-export let currentProjectsArray = [];
-
-export const addNewProject = (_projectObj) => {
-    currentProjectsArray.push(_projectObj);
-    return currentProjectsArray;
-};
