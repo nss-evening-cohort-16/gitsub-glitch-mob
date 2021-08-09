@@ -1,4 +1,5 @@
 // Sample Data
+
 import { sampleUser1, sampleUser2 } from "./data-samples.js";
 
 export const injectSampleData = () => {
@@ -47,9 +48,9 @@ const saveUserData = () => {
     if (currentUser !== {}) {
         // save overview data
         // save repo data
-
+      
         // currentUser.projectsData = currentProjectsArray;
-
+        
         // save packages data
     };
 };

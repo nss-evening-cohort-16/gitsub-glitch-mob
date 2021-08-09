@@ -3,7 +3,7 @@
 const defaultUserImg = "https://user-images.githubusercontent.com/11250/39013954-f5091c3a-43e6-11e8-9cac-37cf8e8c8e4e.jpg";
 
 export const newUser = (_image = defaultUserImg, _name, _username, _description, _location = "", _email = "", _website = "", _twitter = "") => {
-    return userObj = {
+    return {
         name: _name,
         username: _username,
         description: _description,
@@ -40,7 +40,6 @@ export const newUser = (_image = defaultUserImg, _name, _username, _description,
 
 
 // Projects Page
-
 
 
 // Packages Page
