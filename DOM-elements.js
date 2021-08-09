@@ -1,4 +1,4 @@
-// Render Function
+//// Render Function \\\\
 const renderToDOM = (_targetDivID, _element, _clear = true) => {
     const targetDiv = document.querySelector(_targetDivID);
 
@@ -7,8 +7,9 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
 
 
 
-// Elements
+//// Elements \\\\
 
+// Basic page layout
 export const pageLayout = () => {
     const element = `
     <div id="page-body">
@@ -29,12 +30,13 @@ export const pageLayout = () => {
 };
 
 
-export const bioPanel = () => {
+// User bio profile
+export const bioPanel = (_name, _userName, _description, _imgURL) => {
     const element = `
-        <img id="bio-img" src="" alt="User's profile image">
-        <div id="bio-name"></div>
-        <div id="bio-username"></div>
-        <div id="bio-description"></div>
+        <img id="bio-img" src="${_imgURL}" alt="User's profile image">
+        <div id="bio-name">${_name}</div>
+        <div id="bio-username">${_userName}</div>
+        <div id="bio-description">${_description}</div>
 
         <div id="bio-interactBtns">
             <button id="btn-follow" class="btn bio-btn"></button>
@@ -69,3 +71,4 @@ export const bioPanel = () => {
 
     renderToDOM("#page-bio", element);
 };
+
