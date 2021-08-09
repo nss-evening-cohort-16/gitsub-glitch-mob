@@ -1,0 +1,72 @@
+/* Variables */
+
+:root {
+    --backgroundColor: #0d1117;
+    --borderColor: #30363d;
+
+    --primaryColor: #161b22;
+    --secondaryColor: #21262d;
+    --tertiaryColor: #1f6feb;
+
+    --primaryFontColor: #a4d1d9;
+    --secondaryFontColor: #166ff0;
+}
+
+
+
+/* Styling */
+
+body {
+    background-color: var(--backgroundColor);
+
+    color: var(--primaryFontColor);
+}
+
+    .panel {
+        background-color: var(--primaryColor);
+
+        padding: 16px;
+        border: 1px solid var(--borderColor);
+        margin: 8px;
+    }
+
+
+
+
+#page-body {
+    display: flex;
+    flex-direction: row;
+
+    height: 800px;
+}
+
+    #page-bio {
+        width: 280px;
+    }
+
+    #page-viewer {
+        width: 100%;
+    }
+
+        #page-navbar {
+            height: 60px;
+        }
+
+        /* #page-content {} */
+
+            #list-container {
+                margin: 15px;
+
+                height: 200px;
+            }
+
+            #form-container {
+                margin: 15px;
+
+                height: 200px;
+            }  
+
+
+#page-footer {
+    height: 80px;    
+}
