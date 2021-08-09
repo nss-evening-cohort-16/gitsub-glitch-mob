@@ -31,44 +31,62 @@ export const pageLayout = () => {
 
 
 // User bio profile
-export const bioPanel = (_name, _userName, _description, _imgURL) => {
+export const bioPanel = (_currentUser) => {
     const element = `
-        <img id="bio-img" src="${_imgURL}" alt="User's profile image">
-        <div id="bio-name">${_name}</div>
-        <div id="bio-username">${_userName}</div>
-        <div id="bio-description">${_description}</div>
+        <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
+        <div id="bio-namesTray">
+            <div id="bio-name">${_currentUser.name}</div>
+            <div id="bio-username">${_currentUser.username}</div>
+        </div>
+        <div id="bio-description">${_currentUser.description}</div>
 
         <div id="bio-interactBtns">
-            <button id="btn-follow" class="btn bio-btn"></button>
-            <button id="btn-sponsor" class="btn bio-btn"></button>
-            <button id="btn-more" class="btn bio-btn"></button>
+            <button id="btn-follow" class="btn btn-secondary btn-sm bio-btn">Follow</button>
+            <button id="btn-sponsor" class="btn btn-secondary btn-sm bio-btn">Sponsor</button>
+            <button id="btn-more" class="btn btn-secondary btn-sm bio-btn">...</button>
         </div>
         <div id="bio-followerTray">
-            <div id="bio-followers"></div>
-            <div id="bio-following"></div>
-            <div id="bio-stars"></div>
+            <div id="bio-followers">${_currentUser.followers} Followers</div>
+            <div id="bio-following">${_currentUser.following} Following</div>
+            <div id="bio-stars">* ${_currentUser.starred}</div>
         </div>
         <div id="bio-contact">
-            <div id="bio-location"></div>
-            <div id="bio-email"></div>
-            <div id="bio-website"></div>
-            <div id="bio-twitter"></div>
+            <div id="bio-location">${_currentUser.location}</div>
+            <div id="bio-email">${_currentUser.email}</div>
+            <div id="bio-website">${_currentUser.website}</div>
+            <div id="bio-twitter">${_currentUser.twitter}</div>
         </div>
 
         <div id="bio-highlights">
             <h3>Highlights</h3>
-            <div id="highlights-list"></div>
+            <div id="highlights-list">${_currentUser.highlights}</div>
         </div>
         <div id="bio-orgs">
             <h3>Organizations</h3>
-            <div id="orgs-list"></div>
+            <div id="orgs-list">${_currentUser.orgs}</div>
         </div>
         <div id="bio-sponsors">
             <h3>Sponsors</h3>
-            <div id="sponsors-list"></div>
-        </div>
-    `;
+            <div id="sponsors-list">${_currentUser.sponsors}</div>
+        </div>`;
 
     renderToDOM("#page-bio", element);
 };
 
+
+// Header / NavBar
+
+
+// Footer
+
+
+// Overview
+
+
+// Repos
+
+
+// Projects
+
+
+// Packages
