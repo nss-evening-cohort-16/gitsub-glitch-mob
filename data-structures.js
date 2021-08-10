@@ -50,6 +50,16 @@ export const newRepo = (_repoTitle, _description, _language) => {
 }
 
 // Projects Page
+export const newProjectObj = (_title, _description, _privacy) => {
+    return {
+        title: _title,
+        description: _description,
+        timeCreated: Date(),
+        lastUpdated: Date(),
+        privacy: _privacy,
+        status: "Open"
+    }
+}
 
 
 // Packages Page
