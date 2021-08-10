@@ -105,6 +105,8 @@ export const bioPanel = (_currentUser) => {
     `;
     renderToDOM("#page-navbar", element);
 }
+
+
 // Footer
 export const footer = () => {
     const element = `

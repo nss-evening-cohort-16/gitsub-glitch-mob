@@ -10,9 +10,9 @@ export const init = (_pageName = null) => {
     header();
     footer();
   
+    const pagename = window.location.pathname;
   
-  
-    switch (_pageName) {
+    switch (pagename.contains) {
         case "repos":
             renderReposContent();
             break;
