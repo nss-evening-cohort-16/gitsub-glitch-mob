@@ -36,7 +36,7 @@ export const bioPanel = (_currentUser) => {
         <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
         <div id="bio-namesTray">
             <div id="bio-name">${_currentUser.name}</div>
-            <div id="bio-username">${_currentUser.username}</div>
+            <div id="bio-username">/${_currentUser.username}</div>
         </div>
         <div id="bio-description">${_currentUser.description}</div>
 
@@ -48,7 +48,7 @@ export const bioPanel = (_currentUser) => {
         <div id="bio-followerTray">
             <div id="bio-followers">${_currentUser.followers} Followers</div>
             <div id="bio-following">${_currentUser.following} Following</div>
-            <div id="bio-stars">* ${_currentUser.starred}</div>
+            <div id="bio-stars">&#9734; ${_currentUser.starred}</div>
         </div>
         <div id="bio-contact">
             <div id="bio-location">${_currentUser.location}</div>
