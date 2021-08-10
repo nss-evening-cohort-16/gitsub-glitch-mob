@@ -1,5 +1,5 @@
 import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, bioPanel, footer } from "./DOM-elements.js";
+import { pageLayout, bioPanel, footer, header } from "./DOM-elements.js";
 
 
 export const init = (_pageName = null) => {
@@ -7,8 +7,11 @@ export const init = (_pageName = null) => {
 
     pageLayout();
     bioPanel(currentUser);
+    header();
     footer();
-
+  
+  
+  
     switch (_pageName) {
         case "repos":
             renderReposContent();
