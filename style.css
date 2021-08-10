@@ -14,7 +14,7 @@
 
 
 
-/* Styling */
+/* Page Layout */
 
 body {
     background-color: var(--backgroundColor);
@@ -36,12 +36,12 @@ body {
 #page-body {
     display: flex;
     flex-direction: row;
-
-    height: 800px;
 }
 
     #page-bio {
-        width: 280px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
     }
 
     #page-viewer {
@@ -56,17 +56,48 @@ body {
 
             #list-container {
                 margin: 15px;
-
-                height: 200px;
             }
 
             #form-container {
                 margin: 15px;
-
-                height: 200px;
             }  
 
 
 #page-footer {
     height: 80px;    
+}
+
+
+
+/* Bio Panel */
+
+#bio-img {
+    height: auto;
+    width: 20vw;
+    min-width: 100%;
+    border-radius: 50%;
+}
+
+#bio-namesTray {
+    font-size: 2em;
+}
+    #bio-name {
+        font-size: 100%;
+    }
+    #bio-username {
+        font-size: 75%;
+    }
+
+#bio-interactBtns, #bio-followerTray {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+
+#bio-followerTray {
+    font-size: 80%;
+}
+
+h3 {
+    font-size: 130%;
 }

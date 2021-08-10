@@ -12,7 +12,7 @@ export const sampleUser1 = {
 
     location: "Nashville, TN",
     email: "yue_zer@email.com",
-    website: "yue_zer.biz",
+    website: "http://www.yue_zer.biz",
     twitter: "@yue_zer",
 
     highlights: [],
@@ -52,7 +52,7 @@ export const sampleUser2 = {
 
     location: "New York, NY",
     email: "doe_j@email.com",
-    website: "johndoe.org",
+    website: "https://www.john-doe.org",
     twitter: "@doe_j",
 
     highlights: [],
