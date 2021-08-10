@@ -36,8 +36,18 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
 
 
 // Repos Page
-
-
+export const newRepo = (_repoTitle, _description, ) => {
+    return {
+        repoTitle: "",
+        description: "",
+        language: "",
+        tags: [],
+        starred: 0,
+        branches: 0,
+        issues: 0,
+        lastUpdated: "",
+    };
+}
 
 // Projects Page
 
