@@ -64,6 +64,8 @@ body {
 
 
 #page-footer {
+    display: flex;
+    justify-content: space-around;
     height: 80px;    
 }
 
