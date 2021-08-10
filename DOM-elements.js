@@ -78,7 +78,24 @@ export const bioPanel = (_currentUser) => {
 
 
 // Footer
-
+export const footer = () => {
+    const element = `
+    <div id="yr-updated">2021 Us</div>
+        <div id="terms-btn">Terms</div>
+        <div id="privacy-btn">Privacy</div>
+        <div id="security-btn">Security</div>
+        <div id="status-btn">Status</div>
+        <div id="help-btn">Help</div>
+    <div id="footer-img">"Image"</div>
+        <div id="catact-btn">Contact</div>
+        <div id="pricing-btn">Pricing</div>
+        <div id="api-btn">API</div>
+        <div id="training-btn">Training</div>
+        <div id="blog-btn">Blog</div>
+        <div id="about-btn">About</div>
+    `;
+    renderToDOM("#page-footer", element);
+}
 
 // Overview
 
