@@ -10,22 +10,29 @@ export const init = () => {
     header();
     footer();
   
-  
-    switch (window.location.pathname.contains) {
-        case "repos":
-            renderReposContent();
+
+
+    // ----> Create your renderXContent() function in DOM-elements
+            // -> That function should contain a string of HTML which is passed to a renderToDOM function
+            // -> Add the function to the imports on line 2 
+            // -> Uncomment the function call for your page case 
+            // -> Make sure it renders your content to the DOM
+
+    switch (window.location.pathname) {
+        case "/repos.html":
+            // renderReposContent();
             break;
 
-        case "projects":
-            renderProjectsContent();
+        case "/projects.html":
+            // renderProjectsContent();
             break;
 
-        case "packages":
+        case "/packages.html":
             renderPackagesContent();
             break;
 
         default:
-            renderOverviewContent();
+            // renderOverviewContent();
             break;
     }
 };
