@@ -41,17 +41,5 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
 
 // Projects Page
 
-export const newProjectObj = (_title, _description = "", _privacy = "Public") => {
-    return {
-        title: _title,
-        description: _description,
-        timeCreated: Date(),
-        lastUpdated: Date(),
-        privacy: _privacy,
-        status: "Open"
-    };
-};
-
-
 
 // Packages Page
