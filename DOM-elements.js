@@ -135,3 +135,16 @@ export const footer = () => {
 
 
 // Packages
+export const renderPackagesContent = () => {
+    const element = `
+    <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Package Title</h5>
+      <p class="card-text">Description of the package</p>
+      <a href="#" class="btn btn-primary">Learn Some More</a>
+    </div>
+  </div>
+    `;
+
+    renderToDOM("#list-container", element);
+};
