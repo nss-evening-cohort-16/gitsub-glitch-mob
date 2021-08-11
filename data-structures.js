@@ -33,8 +33,23 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
 
 // Overview Page
 
-
-
+export const pinnedRepo = (_repoTitle, _description,_language) => {
+    return {
+        repoTitle: _repoTitle,
+        description: _description,
+        language: _language,
+        starred: 0,
+        branches:0,
+    };
+}
+//does this function creates a pinned repo or new project?
+/*export const newProjectForm = () => {
+    return {
+        projectName :_projectName,
+        description: -description,
+};
+}
+*/
 // Repos Page
 export const newRepo = (_repoTitle, _description, _tags, _language) => {
     return {

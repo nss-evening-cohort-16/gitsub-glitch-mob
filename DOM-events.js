@@ -1,9 +1,8 @@
-import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, bioPanel, footer, header, renderPackagesContent } from "./DOM-elements.js";
-import { samplePackage } from "./data-samples.js";
-import { currentUser, injectSampleData, reposList } from "./data-functions.js";
+
+import { samplePackage, sampleRepo,samplePinnedRepo } from "./data-samples.js";
+import { currentUser, injectSampleData, reposList,pinnedRepolist} from "./data-functions.js";
 import { pageLayout, bioPanel, footer, header, renderProjectsContent, renderPackagesContent, renderReposContent } from "./DOM-elements.js";
-import { sampleRepo } from "./data-samples.js";  
+
 
 
 export const init = () => {
@@ -41,7 +40,7 @@ export const init = () => {
             break;
 
         default:
-            // renderOverviewContent();
+            pinnedRepolist(samplePinnedRepo);
             break;
     }
 };
