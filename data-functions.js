@@ -1,13 +1,10 @@
 // Sample Data
-
 import { sampleUser1, sampleUser2, sampleRepo } from "./data-samples.js";
-import { renderPackagesContent, renderReposContent } from "./DOM-elements.js";
+import { renderPackageCard, renderRepoCard } from "./DOM-elements.js";
 
 export const injectSampleData = () => {
   addNewUser(sampleUser1);
   addNewUser(sampleUser2);
-
-  changeCurrentUser(usersArray[0]);
 
   changeCurrentUser(usersArray[0]);
 };
@@ -60,10 +57,32 @@ const saveUserData = () => {
 
 
 // Render Ropo's to DOM
-export const reposList = (array) => {
+export const listCards = (array) => {
 
     array.forEach((repoItem, i) => {
-        renderReposContent(repoItem.repoTitle, repoItem.description, repoItem.tags, repoItem.language, repoItem.lastUpdated);
+        renderRepoCard(repoItem.repoTitle, repoItem.description, repoItem.tags, repoItem.language, repoItem.lastUpdated);
 
 })};
 
+
+
+
+export const renderContent = () => {
+    switch (window.location.pathname) {
+        case "/repos.html":
+            listCards(sampleRepo);
+            break;
+
+        case "/projects.html":
+            renderProjectCard();
+            break;
+
+        case "/packages.html":
+            renderPackageCard(samplePackage);
+            break;
+
+        default:
+            // renderOverviewContent();
+            break;
+    };
+};

@@ -1,5 +1,5 @@
-import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, header, footer, bioPanel, renderContent } from "./DOM-elements.js"; 
+import { currentUser, injectSampleData, renderContent } from "./data-functions.js";
+import { pageLayout, header, footer, bioPanel } from "./DOM-elements.js"; 
 
 
 export const init = () => {
