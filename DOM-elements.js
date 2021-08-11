@@ -218,16 +218,34 @@ export const renderProjectsContent = () => {
 
 
 // Packages
-export const renderPackagesContent = () => {
-    const element = `
-    <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Package Title</h5>
-      <p class="card-text">Description of the package</p>
-      <a href="#" class="btn btn-primary">Learn Some More</a>
-    </div>
-  </div>
-    `;
 
-    renderToDOM("#list-container", element);
+export const renderPackagesContent = () => {
+  const element = `
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Package Title</h5>
+        <p class="card-text">Description of the package</p>
+        <a href="#" class="btn btn-primary">Learn Some More</a>
+      </div>
+    </div>
+  `;
+
+  renderToDOM("#list-container", element, false);
 };
+
+// export const  renderPackagesContent = (packageArray) => {  
+//   let element = "";
+//   packageArray.forEach((packages) => {
+//     element += `
+//         <div class="card" style="width: 18rem;">
+//         <img class="card-img-top" src="${packages.titleImage}" alt="${packages.title}">
+//             <div class="card-body">
+//                 <h4 class="card-title">${packages.title}</h4>
+//                 <p class="card-text">${packages.description}</p>
+//                 <button type="button" id="pkgBtn" class="btn btn-primary">Learn More</button>
+//             </div>
+//         </div>
+//       `;
+//   });
+//   renderToDOM("#list-container", element);
+// };

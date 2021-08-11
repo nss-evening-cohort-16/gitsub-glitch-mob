@@ -2,7 +2,6 @@
 
 import { sampleUser1, sampleUser2, sampleRepo,samplePinnedRepo} from "./data-samples.js";
 import { renderPackagesContent, renderReposContent, renderOverviewContent} from "./DOM-elements.js";
-
 export const injectSampleData = () => {
   addNewUser(sampleUser1);
   addNewUser(sampleUser2);
