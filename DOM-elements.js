@@ -255,7 +255,16 @@ export const renderPackagesContent = () => {
 export const repoForm = () => {
     // create new const newRepoForm
     const newRepoForm = {
-        
+        repoTitle: ,
+        description: ,
+        language: ,
+        tags: [],
+        // starred: 0,
+        // branches: 0,
+        // issues: 0,
+        // lastUpdated: Date(),
+
+
     //     <div>
     //     <h5 class="repo-title">${_repoTitle}</h5>
     // </div>
