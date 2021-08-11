@@ -170,6 +170,20 @@ const element = `
 };
 
 // Projects
+export const renderProjectsContent = () => {
+    const element = `
+      <input id="projects-searchbar" type="text" placeholder="Search...">
+      <div id="projects-container">
+          <div id="projects-list-header">Open Closed</div>
+          <div id="projects-list-content">List</div>
+          <div id="projects-list-content">List</div>
+          <div id="projects-list-content">List</div>
+      </div>
+    `;
+
+    renderToDOM("#list-container", element);
+}
+
 
 
 // Packages
