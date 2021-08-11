@@ -129,21 +129,36 @@ export const footer = () => {
 
 // Overview
 
-export const renderOverviewContent = () => {
+export const renderOverviewContent = (_repoTitle, _description, _language,) => {
     const element = `
-    <div class="card" style="width: 18rem;">
-  < class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="pinnedrepo-title">Pinned Repository/h5>
-    <p class="card-text">Description of the pinned repository</p>
-    <span class="fa fa-star">starred</span>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-`;
-renderToDOM("#list-container" , element);
-
-};
+                <div class="card" style="width: 18rem;"> 
+                    <div class="repo-body">
+                        <div>
+                            <h5 class="pinnedrepo-title">${_pinnedrepoTitle}</h5>
+                        </div>
+                        <div>
+                            <h6 class="pinnedrepo-text">${_pinnedrepodescription}</h6>
+                        </div>
+                        <div>
+                            <p class="pinnedrepo-language">${_pinnedrepolanguage}</p>
+                            <div> 
+                            <button href="#" class="repo-btn repo-btn-starred">0</button>
+                            </div>
+                            <div>
+                            <p>Branches:</p>
+                            <p href="#" class="repo-btn repo-btn-branches">0</p>
+                            </div>
+                            <div>
+                            <p>Issues: </p>
+                            <p href="#" class="repo-btn repo-btn-issues">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+      renderToDOM("#list-container", element, false);
+    };
+    
 
 
 // Repos

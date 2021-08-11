@@ -124,3 +124,14 @@ export const sampleRepo = [
         lastUpdated: Date(),
     }
 ]
+
+export const samplePinnedRepo = [
+    { 
+        repoTitle: "Pinned Repo 1",
+        description: "description",
+        language: "language",
+        starred: 0,
+        branches:0
+    }
+
+]

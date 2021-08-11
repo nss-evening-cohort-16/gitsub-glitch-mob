@@ -38,7 +38,7 @@ export const init = () => {
             break;
 
         default:
-            // renderOverviewContent();
+            pinnedRepolist(samplePinnedRepo);
             break;
     }
 };
