@@ -10,7 +10,7 @@ export const init = () => {
     
     header();
     footer();
-    bioPanel(currentUser);
+    // bioPanel(currentUser);
 
     renderContent();
 };

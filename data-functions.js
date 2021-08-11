@@ -6,16 +6,18 @@ export const injectSampleData = () => {
   addNewUser(generateSampleUser(sampleUser2FormInput));
   
   changeCurrentUser(usersArray[0]);
+
+  console.log(usersArray[0]);
 };
 
 
 
 // Users
 
-let usersArray = [];
+const usersArray = [];
 export let currentUser = {};
 
-export const addNewUser = (_userObj) => {
+const addNewUser = (_userObj) => {
   usersArray.push(_userObj);
   return usersArray;
 };

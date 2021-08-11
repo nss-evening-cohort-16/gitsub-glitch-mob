@@ -6,7 +6,7 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
         name: _name,
         username: _username,
         description: _description,
-        img: _imgURL,
+        imgURL: _imgURL,
 
         followers: 0,
         following: 0,

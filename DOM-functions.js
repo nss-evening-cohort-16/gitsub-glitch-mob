@@ -1,24 +1,25 @@
 import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, renderRepoCard } from "./DOM-elements.js";
-import { sampleRepo, samplePackage } from "./data-samples.js";
-import { currentProjectsArray } from "./data-functions.js";
+import { currentUser } from "./data-functions.js";
+// import { sampleRepo, samplePackage } from "./data-samples.js";
+// import { currentProjectsArray } from "./data-functions.js";
 
 // Render page specific content
 export const renderContent = () => {
     switch (window.location.pathname) {
         case "/repos.html":
-            listCards(sampleRepo, renderRepoCard);
+            listCards(currentUser.repos, renderRepoCard);
             break;
 
         case "/projects.html":
-            listCards(currentProjectsArray, renderProjectCard);
+            listCards(currentUser.projects, renderProjectCard);
             break;
 
         case "/packages.html":
-            listCards(samplePackage, renderPackageCard);
+            listCards(currentUser.packages, renderPackageCard);
             break;
 
         default:
-            listCards(sampleRepo, renderPinnedRepoCard)
+            listCards(currentUser.repos, renderPinnedRepoCard)
             break;
     };
 };

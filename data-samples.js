@@ -1,29 +1,30 @@
+import { newUserObj } from "./data-structures";
 
 // Users
 
 export const generateSampleUser = (_formInput) => {
-    
-  const sampleUser = newUserObj(
-        _formInput.name, 
-        _formInput.username, 
-        _formInput.description, 
-        _formInput.imgURL, 
-        _formInput.location, 
-        _formInput.email, 
-        _formInput.website, 
+
+    const sampleUser = newUserObj(
+        _formInput.name,
+        _formInput.username,
+        _formInput.description,
+        _formInput.imgURL,
+        _formInput.location,
+        _formInput.email,
+        _formInput.website,
         _formInput.twitter
     );
 
-  sampleUser.addNewOrg(sampleOrganization1);
-  sampleUser.addNewOrg(sampleOrganization2);
-  
-  sampleUser.addNewProject(sampleProject);
-  sampleUser.addNewPackage(samplePackage);
-  sampleUser.addNewRepo(sampleRepos[0]);
-  sampleUser.addNewRepo(sampleRepos[1]);
-  sampleUser.addNewPinnedRepo(sampleRepos[0]);
+    // sampleUser.addNewOrg(sampleOrganization1);
+    // sampleUser.addNewOrg(sampleOrganization2);
 
-  return sampleUser;
+    // sampleUser.addNewProject(sampleProject);
+    // sampleUser.addNewPackage(samplePackage);
+    // sampleUser.addNewRepo(sampleRepos[0]);
+    // sampleUser.addNewRepo(sampleRepos[1]);
+    // sampleUser.addNewPinnedRepo(sampleRepos[0]);
+
+    return sampleUser;
 };
 
 
@@ -55,12 +56,12 @@ export const sampleUser2FormInput = {
 
 // Organizations
 
-const sampleOrganization1 = {
+export const sampleOrganization1 = {
     name: "Friendly Folks Org",
     img: "https://i0.wp.com/raulotaolea.com/wp-content/uploads/2018/02/header_blog_800x469-1.jpg?fit=730%2C428&ssl=1"
 };
 
-const sampleOrganization2 = {
+export const sampleOrganization2 = {
     name: "Business Worker Foundation",
     img: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q4/sales-org-structure/sales-organization-team-structure-header@2x.png"
 };
@@ -69,7 +70,7 @@ const sampleOrganization2 = {
 
 // Projects
 
-const sampleProject = {
+export const sampleProject = {
     title: "Project Title",
     description: "This is a description.",
     timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
@@ -81,17 +82,17 @@ const sampleProject = {
 
 // Packages
 
-const samplePackage = {
-        titleImage: "",
-        title: "",
-        description: "",
-        beta: "?"
-    };
+export const samplePackage = {
+    titleImage: "",
+    title: "",
+    description: "",
+    beta: "?"
+};
 
 
 // Repos
 
-const sampleRepos = [
+export const sampleRepos = [
 
     {
         repoTitle: "Repo NUmber 1",

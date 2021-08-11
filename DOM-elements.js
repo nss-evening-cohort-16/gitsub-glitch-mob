@@ -34,7 +34,7 @@ export const pageLayout = () => {
 // User bio profile
 export const bioPanel = (_currentUser) => {
     const element = `
-        <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
+        <img id="bio-img" src="${_currentUser.imgURL}" alt="User's profile image">
         <div id="bio-namesTray">
             <div id="bio-name">${_currentUser.name}</div>
             <div id="bio-username">/${_currentUser.username}</div>
