@@ -129,6 +129,37 @@ export const footer = () => {
 
 // Overview
 
+export const renderOverviewContent = (_pinnedrepoTitle, _pinnedrepodescription, _pinnedrepolanguage,) => {
+    const element = `
+                <div class="card" style="width: 18rem;"> 
+                    <div class="repo-body">
+                        <div>
+                            <h5 class="pinnedrepo-title">${_pinnedrepoTitle}</h5>
+                        </div>
+                        <div>
+                            <h6 class="pinnedrepo-text">${_pinnedrepodescription}</h6>
+                        </div>
+                        <div>
+                            <p class="pinnedrepo-language">${_pinnedrepolanguage}</p>
+                            <div> 
+                            <button href="#" class="repo-btn repo-btn-starred">0</button>
+                            </div>
+                            <div>
+                            <p>Branches:</p>
+                            <p href="#" class="repo-btn repo-btn-branches">0</p>
+                            </div>
+                            <div>
+                            <p>Issues: </p>
+                            <p href="#" class="repo-btn repo-btn-issues">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+      renderToDOM("#list-container", element, false);
+    };
+    
+
 
 
 // Repos

@@ -125,6 +125,7 @@ export const sampleRepo = [
         issues: 0,
         lastUpdated: Date(),
     },
+
     {
         repoTitle: "Repo NUmber 2",
         description: "Test for repo 2",
@@ -135,4 +136,15 @@ export const sampleRepo = [
         issues: 0,
         lastUpdated: Date(),
     }
+];
+
+export const samplePinnedRepo = [
+    { 
+        repoTitle: "Pinned Repo 1",
+        description: "description",
+        language: "language",
+        starred: 0,
+        branches:0
+    }
+
 ];

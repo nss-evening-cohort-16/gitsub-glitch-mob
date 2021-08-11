@@ -1,5 +1,5 @@
 // Sample Data
-import { sampleUser1, sampleUser2, sampleRepo } from "./data-samples.js";
+import { sampleUser1, sampleUser2, sampleRepo, samplePinnedRepo } from "./data-samples.js";
 import { renderPackageCard, renderRepoCard } from "./DOM-elements.js";
 
 export const injectSampleData = () => {
@@ -48,13 +48,18 @@ const loadUserData = () => {
 const saveUserData = () => {
   if (currentUser !== {}) {
     // save overview data
+    
     // save repo data
     currentUser.projectsData = currentProjectsArray;
     // save packages data
   }
 };
 
-
+export const pinnedRepolist = (taco) => {
+    taco.forEach((pinnedRepo, i) => {
+        renderOverviewContent(pinnedRepo.repoTitle,pinnedRepo.description, pinnedRepo.language);
+    });
+}
 
 // Render Ropo's to DOM
 export const listCards = (array) => {
