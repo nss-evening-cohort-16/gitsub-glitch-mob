@@ -131,9 +131,59 @@ export const footer = () => {
 
 
 // Repos
-
+export const renderReposContent = (_repoTitle, _description, _tags, _language, _lastUpdated) => {
+const element = `
+            <div class="card" style="width: 18rem;"> 
+                <div class="repo-body">
+                    <div>
+                        <h5 class="repo-title">${_repoTitle}</h5>
+                    </div>
+                    <div>
+                        <h6 class="repo-text">${_description}</h6>
+                    </div>
+                    <div>
+                        <p class="repo-tags">${_tags}</p>
+                    </div>
+                    <div>
+                        <p class="repo-language">${_language}</p>
+                        <div> 
+                        <button href="#" class="repo-btn repo-btn-starred">0</button>
+                        </div>
+                        <div>
+                        <p>Branches:</p>
+                        <p href="#" class="repo-btn repo-btn-branches">0</p>
+                        </div>
+                        <div>
+                        <p>Issues: </p>
+                        <p href="#" class="repo-btn repo-btn-issues">0</p>
+                        </div>
+                        <div>
+                        <p>Last Updated:</p>
+                        <p href="#" class="repo-btn repo-btn-lastUpdated">${_lastUpdated}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+    ;
+  renderToDOM("#list-container", element, false);
+};
 
 // Projects
+export const renderProjectsContent = () => {
+    const element = `
+      <input id="projects-searchbar" type="text" placeholder="Search...">
+      <div id="projects-container">
+          <div id="projects-list-header">Open Closed</div>
+          <div id="projects-list-content">List</div>
+          <div id="projects-list-content">List</div>
+          <div id="projects-list-content">List</div>
+      </div>
+    `;
+
+    renderToDOM("#list-container", element);
+}
+
 
 
 // Packages

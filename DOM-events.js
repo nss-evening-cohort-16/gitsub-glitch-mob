@@ -1,15 +1,21 @@
 import { currentUser, injectSampleData } from "./data-functions.js";
 import { pageLayout, bioPanel, footer, header, renderPackagesContent } from "./DOM-elements.js";
 import { samplePackage } from "./data-samples.js";
+import { currentUser, injectSampleData, reposList } from "./data-functions.js";
+import { pageLayout, bioPanel, footer, header, renderProjectsContent, renderPackagesContent, renderReposContent } from "./DOM-elements.js";
+import { sampleRepo } from "./data-samples.js";  
 
 
 export const init = () => {
     injectSampleData();
 
+
+    // Render common page layout
     pageLayout();
     bioPanel(currentUser);
     header();
     footer();
+    
   
 
 
@@ -19,13 +25,15 @@ export const init = () => {
             // -> Uncomment the function call for your page case 
             // -> Make sure it renders your content to the DOM
 
+
+    // Render specific page layout
     switch (window.location.pathname) {
         case "/repos.html":
-            // renderReposContent();
+            reposList(sampleRepo);
             break;
 
         case "/projects.html":
-            // renderProjectsContent();
+            renderProjectsContent();
             break;
 
         case "/packages.html":
