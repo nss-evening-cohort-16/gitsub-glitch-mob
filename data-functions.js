@@ -1,7 +1,5 @@
 // Sample Data
 
-import { sampleUser1, sampleUser2 } from "./data-samples.js";
-import { renderPackagesContent } from "./DOM-elements.js";
 import { sampleUser1, sampleUser2, sampleRepo } from "./data-samples.js";
 import { renderPackagesContent, renderReposContent } from "./DOM-elements.js";
 
@@ -58,6 +56,8 @@ const saveUserData = () => {
     // save packages data
   }
 };
+
+
 
 // Render Ropo's to DOM
 export const reposList = (array) => {

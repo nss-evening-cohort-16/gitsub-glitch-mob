@@ -104,7 +104,7 @@ export const bioPanel = (_currentUser) => {
       </nav>
     `;
     renderToDOM("#page-navbar", element);
-}
+};
 
 
 // Footer
@@ -125,13 +125,14 @@ export const footer = () => {
         <div id="about-btn">About</div>
     `;
     renderToDOM("#page-footer", element);
-}
+};
 
 // Overview
 
 
+
 // Repos
-export const renderReposContent = (_repoTitle, _description, _tags, _language, _lastUpdated) => {
+export const renderRepoCard = (_repoTitle, _description, _tags, _language, _lastUpdated) => {
 const element = `
             <div class="card" style="width: 18rem;"> 
                 <div class="repo-body">
@@ -169,8 +170,11 @@ const element = `
   renderToDOM("#list-container", element, false);
 };
 
+
+
 // Projects
-export const renderProjectsContent = () => {
+
+export const renderProjectCard = () => {
     const element = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
@@ -182,13 +186,13 @@ export const renderProjectsContent = () => {
     `;
 
     renderToDOM("#list-container", element);
-}
+};
 
 
 
 // Packages
 
-export const renderPackagesContent = () => {
+export const renderPackageCard = () => {
   const element = `
     <div class="card">
       <div class="card-body">
@@ -201,20 +205,3 @@ export const renderPackagesContent = () => {
 
   renderToDOM("#list-container", element, false);
 };
-
-// export const  renderPackagesContent = (packageArray) => {  
-//   let element = "";
-//   packageArray.forEach((packages) => {
-//     element += `
-//         <div class="card" style="width: 18rem;">
-//         <img class="card-img-top" src="${packages.titleImage}" alt="${packages.title}">
-//             <div class="card-body">
-//                 <h4 class="card-title">${packages.title}</h4>
-//                 <p class="card-text">${packages.description}</p>
-//                 <button type="button" id="pkgBtn" class="btn btn-primary">Learn More</button>
-//             </div>
-//         </div>
-//       `;
-//   });
-//   renderToDOM("#list-container", element);
-// };

@@ -108,8 +108,11 @@ export const samplePackage = [
         description: "",
         beta: "?"
         }
+];
+
 
 // Repos
+
 export const sampleRepo = [
 
     {
@@ -132,4 +135,4 @@ export const sampleRepo = [
         issues: 0,
         lastUpdated: Date(),
     }
-]
+];
