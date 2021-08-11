@@ -249,3 +249,25 @@ export const renderPackagesContent = () => {
 //   });
 //   renderToDOM("#list-container", element);
 // };
+
+
+// Fillable Repo Form
+export const repoForm = () => {
+    // create new const newRepoForm
+    const newRepoForm = {
+        
+    //     <div>
+    //     <h5 class="repo-title">${_repoTitle}</h5>
+    // </div>
+    // <div>
+    //     <h6 class="repo-text">${_description}</h6>
+    // </div>
+    // <div>
+    //     <p class="repo-tags">${_tags}</p>
+    // </div>
+    // <div>
+    //     <p class="repo-language">${_language}</p>
+    //     <div> 
+    // }
+    //
+}
