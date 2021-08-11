@@ -30,6 +30,7 @@ export const pageLayout = () => {
 };
 
 
+
 // User bio profile
 export const bioPanel = (_currentUser) => {
     const element = `
@@ -74,9 +75,9 @@ export const bioPanel = (_currentUser) => {
 };
 
 
+
 // Header / NavBar
  export const header = () => {
-
     const element = `
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -104,7 +105,8 @@ export const bioPanel = (_currentUser) => {
       </nav>
     `;
     renderToDOM("#page-navbar", element);
-}
+};
+
 
 
 // Footer
@@ -125,101 +127,105 @@ export const footer = () => {
         <div id="about-btn">About</div>
     `;
     renderToDOM("#page-footer", element);
-}
+};
+
+
 
 // Overview
+export const renderPinnedRepoCard = (_repoDataObj) => {
+  const element = `
+    <div class="card" style="width: 18rem;"> 
+      <div class="repo-body">
+        <div>
+          <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
+        </div>
+        <div>
+          <h6 class="pinnedrepo-text">${_repoDataObj.description}</h6>
+        </div>
+        <div>
+          <p class="pinnedrepo-language">${_repoDataObj.language}</p>
+          <div> 
+            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          </div>
+          <div>
+            <p>Branches:</p>
+            <p href="#" class="repo-btn repo-btn-branches">0</p>
+          </div>
+          <div>
+            <p>Issues: </p>
+            <p href="#" class="repo-btn repo-btn-issues">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
 
-export const renderOverviewContent = (_pinnedrepoTitle, _pinnedrepodescription, _pinnedrepolanguage,) => {
-    const element = `
-                <div class="card" style="width: 18rem;"> 
-                    <div class="repo-body">
-                        <div>
-                            <h5 class="pinnedrepo-title">${_pinnedrepoTitle}</h5>
-                        </div>
-                        <div>
-                            <h6 class="pinnedrepo-text">${_pinnedrepodescription}</h6>
-                        </div>
-                        <div>
-                            <p class="pinnedrepo-language">${_pinnedrepolanguage}</p>
-                            <div> 
-                            <button href="#" class="repo-btn repo-btn-starred">0</button>
-                            </div>
-                            <div>
-                            <p>Branches:</p>
-                            <p href="#" class="repo-btn repo-btn-branches">0</p>
-                            </div>
-                            <div>
-                            <p>Issues: </p>
-                            <p href="#" class="repo-btn repo-btn-issues">0</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `;
-      renderToDOM("#list-container", element, false);
-    };
+  renderToDOM("#list-container", element, false);
+};
     
 
 
+
 // Repos
-export const renderReposContent = (_repoTitle, _description, _tags, _language, _lastUpdated) => {
+export const renderRepoCard = (_repoDataObj) => {
 const element = `
-            <div class="card" style="width: 18rem;"> 
-                <div class="repo-body">
-                    <div>
-                        <h5 class="repo-title">${_repoTitle}</h5>
-                    </div>
-                    <div>
-                        <h6 class="repo-text">${_description}</h6>
-                    </div>
-                    <div>
-                        <p class="repo-tags">${_tags}</p>
-                    </div>
-                    <div>
-                        <p class="repo-language">${_language}</p>
-                        <div> 
-                        <button href="#" class="repo-btn repo-btn-starred">0</button>
-                        </div>
-                        <div>
-                        <p>Branches:</p>
-                        <p href="#" class="repo-btn repo-btn-branches">0</p>
-                        </div>
-                        <div>
-                        <p>Issues: </p>
-                        <p href="#" class="repo-btn repo-btn-issues">0</p>
-                        </div>
-                        <div>
-                        <p>Last Updated:</p>
-                        <p href="#" class="repo-btn repo-btn-lastUpdated">${_lastUpdated}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-    ;
+   <div class="card" style="width: 18rem;"> 
+      <div class="repo-body">
+        <div>
+          <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
+        </div>
+        <div>
+          <h6 class="repo-text">${_repoDataObj.description}</h6>
+        </div>
+        <div>
+          <p class="repo-tags">${_repoDataObj.tags}</p>
+        </div>
+        <div>
+          <p class="repo-language">${_repoDataObj.language}</p>
+          <div> 
+            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          </div>
+          <div>
+            <p>Branches:</p>
+            <p href="#" class="repo-btn repo-btn-branches">0</p>
+          </div>
+          <div>
+            <p>Issues: </p>
+            <p href="#" class="repo-btn repo-btn-issues">0</p>
+          </div>
+          <div>
+            <p>Last Updated:</p>
+            <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  `;
+
   renderToDOM("#list-container", element, false);
 };
 
+
+
 // Projects
-export const renderProjectsContent = () => {
+export const renderProjectCard = () => {
     const element = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
-          <div id="projects-list-header">Open Closed</div>
-          <div id="projects-list-content">List</div>
-          <div id="projects-list-content">List</div>
-          <div id="projects-list-content">List</div>
+        <div id="projects-list-header">Open Closed</div>
+        <div id="projects-list-content">List</div>
+        <div id="projects-list-content">List</div>
+        <div id="projects-list-content">List</div>
       </div>
     `;
 
     renderToDOM("#list-container", element);
-}
+};
 
 
 
 // Packages
-
-export const renderPackagesContent = () => {
+export const renderPackageCard = () => {
   const element = `
     <div class="card">
       <div class="card-body">
@@ -232,20 +238,3 @@ export const renderPackagesContent = () => {
 
   renderToDOM("#list-container", element, false);
 };
-
-// export const  renderPackagesContent = (packageArray) => {  
-//   let element = "";
-//   packageArray.forEach((packages) => {
-//     element += `
-//         <div class="card" style="width: 18rem;">
-//         <img class="card-img-top" src="${packages.titleImage}" alt="${packages.title}">
-//             <div class="card-body">
-//                 <h4 class="card-title">${packages.title}</h4>
-//                 <p class="card-text">${packages.description}</p>
-//                 <button type="button" id="pkgBtn" class="btn btn-primary">Learn More</button>
-//             </div>
-//         </div>
-//       `;
-//   });
-//   renderToDOM("#list-container", element);
-// };
