@@ -36,11 +36,11 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
 
 
 // Repos Page
-export const newRepo = (_repoTitle, _description, _language) => {
+export const newRepo = (_repoTitle, _description, _tags, _language) => {
     return {
         repoTitle: _repoTitle,
         description: _description,
-        tags: [],
+        tags: _tags,
         language: _language,
         starred: 0,
         branches: 0,

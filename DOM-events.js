@@ -1,6 +1,6 @@
-import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, bioPanel, footer, header, renderPackagesContent } from "./DOM-elements.js";
-
+import { currentUser, injectSampleData, reposList } from "./data-functions.js";
+import { pageLayout, bioPanel, footer, header, renderPackagesContent, renderReposContent } from "./DOM-elements.js";
+import { sampleRepo } from "./data-samples.js";  
 
 export const init = () => {
     injectSampleData();
@@ -9,6 +9,7 @@ export const init = () => {
     bioPanel(currentUser);
     header();
     footer();
+    
   
 
 
@@ -20,7 +21,7 @@ export const init = () => {
 
     switch (window.location.pathname) {
         case "/repos.html":
-            // renderReposContent();
+            reposList(sampleRepo);
             break;
 
         case "/projects.html":
