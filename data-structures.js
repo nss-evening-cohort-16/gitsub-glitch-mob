@@ -1,5 +1,4 @@
 // Profile Panel
-
 const defaultUserImg = "https://user-images.githubusercontent.com/11250/39013954-f5091c3a-43e6-11e8-9cac-37cf8e8c8e4e.jpg";
 
 export const newUser = (_name, _username, _description, _imgURL = defaultUserImg, _location = "", _email = "", _website = "", _twitter = "") => {
@@ -31,27 +30,8 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
 
 
 
-// Overview Page
-
-export const pinnedRepo = (_repoTitle, _description,_language) => {
-    return {
-        repoTitle: _repoTitle,
-        description: _description,
-        language: _language,
-        starred: 0,
-        branches:0,
-    };
-}
-//does this function creates a pinned repo or new project?
-/*export const newProjectForm = () => {
-    return {
-        projectName :_projectName,
-        description: -description,
-};
-}
-*/
 // Repos Page
-export const newRepo = (_repoTitle, _description, _tags, _language) => {
+export const newRepoObj = (_repoTitle, _description, _tags, _language) => {
     return {
         repoTitle: _repoTitle,
         description: _description,
@@ -79,7 +59,7 @@ export const newProjectObj = (_title, _description, _privacy) => {
 
 
 // Packages Page
-export const newPackages = (_titleImage, _title, _description, _beta) => {
+export const newPackageObj = (_titleImage, _title, _description, _beta) => {
     return {
         titleImage: "",
         title: "",
