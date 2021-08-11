@@ -99,6 +99,15 @@ const sampleProject = {
     status: "Open"
 };
 
+// Packages
+
+export const samplePackage = [
+        {
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+        }
 
 // Repos
 export const sampleRepo = [

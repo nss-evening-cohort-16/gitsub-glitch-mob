@@ -64,3 +64,11 @@ export const newProjectObj = (_title, _description, _privacy) => {
 
 
 // Packages Page
+export const newPackages = (_titleImage, _title, _description, _beta) => {
+    return {
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+  };
+};
