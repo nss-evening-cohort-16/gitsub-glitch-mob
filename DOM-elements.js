@@ -88,16 +88,16 @@ export const bioPanel = (_currentUser) => {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" id ="Overview">Overview</a>
+                <a class="nav-link active" aria-current="page" href="index.html" id ="Overview">Overview</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id="Repositories">Repositories</a>
+                <a class="nav-link" href="repos.html" id="Repositories">Repositories</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id ="Projects">Projects</a>
+                <a class="nav-link" href="projects.html" id ="Projects">Projects</a>
               </li>
               <li class="nav-item">
-              <a class="nav-link" href="#" id ="Packages">Packages</a>
+              <a class="nav-link" href="packages.html" id ="Packages">Packages</a>
               </li>
             </ul>
           </div>
@@ -221,6 +221,8 @@ export const renderProjectCard = () => {
 
     renderToDOM("#list-container", element);
 };
+
+
 
 
 
