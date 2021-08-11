@@ -1,9 +1,6 @@
-import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, bioPanel, footer, header, renderPackagesContent } from "./DOM-elements.js";
-import { samplePackage } from "./data-samples.js";
 import { currentUser, injectSampleData, reposList } from "./data-functions.js";
 import { pageLayout, bioPanel, footer, header, renderProjectsContent, renderPackagesContent, renderReposContent } from "./DOM-elements.js";
-import { sampleRepo } from "./data-samples.js";  
+import { sampleRepo, samplePackage } from "./data-samples.js";  
 
 
 export const init = () => {
