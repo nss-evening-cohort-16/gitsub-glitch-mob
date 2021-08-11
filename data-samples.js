@@ -98,3 +98,14 @@ const sampleProject = {
     privacy: "Public",
     status: "Open"
 };
+
+// Packages
+
+export const samplePackage = [
+        {
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+        }
+]

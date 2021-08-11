@@ -1,6 +1,7 @@
 // Sample Data
 
 import { sampleUser1, sampleUser2 } from "./data-samples.js";
+import { renderPackagesContent } from "./DOM-elements.js";
 
 export const injectSampleData = () => {
     addNewUser(sampleUser1);
@@ -58,3 +59,6 @@ const saveUserData = () => {
         // save packages data
     };
 };
+
+// Packages
+
