@@ -90,7 +90,7 @@ const sampleOrganization2 = {
 
 // Projects
 
-const sampleProject = {
+export const sampleProject = {
     title: "Project Title",
     description: "This is a description.",
     timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
@@ -108,10 +108,11 @@ export const samplePackage = [
         description: "",
         beta: "?"
         }
-]
+];
 
 
 // Repos
+
 export const sampleRepo = [
 
     {
@@ -135,7 +136,7 @@ export const sampleRepo = [
         issues: 0,
         lastUpdated: Date(),
     }
-]
+];
 
 export const samplePinnedRepo = [
     { 
@@ -146,4 +147,4 @@ export const samplePinnedRepo = [
         branches:0
     }
 
-]
+];
