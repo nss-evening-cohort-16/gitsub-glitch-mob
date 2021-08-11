@@ -94,7 +94,7 @@ export const bioPanel = (_currentUser) => {
                 <a class="nav-link" href="#" id="Repositories">Repositories</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" id ="Projects">Projects</a>
+                <a class="nav-link" href="projects.html" id ="Projects">Projects</a>
               </li>
               <li class="nav-item">
               <a class="nav-link" href="#" id ="Packages">Packages</a>
@@ -221,6 +221,8 @@ export const renderProjectCard = () => {
 
     renderToDOM("#list-container", element);
 };
+
+
 
 
 
