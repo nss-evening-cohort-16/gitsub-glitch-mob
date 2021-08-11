@@ -25,8 +25,8 @@ export const init = () => {
             renderPackagesContent();
             break;
 
-        default:
-            renderOverviewContent();
-            break;
+        // default:
+        //     renderOverviewContent();
+        //     break;
     }
 };

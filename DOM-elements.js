@@ -136,16 +136,27 @@ export const footer = () => {
 
 
 // Packages
-export const renderPackagesContent = () => {
-    const element = `
-    <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Package Title</h5>
-      <p class="card-text">Description of the package</p>
-      <a href="#" class="btn btn-primary">Learn Some More</a>
-    </div>
-  </div>
-    `;
+export const packages = [{
+    titleImage: "",
+    title: "",
+    description: "",
+    beta: "?",
+  }
+]
 
-    renderToDOM("#list-container", element);
+export const  renderPackagesContent = (packageArray) => {  
+  let element = "";
+  packageArray.forEach((package, i) => {
+    domString += `
+        <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="${package.titleImage}" alt="${package.title}">
+            <div class="card-body">
+                <h4 class="card-title">${package.title}</h4>
+                <p class="card-text">${package.description}</p>
+                <button type="button" id="${i}" class="btn btn-primary">Learn More</button>
+            </div>
+        </div>
+      `;
+  });
+  renderToDOM("#list-container", element);
 };
