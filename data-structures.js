@@ -40,8 +40,8 @@ export const newRepo = (_repoTitle, _description, _language) => {
     return {
         repoTitle: _repoTitle,
         description: _description,
-        language: _language,
         tags: [],
+        language: _language,
         starred: 0,
         branches: 0,
         issues: 0,

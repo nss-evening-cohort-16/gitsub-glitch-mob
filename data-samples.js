@@ -98,3 +98,16 @@ const sampleProject = {
     privacy: "Public",
     status: "Open"
 };
+
+
+// Repos
+const sampleRepo = {
+    repoTitle: "Repo NUmber 1",
+    description: "Test for repo 1",
+    language: "JavaScript",
+    tags: [],
+    starred: 0,
+    branches: 0,
+    issues: 0,
+    lastUpdated: Date(),
+}
