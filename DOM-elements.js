@@ -78,7 +78,6 @@ export const bioPanel = (_currentUser) => {
 
 // Header / NavBar
  export const header = () => {
-
     const element = `
       <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -134,34 +133,35 @@ export const footer = () => {
 
 // Overview
 export const renderPinnedRepoCard = (_repoDataObj) => {
-    const element = `
-                <div class="card" style="width: 18rem;"> 
-                    <div class="repo-body">
-                        <div>
-                            <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
-                        </div>
-                        <div>
-                            <h6 class="pinnedrepo-text">${_repoDataObj.description}</h6>
-                        </div>
-                        <div>
-                            <p class="pinnedrepo-language">${_repoDataObj.language}</p>
-                            <div> 
-                            <button href="#" class="repo-btn repo-btn-starred">0</button>
-                            </div>
-                            <div>
-                            <p>Branches:</p>
-                            <p href="#" class="repo-btn repo-btn-branches">0</p>
-                            </div>
-                            <div>
-                            <p>Issues: </p>
-                            <p href="#" class="repo-btn repo-btn-issues">0</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                `;
-      renderToDOM("#list-container", element, false);
-    };
+  const element = `
+    <div class="card" style="width: 18rem;"> 
+      <div class="repo-body">
+        <div>
+          <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
+        </div>
+        <div>
+          <h6 class="pinnedrepo-text">${_repoDataObj.description}</h6>
+        </div>
+        <div>
+          <p class="pinnedrepo-language">${_repoDataObj.language}</p>
+          <div> 
+            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          </div>
+          <div>
+            <p>Branches:</p>
+            <p href="#" class="repo-btn repo-btn-branches">0</p>
+          </div>
+          <div>
+            <p>Issues: </p>
+            <p href="#" class="repo-btn repo-btn-issues">0</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+
+  renderToDOM("#list-container", element, false);
+};
     
 
 
@@ -169,54 +169,53 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
 // Repos
 export const renderRepoCard = (_repoDataObj) => {
 const element = `
-            <div class="card" style="width: 18rem;"> 
-                <div class="repo-body">
-                    <div>
-                        <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
-                    </div>
-                    <div>
-                        <h6 class="repo-text">${_repoDataObj.description}</h6>
-                    </div>
-                    <div>
-                        <p class="repo-tags">${_repoDataObj.tags}</p>
-                    </div>
-                    <div>
-                        <p class="repo-language">${_repoDataObj.language}</p>
-                        <div> 
-                        <button href="#" class="repo-btn repo-btn-starred">0</button>
-                        </div>
-                        <div>
-                        <p>Branches:</p>
-                        <p href="#" class="repo-btn repo-btn-branches">0</p>
-                        </div>
-                        <div>
-                        <p>Issues: </p>
-                        <p href="#" class="repo-btn repo-btn-issues">0</p>
-                        </div>
-                        <div>
-                        <p>Last Updated:</p>
-                        <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            `;
-    ;
+   <div class="card" style="width: 18rem;"> 
+      <div class="repo-body">
+        <div>
+          <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
+        </div>
+        <div>
+          <h6 class="repo-text">${_repoDataObj.description}</h6>
+        </div>
+        <div>
+          <p class="repo-tags">${_repoDataObj.tags}</p>
+        </div>
+        <div>
+          <p class="repo-language">${_repoDataObj.language}</p>
+          <div> 
+            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          </div>
+          <div>
+            <p>Branches:</p>
+            <p href="#" class="repo-btn repo-btn-branches">0</p>
+          </div>
+          <div>
+            <p>Issues: </p>
+            <p href="#" class="repo-btn repo-btn-issues">0</p>
+          </div>
+          <div>
+            <p>Last Updated:</p>
+            <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
+          </div>
+        </div>
+      </div>
+  </div>
+  `;
+
   renderToDOM("#list-container", element, false);
 };
 
 
 
 // Projects
-
 export const renderProjectCard = () => {
     const element = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
-          <div id="projects-list-header">Open Closed</div>
-          <div id="projects-list-content">List</div>
-          <div id="projects-list-content">List</div>
-          <div id="projects-list-content">List</div>
+        <div id="projects-list-header">Open Closed</div>
+        <div id="projects-list-content">List</div>
+        <div id="projects-list-content">List</div>
+        <div id="projects-list-content">List</div>
       </div>
     `;
 
@@ -226,7 +225,6 @@ export const renderProjectCard = () => {
 
 
 // Packages
-
 export const renderPackageCard = () => {
   const element = `
     <div class="card">
