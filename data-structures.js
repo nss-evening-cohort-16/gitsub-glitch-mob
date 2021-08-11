@@ -47,7 +47,8 @@ export const newRepo = (_repoTitle, _description, _language) => {
         issues: 0,
         lastUpdated: Date(),
     };
-}
+};
+
 
 // Projects Page
 export const newProjectObj = (_title, _description, _privacy) => {
@@ -59,7 +60,7 @@ export const newProjectObj = (_title, _description, _privacy) => {
         privacy: _privacy,
         status: "Open"
     }
-}
+};
 
 
 // Packages Page
