@@ -132,14 +132,18 @@ export const footer = () => {
 export const renderOverviewContent = () => {
     const element = `
     <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  < class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">Pinned Repository/h5>
+    <h5 class="pinnedrepo-title">Pinned Repository/h5>
     <p class="card-text">Description of the pinned repository</p>
+    <span class="fa fa-star">starred</span>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-</div>`    
-}
+</div>
+`;
+renderToDOM("#list-container" , element);
+
+};
 
 
 // Repos
