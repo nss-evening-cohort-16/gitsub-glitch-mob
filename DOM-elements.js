@@ -238,3 +238,19 @@ export const renderPackageCard = () => {
 
   renderToDOM("#list-container", element, false);
 };
+
+export const packageForm = () => {
+  const element = `
+    <form id="name">
+        <div class="input-group mb-3">
+            <div>
+                <input type="text" id="nameInput" class="form-control" required>
+            </div>
+            <div>
+                <input type="submit" value="Sort!" class="btn btn-primary" id="nameBtn">
+            </div>
+        </div>
+    </form>
+  `;
+renderToDOM("#form-container", element);
+}
