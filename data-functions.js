@@ -50,16 +50,18 @@ const loadUserData = () => {
 const saveUserData = () => {
   if (currentUser !== {}) {
     // save overview data
-    export const pinnedRepolist = (taco) => {
-        taco.forEach((pinnedRepo, i) => {
-            renderOverviewContent(pinnedRepo.repoTitle,pinnedRepo.description, pinnedRepo.language);
-        });
-    }
+    
     // save repo data
     currentUser.projectsData = currentProjectsArray;
     // save packages data
   }
 };
+
+export const pinnedRepolist = (taco) => {
+    taco.forEach((pinnedRepo, i) => {
+        renderOverviewContent(pinnedRepo.repoTitle,pinnedRepo.description, pinnedRepo.language);
+    });
+}
 
 // Render Ropo's to DOM
 export const reposList = (array) => {

@@ -129,7 +129,7 @@ export const footer = () => {
 
 // Overview
 
-export const renderOverviewContent = (_repoTitle, _description, _language,) => {
+export const renderOverviewContent = (_pinnedrepoTitle, _pinnedrepodescription, _pinnedrepolanguage,) => {
     const element = `
                 <div class="card" style="width: 18rem;"> 
                     <div class="repo-body">

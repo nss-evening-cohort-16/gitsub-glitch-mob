@@ -1,6 +1,6 @@
 
-import { samplePackage, sampleRepo } from "./data-samples.js";
-import { currentUser, injectSampleData, reposList } from "./data-functions.js";
+import { samplePackage, sampleRepo,samplePinnedRepo } from "./data-samples.js";
+import { currentUser, injectSampleData, reposList,pinnedRepolist} from "./data-functions.js";
 import { pageLayout, bioPanel, footer, header, renderProjectsContent, renderPackagesContent, renderReposContent } from "./DOM-elements.js";
 
 
