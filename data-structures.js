@@ -51,12 +51,12 @@ export const newProjectForm = () => {
 }
 
 // Repos Page
-export const newRepo = (_repoTitle, _description, _language) => {
+export const newRepo = (_repoTitle, _description, _tags, _language) => {
     return {
         repoTitle: _repoTitle,
         description: _description,
+        tags: _tags,
         language: _language,
-        tags: [],
         starred: 0,
         branches: 0,
         issues: 0,
