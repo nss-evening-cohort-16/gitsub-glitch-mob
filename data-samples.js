@@ -108,6 +108,7 @@ export const samplePackage = [
         description: "",
         beta: "?"
         }
+    ]   
 
 // Repos
 export const sampleRepo = [
