@@ -8,8 +8,6 @@ export const injectSampleData = () => {
 
 
     changeCurrentUser(usersArray[0]);
-
-    console.log(currentUser);
 };
 
 
@@ -17,10 +15,10 @@ export const injectSampleData = () => {
 
 // Users
 
-export let usersArray = [];
+let usersArray = [];
 export let currentUser = {};
 
-const addNewUser = (_userObj) => {
+export const addNewUser = (_userObj) => {
     usersArray.push(_userObj);
     return usersArray;
 };
@@ -33,13 +31,21 @@ const changeCurrentUser = (_newUser) => {
     return _newUser;
 };
 
+
+// Projects
+
+let currentProjectsArray = [];
+
+export const addNewProject = (_projectObj) => {
+    currentProjectsArray.push(_projectObj);
+    return currentProjectsArray;
+}
+
 const loadUserData = () => {
     if (currentUser !== {}) {
         // load overview data
         // load repo data
-
-        // currentProjectsArray = currentUser.projectsData;
-
+        currentProjectsArray = currentUser.projectsData;
         // load packages data
     };
 };
@@ -48,9 +54,7 @@ const saveUserData = () => {
     if (currentUser !== {}) {
         // save overview data
         // save repo data
-      
-        // currentUser.projectsData = currentProjectsArray;
-        
+        currentUser.projectsData = currentProjectsArray;        
         // save packages data
     };
 };
