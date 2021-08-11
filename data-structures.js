@@ -1,7 +1,7 @@
 // Profile Panel
 const defaultUserImg = "https://user-images.githubusercontent.com/11250/39013954-f5091c3a-43e6-11e8-9cac-37cf8e8c8e4e.jpg";
 
-export const newUser = (_name, _username, _description, _imgURL = defaultUserImg, _location = "", _email = "", _website = "", _twitter = "") => {
+export const newUserObj = (_name, _username, _description, _imgURL = defaultUserImg, _location = "", _email = "", _website = "", _twitter = "") => {
     return {
         name: _name,
         username: _username,
@@ -18,13 +18,34 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         twitter: _twitter,
 
         highlights: [],
+        addNewHighlight: function(__hlObj){
+            return this.highlights.push(__hlObj)
+        },
         orgs: [],
+        addNewOrg: function(__orgObj){
+            return this.orgs.push(__orgObj)
+        },
         sponsors: [],
+        addNewSponsor: function(__sponsorObj){
+            return this.sponsors.push(__sponsorObj)
+        },
 
-        overviewData: [],
-        repoData: [],
-        projectsData: [],
-        packagesData: []
+        pinnedRepos: [],
+        addNewPinnedRepo: function(__repoObj){
+            return this.pinnedRepos.push(__repoObj)
+        },
+        repos: [],
+        addNewRepo: function(__repoObj){
+            return this.repos.push(__repoObj)
+        },
+        projects: [],
+        addNewProject: function(__projObj){
+            return this.projects.push(__projObj)
+        },
+        packages: [],
+        addNewPackage: function(__packObj){
+            return this.packages.push(__packObj)
+        }
     };
 };
 

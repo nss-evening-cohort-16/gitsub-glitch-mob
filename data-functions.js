@@ -1,11 +1,10 @@
+import { generateSampleUser, sampleUser1FormInput, sampleUser2FormInput } from "./data-samples";
+
 // Sample Data
-
-import { sampleUser1, sampleUser2 } from "./data-samples.js";
-
 export const injectSampleData = () => {
-  addNewUser(sampleUser1);
-  addNewUser(sampleUser2);
-
+  addNewUser(generateSampleUser(sampleUser1FormInput));
+  addNewUser(generateSampleUser(sampleUser2FormInput));
+  
   changeCurrentUser(usersArray[0]);
 };
 
@@ -22,38 +21,5 @@ export const addNewUser = (_userObj) => {
 };
 
 const changeCurrentUser = (_newUser) => {
-  saveUserData();
-  currentUser = _newUser;
-  loadUserData();
-
-  return _newUser;
-};
-
-const loadUserData = () => {
-    if (currentUser !== {}) {
-      // load overview data
-      // load repo data
-      currentProjectsArray = currentUser.projectsData;
-      // load packages data
-    }
-};
-  
-const saveUserData = () => {
-    if (currentUser !== {}) {
-      // save overview data
-      // save repo data
-      currentUser.projectsData = currentProjectsArray;
-      // save packages data
-    }
-};
-
-
-
-// Projects
-
-export let currentProjectsArray = [];
-
-export const addNewProject = (_projectObj) => {
-  currentProjectsArray.push(_projectObj);
-  return currentProjectsArray;
+  return currentUser = _newUser;
 };
