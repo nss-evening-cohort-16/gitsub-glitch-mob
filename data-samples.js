@@ -90,7 +90,7 @@ const sampleOrganization2 = {
 
 // Projects
 
-const sampleProject = {
+export const sampleProject = {
     title: "Project Title",
     description: "This is a description.",
     timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",

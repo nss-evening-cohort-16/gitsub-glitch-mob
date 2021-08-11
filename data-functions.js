@@ -1,6 +1,6 @@
 // Sample Data
-import { sampleUser1, sampleUser2, sampleRepo, samplePinnedRepo } from "./data-samples.js";
-import { renderPackageCard, renderRepoCard } from "./DOM-elements.js";
+
+import { sampleUser1, sampleUser2 } from "./data-samples.js";
 
 export const injectSampleData = () => {
   addNewUser(sampleUser1);
@@ -8,6 +8,8 @@ export const injectSampleData = () => {
 
   changeCurrentUser(usersArray[0]);
 };
+
+
 
 // Users
 
@@ -27,67 +29,31 @@ const changeCurrentUser = (_newUser) => {
   return _newUser;
 };
 
+const loadUserData = () => {
+    if (currentUser !== {}) {
+      // load overview data
+      // load repo data
+      currentProjectsArray = currentUser.projectsData;
+      // load packages data
+    }
+};
+  
+const saveUserData = () => {
+    if (currentUser !== {}) {
+      // save overview data
+      // save repo data
+      currentUser.projectsData = currentProjectsArray;
+      // save packages data
+    }
+};
+
+
+
 // Projects
 
-let currentProjectsArray = [];
+export let currentProjectsArray = [];
 
 export const addNewProject = (_projectObj) => {
   currentProjectsArray.push(_projectObj);
   return currentProjectsArray;
-};
-
-const loadUserData = () => {
-  if (currentUser !== {}) {
-    // load overview data
-    // load repo data
-    currentProjectsArray = currentUser.projectsData;
-    // load packages data
-  }
-};
-
-const saveUserData = () => {
-  if (currentUser !== {}) {
-    // save overview data
-    
-    // save repo data
-    currentUser.projectsData = currentProjectsArray;
-    // save packages data
-  }
-};
-
-export const pinnedRepolist = (taco) => {
-    taco.forEach((pinnedRepo, i) => {
-        renderOverviewContent(pinnedRepo.repoTitle,pinnedRepo.description, pinnedRepo.language);
-    });
-}
-
-// Render Ropo's to DOM
-export const listCards = (array) => {
-
-    array.forEach((repoItem, i) => {
-        renderRepoCard(repoItem.repoTitle, repoItem.description, repoItem.tags, repoItem.language, repoItem.lastUpdated);
-
-})};
-
-
-
-
-export const renderContent = () => {
-    switch (window.location.pathname) {
-        case "/repos.html":
-            listCards(sampleRepo);
-            break;
-
-        case "/projects.html":
-            renderProjectCard();
-            break;
-
-        case "/packages.html":
-            renderPackageCard(samplePackage);
-            break;
-
-        default:
-            // renderOverviewContent();
-            break;
-    };
 };

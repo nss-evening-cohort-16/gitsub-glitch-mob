@@ -30,6 +30,7 @@ export const pageLayout = () => {
 };
 
 
+
 // User bio profile
 export const bioPanel = (_currentUser) => {
     const element = `
@@ -74,6 +75,7 @@ export const bioPanel = (_currentUser) => {
 };
 
 
+
 // Header / NavBar
  export const header = () => {
 
@@ -107,6 +109,7 @@ export const bioPanel = (_currentUser) => {
 };
 
 
+
 // Footer
 export const footer = () => {
     const element = `
@@ -127,20 +130,21 @@ export const footer = () => {
     renderToDOM("#page-footer", element);
 };
 
-// Overview
 
-export const renderOverviewContent = (_pinnedrepoTitle, _pinnedrepodescription, _pinnedrepolanguage,) => {
+
+// Overview
+export const renderPinnedRepoCard = (_repoDataObj) => {
     const element = `
                 <div class="card" style="width: 18rem;"> 
                     <div class="repo-body">
                         <div>
-                            <h5 class="pinnedrepo-title">${_pinnedrepoTitle}</h5>
+                            <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
                         </div>
                         <div>
-                            <h6 class="pinnedrepo-text">${_pinnedrepodescription}</h6>
+                            <h6 class="pinnedrepo-text">${_repoDataObj.description}</h6>
                         </div>
                         <div>
-                            <p class="pinnedrepo-language">${_pinnedrepolanguage}</p>
+                            <p class="pinnedrepo-language">${_repoDataObj.language}</p>
                             <div> 
                             <button href="#" class="repo-btn repo-btn-starred">0</button>
                             </div>
@@ -163,21 +167,21 @@ export const renderOverviewContent = (_pinnedrepoTitle, _pinnedrepodescription, 
 
 
 // Repos
-export const renderRepoCard = (_repoTitle, _description, _tags, _language, _lastUpdated) => {
+export const renderRepoCard = (_repoDataObj) => {
 const element = `
             <div class="card" style="width: 18rem;"> 
                 <div class="repo-body">
                     <div>
-                        <h5 class="repo-title">${_repoTitle}</h5>
+                        <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
                     </div>
                     <div>
-                        <h6 class="repo-text">${_description}</h6>
+                        <h6 class="repo-text">${_repoDataObj.description}</h6>
                     </div>
                     <div>
-                        <p class="repo-tags">${_tags}</p>
+                        <p class="repo-tags">${_repoDataObj.tags}</p>
                     </div>
                     <div>
-                        <p class="repo-language">${_language}</p>
+                        <p class="repo-language">${_repoDataObj.language}</p>
                         <div> 
                         <button href="#" class="repo-btn repo-btn-starred">0</button>
                         </div>
@@ -191,7 +195,7 @@ const element = `
                         </div>
                         <div>
                         <p>Last Updated:</p>
-                        <p href="#" class="repo-btn repo-btn-lastUpdated">${_lastUpdated}</p>
+                        <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
                         </div>
                     </div>
                 </div>
