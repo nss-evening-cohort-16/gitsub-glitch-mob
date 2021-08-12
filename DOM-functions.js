@@ -1,4 +1,4 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, renderRepoCard, repoForm } from "./DOM-elements.js";
+import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm } from "./DOM-elements.js";
 import { sampleRepo, samplePackage } from "./data-samples.js";
 import { currentProjectsArray } from "./data-functions.js";
 
@@ -16,6 +16,7 @@ export const renderContent = () => {
 
         case "/packages.html":
             listCards(samplePackage, renderPackageCard);
+            packageForm();
             break;
 
         default:

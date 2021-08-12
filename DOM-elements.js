@@ -192,6 +192,29 @@ export const renderRepoCard = (_repoDataObj) => {
   renderToDOM("#list-container", element, false);
 };
 
+// Fillable Repo Form
+export const repoForm = () => {
+  const element = `
+     <form id="repoFormForm">
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
+            <input required type="text" class="form-control" id="repo-title" placeholder="Input Repositories Title">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
+            <input required type="text" class="form-control" id="repo-description" placeholder="Input Repositories Description">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
+            <input required type="text" class="form-control" id="repo-language" placeholder="Input Repositories Language">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>    
+    </form>
+    `;
+    renderToDOM("#form-container", element)
+};
+
 // Projects
 export const renderProjectCard = () => {
   const element = `
@@ -222,26 +245,25 @@ export const renderPackageCard = () => {
   renderToDOM("#list-container", element, false);
 };
 
-
-// Fillable Repo Form
-export const repoForm = () => {
+export const packageForm = () => {
   const element = `
-     <form id="repoFormForm">
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <input required type="text" class="form-control" id="repo-title" placeholder="Input Repositories Title">
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
-            <input required type="text" class="form-control" id="repo-description" placeholder="Input Repositories Description">
-        </div>
-        <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
-            <input required type="text" class="form-control" id="repo-language" placeholder="Input Repositories Language">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>    
+    <form>
+      <div>
+        <h5>Package Name</h5>
+          <input class="form-control" type="text" aria-label="default">
+      </div>
+      <div>
+          <label for="textArea" class="form-label"></label>
+            <h5>Description</h5>
+          <textarea class="form-control" id="textArea" rows="4"></textarea>
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <button id="packageBtn" class="btn btn-primary" type="submit">Create Package</button>
+      </div>
     </form>
-    `;
-    renderToDOM("#form-container", element)
-};
+  `;
+
+  renderToDOM("#form-container", element);
+}
+
+
