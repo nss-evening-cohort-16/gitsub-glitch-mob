@@ -30,8 +30,17 @@ export const renderContent = () => {
     switch (window.location.pathname) {
         // Repos Page
         case "/repos.html":
-            renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
             renderToDOM("#form-container", repoForm());
+
+            addObjectToUser(
+                newRepoObj(
+                    document.querySelector("#repo-form-title").value,
+                    document.querySelector("#repo-form-description").value,
+                    document.querySelector("#repo-form-language").value,
+                    Date()), 
+                currentUser.repoData);
+
+            renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
             break;
 
         // Projects Page
@@ -68,11 +77,14 @@ const listOfCards = (_array, _cardTemplate) => {
     return cardString;
 };
 
+// Print error if form fields are empty
+const inputError = (_input) => {
+    return _input ? "" : "All fields required.";
+};
+
 // Register page clicks
 export const registerEvents = () => {
-    document
-        .querySelector("body")
-        .addEventListener("click", buttonClicks)
+    document.querySelector("body").addEventListener("click", buttonClicks)
 };
 
 // Handle button clicks
@@ -87,49 +99,43 @@ const buttonClicks = (_event) => {
 
     // Repos Page Buttons \\
         // Repo Form Submit Button
-        case "repo-form-submitBtn":
-            _event.preventDefault();
-
-            addObjectToUser(
-                newRepoObj(
-                    document.querySelector("#repo-form-title").value,
-                    document.querySelector("#repo-form-description").value,
-                    document.querySelector("#repo-form-language").value,
-                    Date()), 
-                currentUser.repoData);
-            
-            renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
-            break;
 
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
             _event.preventDefault();
-
-            const titleInput = document.querySelector("#project-form-title").value;
-            const descInput = document.querySelector("#project-form-description").value;
-            const privateCheck = document.querySelector("#project-form-privacy").checked;
-
-            
-            addObjectToUser(
-                newProjectObj(
-                    titleInput, 
-                    descInput, 
-                    privateCheck ? "Private" : "Public"),
-                currentUser.projectsData);
-                
-            renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
-            document.querySelector("#project-inputForm").reset();
+            submitNewProject();            
             break;
 
 
     // Packages Page Buttons \\
-        
-    // Bio Buttons \\
-
-    // Footer Buttons \\
-
-
-    }
+    };
 };
 
+
+//// Button Functions \\\\
+
+// Overview
+
+// Repos
+
+// Projects
+const submitNewProject = () => {
+    const titleInput = document.querySelector("#project-form-title").value;
+    const descInput = document.querySelector("#project-form-description").value;
+    const privateCheck = document.querySelector("#project-form-privacy").checked;
+
+    if (!inputError(titleInput) && !inputError(descInput)) {
+        addObjectToUser(
+            newProjectObj(
+                titleInput, 
+                descInput, 
+                privateCheck ? "Private" : "Public"),
+            currentUser.projectsData);
+            
+        renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+        document.querySelector("#project-inputForm").reset();
+    };
+};
+
+// Packages

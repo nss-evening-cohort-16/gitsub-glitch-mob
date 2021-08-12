@@ -231,13 +231,14 @@ export const projectsContent = `
 export const projectCardTemplate = (_projectDataObj) => {
   return `
     <div class="project-card">
-      <div class="project-card-title">${_projectDataObj.title}</div> 
-      <div class="project-card-description">${_projectDataObj.description}</div> 
+      <div class="project-card-data project-card-title">${_projectDataObj.title}</div> 
       <hr>
-      <div class="project-card-created">Created: ${_projectDataObj.timeCreated}</div> 
-      <div class="project-card-updated">Last Updated: ${_projectDataObj.lastUpdated}</div> 
-      <div class="project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
-      <div class="project-card-status">Status: ${_projectDataObj.status}</div> 
+      <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      <hr>
+      <div class="project-card-data project-card-created">Created:<br>${_projectDataObj.timeCreated}</div> 
+      <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
+      <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
+      <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div> 
     </div>
   `;
 };

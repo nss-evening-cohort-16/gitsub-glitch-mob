@@ -113,6 +113,9 @@ h3 {
     }
 
 .project-card {
-    border: 1px solid var(--borderColor);
+    border: 2px solid var(--borderColor);
     margin: 8px;
 }
+    .project-card-data {
+        margin: 10px;
+    }
