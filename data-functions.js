@@ -22,38 +22,5 @@ export const addNewUser = (_userObj) => {
 };
 
 const changeCurrentUser = (_newUser) => {
-  saveUserData();
-  currentUser = _newUser;
-  loadUserData();
-
-  return _newUser;
-};
-
-const loadUserData = () => {
-    if (currentUser !== {}) {
-      // load overview data
-      // load repo data
-      currentProjectsArray = currentUser.projectsData;
-      // load packages data
-    }
-};
-  
-const saveUserData = () => {
-    if (currentUser !== {}) {
-      // save overview data
-      // save repo data
-      currentUser.projectsData = currentProjectsArray;
-      // save packages data
-    }
-};
-
-
-
-// Projects
-
-export let currentProjectsArray = [];
-
-export const addNewProject = (_projectObj) => {
-  currentProjectsArray.push(_projectObj);
-  return currentProjectsArray;
+  return currentUser = _newUser;
 };
