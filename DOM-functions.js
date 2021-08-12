@@ -1,6 +1,5 @@
 import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm } from "./DOM-elements.js";
-import { sampleRepo, samplePackage } from "./data-samples.js";
-import { currentProjectsArray } from "./data-functions.js";
+
 
 // Render page specific content
 export const renderContent = () => {
