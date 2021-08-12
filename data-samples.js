@@ -1,31 +1,31 @@
-import { newUserObj } from "./data-structures";
+// import { newUserObj } from "./data-structures";
 
 // Users
 
-export const generateSampleUser = (_formInput) => {
+// export const generateSampleUser = (_formInput) => {
 
-    const sampleUser = newUserObj(
-        _formInput.name,
-        _formInput.username,
-        _formInput.description,
-        _formInput.imgURL,
-        _formInput.location,
-        _formInput.email,
-        _formInput.website,
-        _formInput.twitter
-    );
+//     const sampleUser = newUserObj(
+//         _formInput.name,
+//         _formInput.username,
+//         _formInput.description,
+//         _formInput.imgURL,
+//         _formInput.location,
+//         _formInput.email,
+//         _formInput.website,
+//         _formInput.twitter
+//     );
 
-    // sampleUser.addNewOrg(sampleOrganization1);
-    // sampleUser.addNewOrg(sampleOrganization2);
+//     // sampleUser.addNewOrg(sampleOrganization1);
+//     // sampleUser.addNewOrg(sampleOrganization2);
 
-    // sampleUser.addNewProject(sampleProject);
-    // sampleUser.addNewPackage(samplePackage);
-    // sampleUser.addNewRepo(sampleRepos[0]);
-    // sampleUser.addNewRepo(sampleRepos[1]);
-    // sampleUser.addNewPinnedRepo(sampleRepos[0]);
+//     // sampleUser.addNewProject(sampleProject);
+//     // sampleUser.addNewPackage(samplePackage);
+//     // sampleUser.addNewRepo(sampleRepos[0]);
+//     // sampleUser.addNewRepo(sampleRepos[1]);
+//     // sampleUser.addNewPinnedRepo(sampleRepos[0]);
 
-    return sampleUser;
-};
+//     return sampleUser;
+// };
 
 
 export const sampleUser1FormInput = {

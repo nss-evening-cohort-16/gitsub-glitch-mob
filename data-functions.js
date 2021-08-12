@@ -12,7 +12,7 @@ export const injectSampleData = () => {
     sampleUser1FormInput.location, 
     sampleUser1FormInput.email, 
     sampleUser1FormInput.website, 
-    sampleUser1FormInput.twitter))
+    sampleUser1FormInput.twitter));
 
   console.log(usersArray[0]);
   changeCurrentUser(usersArray[0]);
