@@ -228,7 +228,17 @@ export const projectsContent = `
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj) => {
-  return `<div class="project-card">${_projectDataObj.title}</div>`;
+  return `
+    <div class="project-card">
+      <div class="project-card-title">${_projectDataObj.title}</div> 
+      <div class="project-card-description">${_projectDataObj.description}</div> 
+      <hr>
+      <div class="project-card-created">${_projectDataObj.timeCreated}</div> 
+      <div class="project-card-updated">${_projectDataObj.lastUpdated}</div> 
+      <div class="project-card-privacy">${_projectDataObj.privacy}</div> 
+      <div class="project-card-status">${_projectDataObj.status}</div> 
+    </div>
+  `;
 };
 
 // Form

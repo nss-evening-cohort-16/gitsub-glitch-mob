@@ -110,10 +110,7 @@ const buttonClicks = (_event) => {
                 newProjectObj(
                     document.querySelector("#project-form-title").value,
                     document.querySelector("#project-form-description").value,
-                    Date(),
-                    Date(),
-                    document.querySelector("#project-form-privacy").value,
-                    "Open"),
+                    document.querySelector("#project-form-privacy").value),
                 currentUser.projectsData);
                 
             renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
