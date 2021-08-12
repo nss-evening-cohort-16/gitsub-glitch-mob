@@ -251,16 +251,16 @@ export const projectForm = `
   <h2 id="project-form-label">Create New Project</h2>
   <form id="project-inputForm">
      <div class="mb-3">
-         <label for="project-form-title" class="form-label">Project Title:</label>
+         <label for="project-form-title" class="form-label">Project Title:</label><br>
          <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
      </div>
      <div class="mb-3">
-         <label for="project-form-description" class="form-label">Project Description</label>
-         <input type="text" class="form-control" id="project-form-description" placeholder="Description">
+         <label for="project-form-description" class="form-label">Project Description:</label><br>
+         <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
      </div>
      <div class="mb-3">
+     <input type="checkbox" id="project-form-privacy">
          <label for="project-form-privacy" class="form-label">Private</label>
-         <input type="checkbox" id="project-form-privacy">
      </div>
 
      <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
