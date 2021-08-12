@@ -1,3 +1,4 @@
+
 // Profile Panel
 const defaultUserImg = "https://user-images.githubusercontent.com/11250/39013954-f5091c3a-43e6-11e8-9cac-37cf8e8c8e4e.jpg";
 
@@ -6,7 +7,7 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         name: _name,
         username: _username,
         description: _description,
-        img: _imgURL,
+        imgURL: _imgURL,
 
         followers: 0,
         following: 0,
@@ -21,14 +22,11 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         orgs: [],
         sponsors: [],
 
-        overviewData: [],
         repoData: [],
         projectsData: [],
         packagesData: []
     };
 };
-
-
 
 // Repos Page
 export const newRepoObj = (_repoTitle, _description, _tags, _language) => {
@@ -66,4 +64,34 @@ export const newPackageObj = (_titleImage, _title, _description, _beta) => {
         description: "",
         beta: "?"
   };
+};
+
+
+
+
+/////// WORKSPACE \\\\\\\\\
+
+
+export const newUserObj = (_name, _username, _description, _imgURL = defaultUserImg, _location = "", _email = "", _website = "", _twitter = "") => {
+        this.name = _name,
+        this.username = _username,
+        this.description = _description,
+        this.imgURL = _imgURL,
+
+        this.followers = 0,
+        this.following = 0,
+        this.starred = 0,
+
+        this.location = _location,
+        this.email = _email,
+        this.website = _website,
+        this.twitter = _twitter,
+
+        this.highlights = [],
+        this.orgs = [],
+        this.sponsors = [],
+
+        this.repoData = [],
+        this.projectsData = [],
+        this.packagesData = []
 };
