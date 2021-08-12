@@ -53,8 +53,6 @@ export const bioPanel = (_currentUser) => {
             <h3>Sponsors</h3>
             <div id="sponsors-list">${_currentUser.sponsors}</div>
         </div>`;
-
-  // renderToDOM("#page-bio", element);
 };
 
 // Header / NavBar
@@ -83,7 +81,6 @@ export const header =
           </div>
         </div>
       </nav>`;
-  // renderToDOM("#page-navbar", element);
 
 // Footer
 export const footer =
@@ -101,7 +98,11 @@ export const footer =
         <div id="blog-btn">Blog</div>
         <div id="about-btn">About</div>
     `;
-  // renderToDOM("#page-footer", element);
+
+
+
+
+//// Card Templates and Forms \\\\
 
 // Overview
 export const renderPinnedRepoCard = (_repoDataObj) => {
@@ -131,8 +132,6 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
       </div>
     </div>
     `;
-
-  // renderToDOM("#list-container", element, false);
 };
     
 export const renderPinnedRepoForm = (_repoDataObj) => {
@@ -149,8 +148,6 @@ export const renderPinnedRepoForm = (_repoDataObj) => {
         </div>
       </div>
       `;
-  
-    // renderToDOM("#form-container", element);
   };
       
 // Repos
@@ -188,8 +185,6 @@ export const renderRepoCard = (_repoDataObj) => {
       </div>
   </div>
   `;
-
-  // renderToDOM("#list-container", element, false);
 };
 
 // Fillable Repo Form
@@ -212,7 +207,6 @@ export const repoForm = () => {
         <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
     </form>
     `;
-    // renderToDOM("#form-container", element)
 };
 
 // Projects
@@ -226,8 +220,6 @@ export const renderProjectCard = () => {
         <div id="projects-list-content">List</div>
       </div>
     `;
-
-  // renderToDOM("#list-container", element);
 };
 
 // Packages
@@ -241,8 +233,6 @@ export const renderPackageCard = () => {
       </div>
     </div>
   `;
-
-  // renderToDOM("#list-container", element, false);
 };
 
 export const packageForm = () => {
@@ -262,8 +252,6 @@ export const packageForm = () => {
       </div>
     </form>
   `;
-
-  // renderToDOM("#form-container", element);
-}
+};
 
 

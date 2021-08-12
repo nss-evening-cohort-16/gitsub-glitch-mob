@@ -1,42 +1,6 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm,  renderPinnedRepoForm, pageLayout} from "./DOM-elements.js";
+import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard as repoCardTemplate, repoForm,  renderPinnedRepoForm, pageLayout, header, footer, bioPanel} from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newRepoObj } from "./data-structures.js";
-
-// Render basic page layout
-export const renderLayout = () => {
-    renderToDOM("body", pageLayout);
-};
-
-// Render page specific content
-export const renderContent = () => {
-    switch (window.location.pathname) {
-        // Repos Page
-        case "/repos.html":
-            renderToDOM("#form-container", repoForm)
-            // repoForm();
-            listOfCards(currentUser.repoData, renderRepoCard);
-            break;
-
-        // Projects Page
-        case "/projects.html":
-            listOfCards(currentUser.projectsData, renderProjectCard);
-            break;
-
-        // Packages Page
-        case "/packages.html":
-            listOfCards(currentUser.packagesData, renderPackageCard);
-            packageForm();
-            break;
-
-        // Overview Page
-        default:
-            listOfCards(currentUser.repoData, renderPinnedRepoCard)
-            renderPinnedRepoForm(currentUser.repoData);
-            break;
-           
-    };
-};
-
 
 // Render Function
 const renderToDOM = (_targetDivID, _element, _clear = true) => {
@@ -45,15 +9,60 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
     _clear ? (targetDiv.innerHTML = _element) : (targetDiv.innerHTML += _element);
   };
 
-// Generate list of Cards
-const listOfCards = (_array, _renderCardFunction) => {
-    const cardArray = [];
+
+// Render basic page layout
+export const renderLayout = () => {
+    // Render Structure
+        renderToDOM("body", pageLayout);
+
+    // Render Header
+        renderToDOM("#page-navbar", header); 
+    
+    // Render Footer
+        renderToDOM("#page-footer", footer);  
+
+    // Render Bio Panel
+        renderToDOM("#page-bio", bioPanel(currentUser));
+};
+
+// Render page specific content
+export const renderContent = () => {
+    switch (window.location.pathname) {
+        // Repos Page
+        case "/repos.html":
+            renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
+            renderToDOM("#form-container", repoForm());
+            break;
+
+        // Projects Page
+        case "/projects.html":
+            renderToDOM("#list-container", listOfCards(currentUser.projectsData, renderProjectCard));
+            break;
+
+        // Packages Page
+        case "/packages.html":
+            renderToDOM("#list-container", listOfCards(currentUser.packagesData, renderPackageCard));
+            renderToDOM("#form-container", packageForm());
+            break;
+
+        // Overview Page
+        default:
+            renderToDOM("#list-container", listOfCards(currentUser.repoData, renderPinnedRepoCard));
+            renderToDOM("#form-container", renderPinnedRepoForm(currentUser.repoData));
+            break;           
+    };
+};
+
+
+// Generate a string containing a list of Cards
+const listOfCards = (_array, _cardTemplate) => {
+    let cardString = "";
     
     _array.forEach((item) => {
-        _renderCardFunction(item);
+        cardString += _cardTemplate(item);
     });
 
-    return cardArray;
+    return cardString;
 };
 
 // Clear the card rendering area
@@ -61,7 +70,14 @@ const clearListContainer = () => {
     document.querySelector("#list-container").innerHTML = "";
 };
 
-// Handle clicks
+// Register page clicks
+export const registerEvents = () => {
+    document
+        .querySelector("body")
+        .addEventListener("click", buttonClicks)
+};
+
+// Handle button clicks
 export const buttonClicks = (_event) => {
     const targetID = _event.target.id;
     
@@ -85,7 +101,7 @@ export const buttonClicks = (_event) => {
                 currentUser.repoData);
             
             clearListContainer();
-            listOfCards(currentUser.repoData, renderRepoCard);
+            renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
             break;
 
     // Projects Page Buttons \\
