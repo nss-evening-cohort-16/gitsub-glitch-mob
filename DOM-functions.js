@@ -52,9 +52,10 @@ export const buttonClicks = (_event) => {
     console.log(targetID);
 
     switch(targetID) {
-        // Overview Page Buttons
+    // Overview Page Buttons \\
 
-        // Repos Page Buttons
+    // Repos Page Buttons \\
+        // Form Submit Button
         case "repo-form-submitBtn":
             _event.preventDefault();
 
@@ -68,15 +69,15 @@ export const buttonClicks = (_event) => {
             
             clearListContainer();
             listCards(currentUser.repoData, renderRepoCard);
-        break;
+            break;
 
-        // Projects Page Buttons
+    // Projects Page Buttons \\
 
-        // Packages Page Buttons
+    // Packages Page Buttons \\
         
-        // Bio Buttons
+    // Bio Buttons \\
 
-        // Footer Buttons
+    // Footer Buttons \\
 
 
     }
