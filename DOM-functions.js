@@ -1,6 +1,6 @@
 import { pinnedRepoCardTemplate, pinnedRepoForm, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
-import { newRepoObj } from "./data-structures.js";
+import { newProjectObj, newRepoObj } from "./data-structures.js";
 
 // Render Function
 const renderToDOM = (_targetDivID, _element, _clear = true) => {
@@ -39,7 +39,7 @@ export const renderContent = () => {
             renderToDOM("#list-container", projectsContent);
             renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
 
-            renderToDOM("#form-container", projectForm());
+            renderToDOM("#form-container", projectForm);
             break;
 
         // Packages Page
@@ -86,7 +86,7 @@ const buttonClicks = (_event) => {
     // Overview Page Buttons \\
 
     // Repos Page Buttons \\
-        // Form Submit Button
+        // Repo Form Submit Button
         case "repo-form-submitBtn":
             _event.preventDefault();
 
@@ -102,6 +102,23 @@ const buttonClicks = (_event) => {
             break;
 
     // Projects Page Buttons \\
+        // Project Form Submit Button
+        case "project-form-submitBtn":
+            _event.preventDefault();
+
+            addObjectToUser(
+                newProjectObj(
+                    document.querySelector("#project-form-title").value,
+                    document.querySelector("#project-form-description").value,
+                    Date(),
+                    Date(),
+                    document.querySelector("#project-form-privacy").value,
+                    "Open"),
+                currentUser.projectsData);
+                
+            renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+            break;
+
 
     // Packages Page Buttons \\
         

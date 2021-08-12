@@ -102,9 +102,11 @@ export const footer =
 
 
 
-//// Card Templates and Forms \\\\
+////// Card Templates and Forms \\\\\\
 
-// Overview
+//// Overview \\\\\
+
+// Card Template
 export const pinnedRepoCardTemplate = (_repoDataObj) => {
   return `
     <div class="card" style="width: 18rem;"> 
@@ -134,6 +136,7 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
     `;
 };
     
+// Form
 export const pinnedRepoForm = (_repoDataObj) => {
     return `
       <div class="card" style="width: 18rem;"> 
@@ -150,7 +153,9 @@ export const pinnedRepoForm = (_repoDataObj) => {
       `;
   };
       
-// Repos
+//// Repos \\\\
+
+// Card Template
 export const repoCardTemplate = (_repoDataObj) => {
   return `
    <div class="card" style="width: 18rem;"> 
@@ -187,7 +192,7 @@ export const repoCardTemplate = (_repoDataObj) => {
   `;
 };
 
-// Fillable Repo Form
+// Form
 export const repoForm = () => {
   return `
      <form id="repo-inputForm">
@@ -209,7 +214,9 @@ export const repoForm = () => {
     `;
 };
 
-// Projects
+//// Projects \\\\
+
+// Layout
 export const projectsContent = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
@@ -218,15 +225,35 @@ export const projectsContent = `
       </div>
     `;
 
+
+// Card Template
 export const projectCardTemplate = (_projectDataObj) => {
   return `<div class="project-card">${_projectDataObj.title}</div>`;
 };
 
-export const projectForm = () => {
-  return ``;
-};
+// Form
+export const projectForm = `
+  <form id="project-inputForm">
+     <div class="mb-3">
+         <label for="project-form-title" class="form-label">Project Title:</label>
+         <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+     </div>
+     <div class="mb-3">
+         <label for="project-form-description" class="form-label">Project Description</label>
+         <input required type="text" class="form-control" id="project-form-description" placeholder="Description">
+     </div>
+     <div class="mb-3">
+         <label for="project-form-privacy" class="form-label">Privacy</label>
+         <input required type="text" class="form-control" id="project-form-privacy" placeholder="Public or Private">
+     </div>
 
-// Packages
+     <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
+  </form>`;
+ 
+
+//// Packages \\\\
+
+// Card Template
 export const packageCardTemplate = () => {
   return `
     <div class="card">
@@ -239,6 +266,7 @@ export const packageCardTemplate = () => {
   `;
 };
 
+// Form
 export const packageForm = () => {
   return `
     <form>
