@@ -1,4 +1,4 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, renderRepoCard } from "./DOM-elements.js";
+import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, renderRepoCard,renderPinnedRepoForm} from "./DOM-elements.js";
 import { sampleRepo, samplePackage } from "./data-samples.js";
 import { currentProjectsArray } from "./data-functions.js";
 

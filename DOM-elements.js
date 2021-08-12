@@ -163,9 +163,24 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
   renderToDOM("#list-container", element, false);
 };
     
-
-
-
+export const renderPinnedRepoForm = (_repoDataObj) => {
+    const element = `
+      <div class="card" style="width: 18rem;"> 
+        <div class="repo-body">
+          <div>
+            <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
+          </div>
+            <div> 
+              <button href="#" class="Pinnedrepo-btn">Pin Repos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      `;
+  
+    renderToDOM("#form-container", element, false);
+  };
+      
 // Repos
 export const renderRepoCard = (_repoDataObj) => {
 const element = `
