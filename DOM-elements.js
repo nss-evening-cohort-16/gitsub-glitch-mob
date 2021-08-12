@@ -105,7 +105,7 @@ export const footer =
 //// Card Templates and Forms \\\\
 
 // Overview
-export const renderPinnedRepoCard = (_repoDataObj) => {
+export const pinnedRepoCardTemplate = (_repoDataObj) => {
   return `
     <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
@@ -134,7 +134,7 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
     `;
 };
     
-export const renderPinnedRepoForm = (_repoDataObj) => {
+export const pinnedRepoForm = (_repoDataObj) => {
     return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
@@ -151,7 +151,7 @@ export const renderPinnedRepoForm = (_repoDataObj) => {
   };
       
 // Repos
-export const renderRepoCard = (_repoDataObj) => {
+export const repoCardTemplate = (_repoDataObj) => {
   return `
    <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
@@ -210,20 +210,24 @@ export const repoForm = () => {
 };
 
 // Projects
-export const renderProjectCard = () => {
-  return `
+export const projectsContent = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
         <div id="projects-list-header">Open Closed</div>
-        <div id="projects-list-content">List</div>
-        <div id="projects-list-content">List</div>
-        <div id="projects-list-content">List</div>
+        <div id="projects-list-container"></div>
       </div>
     `;
+
+export const projectCardTemplate = (_projectDataObj) => {
+  return `<div class="project-card">${_projectDataObj.title}</div>`;
+};
+
+export const projectForm = () => {
+  return ``;
 };
 
 // Packages
-export const renderPackageCard = () => {
+export const packageCardTemplate = () => {
   return `
     <div class="card">
       <div class="card-body">

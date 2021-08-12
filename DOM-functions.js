@@ -1,4 +1,4 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard as repoCardTemplate, repoForm,  renderPinnedRepoForm, pageLayout, header, footer, bioPanel} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate, pinnedRepoForm, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newRepoObj } from "./data-structures.js";
 
@@ -36,19 +36,22 @@ export const renderContent = () => {
 
         // Projects Page
         case "/projects.html":
-            renderToDOM("#list-container", listOfCards(currentUser.projectsData, renderProjectCard));
+            renderToDOM("#list-container", projectsContent);
+            renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+
+            renderToDOM("#form-container", projectForm());
             break;
 
         // Packages Page
         case "/packages.html":
-            renderToDOM("#list-container", listOfCards(currentUser.packagesData, renderPackageCard));
+            renderToDOM("#list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
             renderToDOM("#form-container", packageForm());
             break;
 
         // Overview Page
         default:
-            renderToDOM("#list-container", listOfCards(currentUser.repoData, renderPinnedRepoCard));
-            renderToDOM("#form-container", renderPinnedRepoForm(currentUser.repoData));
+            renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
+            renderToDOM("#form-container", pinnedRepoForm(currentUser.repoData));
             break;           
     };
 };

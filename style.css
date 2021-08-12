@@ -101,3 +101,13 @@ body {
 h3 {
     font-size: 130%;
 }
+
+
+/* Projects Page */
+
+#projects-container {
+    border: 1px solid var(--borderColor);
+}
+    #projects-list-header {
+        border-bottom: 1px solid var(--borderColor);
+    }
