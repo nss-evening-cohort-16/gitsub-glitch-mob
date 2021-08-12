@@ -58,16 +58,11 @@ export const renderContent = () => {
 const listOfCards = (_array, _cardTemplate) => {
     let cardString = "";
     
-    _array.forEach((item) => {
-        cardString += _cardTemplate(item);
+    _array.forEach((__obj) => {
+        cardString += _cardTemplate(__obj);
     });
 
     return cardString;
-};
-
-// Clear the card rendering area
-const clearListContainer = () => {
-    document.querySelector("#list-container").innerHTML = "";
 };
 
 // Register page clicks
@@ -78,7 +73,7 @@ export const registerEvents = () => {
 };
 
 // Handle button clicks
-export const buttonClicks = (_event) => {
+const buttonClicks = (_event) => {
     const targetID = _event.target.id;
     
     // Log clicked ID -- Debug purposes
@@ -100,7 +95,6 @@ export const buttonClicks = (_event) => {
                     Date()), 
                 currentUser.repoData);
             
-            clearListContainer();
             renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
             break;
 
