@@ -213,21 +213,21 @@ export const renderRepoCard = (_repoDataObj) => {
 // Fillable Repo Form
 export const repoForm = () => {
   const element = `
-     <form id="repoFormForm">
+     <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <input required type="text" class="form-control" id="repo-title" placeholder="Input Repositories Title" value="sample repo title">
+            <input required type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title" value="sample repo title">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
-            <input required type="text" class="form-control" id="repo-description" placeholder="Input Repositories Description" value="sample repo desc">
+            <input required type="text" class="form-control" id="repo-form-description" placeholder="Input Repositories Description" value="sample repo desc">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
-            <input required type="text" class="form-control" id="repo-language" placeholder="Input Repositories Language" value="python">
+            <input required type="text" class="form-control" id="repo-form-language" placeholder="Input Repositories Language" value="python">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>    
+        <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
     </form>
     `;
     renderToDOM("#form-container", element)

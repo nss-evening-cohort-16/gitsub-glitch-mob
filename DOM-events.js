@@ -1,6 +1,6 @@
 import { currentUser, injectSampleData } from "./data-functions.js";
 import { pageLayout, header, footer, bioPanel } from "./DOM-elements.js"; 
-import { renderContent } from "./DOM-functions.js";
+import { buttonClicks, renderContent } from "./DOM-functions.js";
 
 
 export const init = () => {
@@ -13,4 +13,12 @@ export const init = () => {
     bioPanel(currentUser);
 
     renderContent();
+
+    registerEvents();
+};
+
+const registerEvents = () => {
+    document
+        .querySelector("body")
+        .addEventListener("click", buttonClicks)
 };

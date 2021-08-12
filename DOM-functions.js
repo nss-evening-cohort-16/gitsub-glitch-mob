@@ -7,15 +7,7 @@ export const renderContent = () => {
     switch (window.location.pathname) {
         case "/repos.html":
             repoForm();
-
-            addNewRepo(newRepoObj(
-                document.querySelector("#repo-title").value,
-                document.querySelector("#repo-description").value,
-                document.querySelector("#repo-language").value,
-                Date()))
-
             listCards(currentUser.repoData, renderRepoCard);
-            
             break;
 
         case "/projects.html":
@@ -42,3 +34,31 @@ const listCards = (_array, _renderCardFunction) => {
         _renderCardFunction(item);
     });
 };
+
+const clearListContainer = () => {
+    document.querySelector("#list-container").innerHTML = "";
+};
+
+
+export const buttonClicks = (_event) => {
+    const targetID = _event.target.id;
+    
+    console.log(targetID);
+
+    switch(targetID) {
+        case "repo-form-submitBtn":
+            _event.preventDefault();
+
+            addNewRepo(newRepoObj(
+                document.querySelector("#repo-form-title").value,
+                document.querySelector("#repo-form-description").value,
+                document.querySelector("#repo-form-language").value,
+                Date()));
+            
+            clearListContainer();
+            listCards(currentUser.repoData, renderRepoCard);
+        break;
+
+    }
+};
+
