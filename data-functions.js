@@ -25,19 +25,7 @@ const changeCurrentUser = (_newUser) => {
   return currentUser = _newUser;
 };
   
-
-
-// Repos
-export const repoFormInput = () => {
-  return {
-      repoTitle: document.querySelector("#repo-title").value,
-      description: document.querySelector("#repo-description").value,
-      language: document.querySelector("#repo-language").value,
-      tags: [],
-      starred: 0,
-      branches: 0,
-      issues: 0,
-      lastUpdated: Date(),
-  }
-
+export const addObjectToUser = (_newObj, _targetArray) => {
+  _targetArray.push(_newObj);
+  return _targetArray;
 };
