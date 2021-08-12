@@ -241,16 +241,21 @@ export const renderPackageCard = () => {
 
 export const packageForm = () => {
   const element = `
-    <form id="name">
-        <div class="input-group mb-3">
-            <div>
-                <input type="text" id="nameInput" class="form-control" required>
-            </div>
-            <div>
-                <input type="submit" value="Sort!" class="btn btn-primary" id="nameBtn">
-            </div>
-        </div>
+    <form>
+      <div>
+        <h5>Package Name</h5>
+          <input class="form-control" type="text" aria-label="default">
+      </div>
+      <div>
+          <label for="textArea" class="form-label"></label>
+            <h5>Description</h5>
+          <textarea class="form-control" id="textArea" rows="4"></textarea>
+      </div>
+      <div class="d-grid gap-2 d-md-block">
+        <button id="packageBtn" class="btn btn-primary" type="submit">Create Package</button>
+      </div>
     </form>
   `;
-renderToDOM("#form-container", element);
+
+  renderToDOM("#form-container", element);
 }
