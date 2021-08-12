@@ -57,3 +57,31 @@ export const addNewProject = (_projectObj) => {
   currentProjectsArray.push(_projectObj);
   return currentProjectsArray;
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const packageFormsArray = () => {
+  return {
+      titleImage: "",
+      title: "",
+      description: "",
+  }
+}
+
+
+

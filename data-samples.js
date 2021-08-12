@@ -106,7 +106,6 @@ export const samplePackage = [
         titleImage: "",
         title: "",
         description: "",
-        beta: "?"
         }
 ];
 
