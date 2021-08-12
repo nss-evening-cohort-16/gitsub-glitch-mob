@@ -1,20 +1,24 @@
-import { generateSampleUser, sampleUser1FormInput, sampleUser2FormInput } from "./data-samples";
+// import { generateSampleUser, sampleUser1FormInput, sampleUser2FormInput } from "./data-samples";
+import { yue_Zer } from "./data-samples";
 
 // Sample Data
 export const injectSampleData = () => {
   // addNewUser(generateSampleUser(sampleUser1FormInput));
   // addNewUser(generateSampleUser(sampleUser2FormInput));
-  addNewUser(generateNewUser(
-    sampleUser1FormInput.name, 
-    sampleUser1FormInput.username, 
-    sampleUser1FormInput.description, 
-    sampleUser1FormInput.imgURL, 
-    sampleUser1FormInput.location, 
-    sampleUser1FormInput.email, 
-    sampleUser1FormInput.website, 
-    sampleUser1FormInput.twitter));
+  // addNewUser(generateNewUser(
+  //   sampleUser1FormInput.name, 
+  //   sampleUser1FormInput.username, 
+  //   sampleUser1FormInput.description, 
+  //   sampleUser1FormInput.imgURL, 
+  //   sampleUser1FormInput.location, 
+  //   sampleUser1FormInput.email, 
+  //   sampleUser1FormInput.website, 
+  //   sampleUser1FormInput.twitter));
+  addNewUser(yue_Zer);
+
 
   console.log(usersArray[0]);
+
   changeCurrentUser(usersArray[0]);
 };
 
