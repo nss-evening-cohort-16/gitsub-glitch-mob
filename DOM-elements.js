@@ -264,6 +264,6 @@ export const packageForm = () => {
   `;
 
   renderToDOM("#form-container", element);
-}
+};
 
 
