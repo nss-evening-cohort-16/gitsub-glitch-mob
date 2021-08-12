@@ -7,6 +7,8 @@ export const renderContent = () => {
         case "/repos.html":
             listCards(currentUser.repoData, renderRepoCard);
             repoForm();
+
+            currentUser.addRepoData()
             break;
 
         case "/projects.html":
