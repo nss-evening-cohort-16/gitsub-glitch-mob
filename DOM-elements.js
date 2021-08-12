@@ -221,7 +221,10 @@ export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
-        <div id="projects-list-header">Open Closed</div>
+        <div id="projects-list-header">
+          <button class="projects-sort-btn" id="projects-list-sort-closed">Closed</button>
+          <button class="projects-sort-btn" id="projects-list-sort-open">Open</button>
+        </div>
         <div id="projects-list-container"></div>
       </div>
     `;

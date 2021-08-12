@@ -108,9 +108,19 @@ h3 {
 #projects-container {
     border: 1px solid var(--borderColor);
 }
-    #projects-list-header {
-        border-bottom: 1px solid var(--borderColor);
+    #projects-searchbar {
+        width: 100%
     }
+    #projects-list-header {
+        margin: 8px;
+
+        display: flex;
+        flex-direction: row;
+        flex-flow: row-reverse;
+    }
+        .projects-sort-btn {
+            margin: 4px;
+        }
 
 .project-card {
     border: 2px solid var(--borderColor);
