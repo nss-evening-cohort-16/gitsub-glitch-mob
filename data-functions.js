@@ -6,8 +6,6 @@ export const injectSampleData = () => {
   addNewUser(sampleUser1);
   addNewUser(sampleUser2);
 
-  console.log(usersArray[0]);
-
   changeCurrentUser(usersArray[0]);
 };
 
