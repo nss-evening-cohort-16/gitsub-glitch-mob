@@ -222,6 +222,7 @@ export const projectsContent = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
         <div id="projects-list-header">
+          <button class="projects-sort-btn" id="projects-list-sort-sort">Sort v</button>
           <button class="projects-sort-btn" id="projects-list-sort-closed">Closed</button>
           <button class="projects-sort-btn" id="projects-list-sort-open">Open</button>
         </div>
