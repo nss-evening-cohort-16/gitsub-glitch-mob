@@ -22,38 +22,22 @@ export const addNewUser = (_userObj) => {
 };
 
 const changeCurrentUser = (_newUser) => {
-  saveUserData();
-  currentUser = _newUser;
-  loadUserData();
-
-  return _newUser;
-};
-
-const loadUserData = () => {
-    if (currentUser !== {}) {
-      // load overview data
-      // load repo data
-      currentProjectsArray = currentUser.projectsData;
-      // load packages data
-    }
+  return currentUser = _newUser;
 };
   
-const saveUserData = () => {
-    if (currentUser !== {}) {
-      // save overview data
-      // save repo data
-      currentUser.projectsData = currentProjectsArray;
-      // save packages data
-    }
-};
 
 
+// Repos
+export const repoFormInput = () => {
+  return {
+      repoTitle: document.querySelector("#repo-title").value,
+      description: document.querySelector("#repo-description").value,
+      language: document.querySelector("#repo-language").value,
+      tags: [],
+      starred: 0,
+      branches: 0,
+      issues: 0,
+      lastUpdated: Date(),
+  }
 
-// Projects
-
-export let currentProjectsArray = [];
-
-export const addNewProject = (_projectObj) => {
-  currentProjectsArray.push(_projectObj);
-  return currentProjectsArray;
 };
