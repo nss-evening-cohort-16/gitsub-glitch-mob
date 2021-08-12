@@ -218,6 +218,7 @@ export const repoForm = () => {
 
 // Layout
 export const projectsContent = `
+      <h2 id="projects-container-label">Projects</h2>
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
         <div id="projects-list-header">Open Closed</div>
@@ -233,16 +234,17 @@ export const projectCardTemplate = (_projectDataObj) => {
       <div class="project-card-title">${_projectDataObj.title}</div> 
       <div class="project-card-description">${_projectDataObj.description}</div> 
       <hr>
-      <div class="project-card-created">${_projectDataObj.timeCreated}</div> 
-      <div class="project-card-updated">${_projectDataObj.lastUpdated}</div> 
-      <div class="project-card-privacy">${_projectDataObj.privacy}</div> 
-      <div class="project-card-status">${_projectDataObj.status}</div> 
+      <div class="project-card-created">Created: ${_projectDataObj.timeCreated}</div> 
+      <div class="project-card-updated">Last Updated: ${_projectDataObj.lastUpdated}</div> 
+      <div class="project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
+      <div class="project-card-status">Status: ${_projectDataObj.status}</div> 
     </div>
   `;
 };
 
 // Form
 export const projectForm = `
+  <h2 id="project-form-label">Create New Project</h2>
   <form id="project-inputForm">
      <div class="mb-3">
          <label for="project-form-title" class="form-label">Project Title:</label>
@@ -250,11 +252,11 @@ export const projectForm = `
      </div>
      <div class="mb-3">
          <label for="project-form-description" class="form-label">Project Description</label>
-         <input required type="text" class="form-control" id="project-form-description" placeholder="Description">
+         <input type="text" class="form-control" id="project-form-description" placeholder="Description">
      </div>
      <div class="mb-3">
-         <label for="project-form-privacy" class="form-label">Privacy</label>
-         <input required type="text" class="form-control" id="project-form-privacy" placeholder="Public or Private">
+         <label for="project-form-privacy" class="form-label">Private</label>
+         <input type="checkbox" id="project-form-privacy">
      </div>
 
      <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    

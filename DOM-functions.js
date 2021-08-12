@@ -106,14 +106,20 @@ const buttonClicks = (_event) => {
         case "project-form-submitBtn":
             _event.preventDefault();
 
+            const titleInput = document.querySelector("#project-form-title").value;
+            const descInput = document.querySelector("#project-form-description").value;
+            const privateCheck = document.querySelector("#project-form-privacy").checked;
+
+            
             addObjectToUser(
                 newProjectObj(
-                    document.querySelector("#project-form-title").value,
-                    document.querySelector("#project-form-description").value,
-                    document.querySelector("#project-form-privacy").value),
+                    titleInput, 
+                    descInput, 
+                    privateCheck ? "Private" : "Public"),
                 currentUser.projectsData);
                 
             renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+            document.querySelector("#project-inputForm").reset();
             break;
 
 
