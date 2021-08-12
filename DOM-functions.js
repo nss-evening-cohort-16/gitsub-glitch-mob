@@ -1,30 +1,36 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm,  renderPinnedRepoForm} from "./DOM-elements.js";
+import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm,  renderPinnedRepoForm, pageLayout} from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newRepoObj } from "./data-structures.js";
+
+// Render basic page layout
+export const renderLayout = () => {
+    renderToDOM("body", pageLayout);
+};
 
 // Render page specific content
 export const renderContent = () => {
     switch (window.location.pathname) {
         // Repos Page
         case "/repos.html":
-            repoForm();
-            listCards(currentUser.repoData, renderRepoCard);
+            renderToDOM("#form-container", repoForm)
+            // repoForm();
+            listOfCards(currentUser.repoData, renderRepoCard);
             break;
 
         // Projects Page
         case "/projects.html":
-            listCards(currentUser.projectsData, renderProjectCard);
+            listOfCards(currentUser.projectsData, renderProjectCard);
             break;
 
         // Packages Page
         case "/packages.html":
-            listCards(currentUser.packagesData, renderPackageCard);
+            listOfCards(currentUser.packagesData, renderPackageCard);
             packageForm();
             break;
 
         // Overview Page
         default:
-            listCards(currentUser.repoData, renderPinnedRepoCard)
+            listOfCards(currentUser.repoData, renderPinnedRepoCard)
             renderPinnedRepoForm(currentUser.repoData);
             break;
            
@@ -32,11 +38,22 @@ export const renderContent = () => {
 };
 
 
-// Render cards to DOM
-const listCards = (_array, _renderCardFunction) => {
+// Render Function
+const renderToDOM = (_targetDivID, _element, _clear = true) => {
+    const targetDiv = document.querySelector(_targetDivID);
+  
+    _clear ? (targetDiv.innerHTML = _element) : (targetDiv.innerHTML += _element);
+  };
+
+// Generate list of Cards
+const listOfCards = (_array, _renderCardFunction) => {
+    const cardArray = [];
+    
     _array.forEach((item) => {
         _renderCardFunction(item);
     });
+
+    return cardArray;
 };
 
 // Clear the card rendering area
@@ -68,7 +85,7 @@ export const buttonClicks = (_event) => {
                 currentUser.repoData);
             
             clearListContainer();
-            listCards(currentUser.repoData, renderRepoCard);
+            listOfCards(currentUser.repoData, renderRepoCard);
             break;
 
     // Projects Page Buttons \\

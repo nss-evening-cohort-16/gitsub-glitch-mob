@@ -1,16 +1,6 @@
-//// Render Function \\\\
-const renderToDOM = (_targetDivID, _element, _clear = true) => {
-  const targetDiv = document.querySelector(_targetDivID);
-
-  _clear ? (targetDiv.innerHTML = _element) : (targetDiv.innerHTML += _element);
-};
-
-//// Elements \\\\
-
 // Basic page layout
-export const pageLayout = () => {
-  const element = `
-    <div id="page-body">
+export const pageLayout = 
+    `<div id="page-body">
         <div id="page-bio" class="panel"></div>
 
         <div id="page-viewer">
@@ -24,12 +14,9 @@ export const pageLayout = () => {
 
     <div id="page-footer" class="panel"></div>`;
 
-  renderToDOM("body", element);
-};
-
 // User bio profile
 export const bioPanel = (_currentUser) => {
-  const element = `
+  return `
         <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
         <div id="bio-namesTray">
             <div id="bio-name">${_currentUser.name}</div>
@@ -67,13 +54,12 @@ export const bioPanel = (_currentUser) => {
             <div id="sponsors-list">${_currentUser.sponsors}</div>
         </div>`;
 
-  renderToDOM("#page-bio", element);
+  // renderToDOM("#page-bio", element);
 };
 
 // Header / NavBar
-export const header = () => {
-  const element = `
-      <nav class="navbar navbar-expand-lg navbar-dark">
+export const header =
+    `<nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,15 +82,12 @@ export const header = () => {
             </ul>
           </div>
         </div>
-      </nav>
-    `;
-  renderToDOM("#page-navbar", element);
-};
+      </nav>`;
+  // renderToDOM("#page-navbar", element);
 
 // Footer
-export const footer = () => {
-  const element = `
-    <div id="yr-updated">2021 Us</div>
+export const footer =
+`<div id="yr-updated">2021 Us</div>
         <div id="terms-btn">Terms</div>
         <div id="privacy-btn">Privacy</div>
         <div id="security-btn">Security</div>
@@ -118,12 +101,11 @@ export const footer = () => {
         <div id="blog-btn">Blog</div>
         <div id="about-btn">About</div>
     `;
-  renderToDOM("#page-footer", element);
-};
+  // renderToDOM("#page-footer", element);
 
 // Overview
 export const renderPinnedRepoCard = (_repoDataObj) => {
-  const element = `
+  return `
     <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
         <div>
@@ -150,11 +132,11 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
     </div>
     `;
 
-  renderToDOM("#list-container", element, false);
+  // renderToDOM("#list-container", element, false);
 };
     
 export const renderPinnedRepoForm = (_repoDataObj) => {
-    const element = `
+    return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
           <div>
@@ -168,12 +150,12 @@ export const renderPinnedRepoForm = (_repoDataObj) => {
       </div>
       `;
   
-    renderToDOM("#form-container", element);
+    // renderToDOM("#form-container", element);
   };
       
 // Repos
 export const renderRepoCard = (_repoDataObj) => {
-  const element = `
+  return `
    <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
         <div>
@@ -207,12 +189,12 @@ export const renderRepoCard = (_repoDataObj) => {
   </div>
   `;
 
-  renderToDOM("#list-container", element, false);
+  // renderToDOM("#list-container", element, false);
 };
 
 // Fillable Repo Form
 export const repoForm = () => {
-  const element = `
+  return `
      <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
@@ -230,12 +212,12 @@ export const repoForm = () => {
         <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
     </form>
     `;
-    renderToDOM("#form-container", element)
+    // renderToDOM("#form-container", element)
 };
 
 // Projects
 export const renderProjectCard = () => {
-  const element = `
+  return `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
         <div id="projects-list-header">Open Closed</div>
@@ -245,12 +227,12 @@ export const renderProjectCard = () => {
       </div>
     `;
 
-  renderToDOM("#list-container", element);
+  // renderToDOM("#list-container", element);
 };
 
 // Packages
 export const renderPackageCard = () => {
-  const element = `
+  return `
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Package Title</h5>
@@ -260,11 +242,11 @@ export const renderPackageCard = () => {
     </div>
   `;
 
-  renderToDOM("#list-container", element, false);
+  // renderToDOM("#list-container", element, false);
 };
 
 export const packageForm = () => {
-  const element = `
+  return `
     <form>
       <div>
         <h5>Package Name</h5>
@@ -281,7 +263,7 @@ export const packageForm = () => {
     </form>
   `;
 
-  renderToDOM("#form-container", element);
+  // renderToDOM("#form-container", element);
 }
 
 
