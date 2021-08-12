@@ -1,14 +1,21 @@
 import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm,  renderPinnedRepoForm} from "./DOM-elements.js";
-import { currentUser } from "./data-functions.js";
+import { addNewRepo, currentUser } from "./data-functions.js";
+import { newRepoObj } from "./data-structures.js";
 
 // Render page specific content
 export const renderContent = () => {
     switch (window.location.pathname) {
         case "/repos.html":
-            listCards(currentUser.repoData, renderRepoCard);
             repoForm();
 
-            currentUser.addRepoData()
+            addNewRepo(newRepoObj(
+                document.querySelector("#repo-title").value,
+                document.querySelector("#repo-description").value,
+                document.querySelector("#repo-language").value,
+                Date()))
+
+            listCards(currentUser.repoData, renderRepoCard);
+            
             break;
 
         case "/projects.html":
