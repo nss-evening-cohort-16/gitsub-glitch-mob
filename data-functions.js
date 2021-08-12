@@ -25,25 +25,6 @@ const changeCurrentUser = (_newUser) => {
   return currentUser = _newUser;
 };
   
-const saveUserData = () => {
-    if (currentUser !== {}) {
-      // save overview data
-      // save repo data
-      currentUser.projectsData = currentProjectsArray;
-      // save packages data
-    }
-};
-
-
-
-// Projects
-
-export let currentProjectsArray = [];
-
-export const addNewProject = (_projectObj) => {
-  currentProjectsArray.push(_projectObj);
-  return currentProjectsArray;
-};
 
 
 // Repos
