@@ -1,13 +1,13 @@
-import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, renderRepoCard } from "./DOM-elements.js";
-import { currentUser } from "./data-functions.js";
-// import { sampleRepo, samplePackage } from "./data-samples.js";
-// import { currentProjectsArray } from "./data-functions.js";
+import { renderPinnedRepoCard, renderProjectCard, renderPackageCard, packageForm, renderRepoCard, repoForm } from "./DOM-elements.js";
+import { sampleRepo, samplePackage } from "./data-samples.js";
+import { currentProjectsArray } from "./data-functions.js";
 
 // Render page specific content
 export const renderContent = () => {
     switch (window.location.pathname) {
         case "/repos.html":
-            listCards(currentUser.repos, renderRepoCard);
+            listCards(sampleRepo, renderRepoCard);
+            repoForm();
             break;
 
         case "/projects.html":
@@ -15,7 +15,8 @@ export const renderContent = () => {
             break;
 
         case "/packages.html":
-            listCards(currentUser.packages, renderPackageCard);
+            listCards(samplePackage, renderPackageCard);
+            packageForm();
             break;
 
         default:
