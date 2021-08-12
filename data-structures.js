@@ -21,7 +21,6 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         orgs: [],
         sponsors: [],
 
-        overviewData: [],
         repoData: [],
         projectsData: [],
         packagesData: []

@@ -26,8 +26,26 @@ export const sampleUser1 = {
         }],
     sponsors: [],
 
-    overviewData: [],
-    repoData: [],
+    repoData: [{
+            repoTitle: "Repo NUmber 1",
+            description: "Test for repo 1",
+            language: "JavaScript",
+            tags: [],
+            starred: 0,
+            branches: 0,
+            issues: 0,
+            lastUpdated: Date(),
+        }, {
+            repoTitle: "Repo NUmber 2",
+            description: "Test for repo 2",
+            language: "JavaScript",
+            tags: [],
+            starred: 0,
+            branches: 0,
+            issues: 0,
+            lastUpdated: Date(),
+        }],
+
     projectsData: [
         {
             title: "Project Title",
@@ -37,7 +55,13 @@ export const sampleUser1 = {
             privacy: "Public",
             status: "Open"
         }],
-    packagesData: []
+
+    packagesData: [{
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+        }]
 };
 
 export const sampleUser2 = {
@@ -71,6 +95,8 @@ export const sampleUser2 = {
     projectsData: [],
     packagesData: []
 };
+
+
 
 
 
@@ -136,16 +162,4 @@ export const sampleRepo = [
         issues: 0,
         lastUpdated: Date(),
     }
-];
-
-
-export const samplePinnedRepo = [
-    { 
-        repoTitle: "Pinned Repo 1",
-        description: "description",
-        language: "language",
-        starred: 0,
-        branches:0
-    }
-
 ];
