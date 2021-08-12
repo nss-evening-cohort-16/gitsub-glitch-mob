@@ -17,37 +17,36 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
         website: _website,
         twitter: _twitter,
 
-        // highlights: [],
+        highlights: [],
         // addNewHighlight: function(__hlObj){
         //     return this.highlights.push(__hlObj)
         // },
-        // orgs: [],
+        orgs: [],
         // addNewOrg: function(__orgObj){
         //     return this.orgs.push(__orgObj)
         // },
-        // sponsors: [],
+        sponsors: [],
         // addNewSponsor: function(__sponsorObj){
         //     return this.sponsors.push(__sponsorObj)
         // },
 
-        // pinnedRepos: [],
+        pinnedRepos: [],
         // addNewPinnedRepo: function(__repoObj){
         //     return this.pinnedRepos.push(__repoObj)
         // },
-        // repos: [],
+        repos: [],
         // addNewRepo: function(__repoObj){
         //     return this.repos.push(__repoObj)
         // },
-        // projects: [],
+        projects: [],
         // addNewProject: function(__projObj){
         //     return this.projects.push(__projObj)
         // },
-        // packages: [],
+        packages: [],
         // addNewPackage: function(__packObj){
         //     return this.packages.push(__packObj)
-        // }
+        }
     };
-};
 
 
 

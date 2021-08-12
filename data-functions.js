@@ -19,7 +19,7 @@ export const injectSampleData = () => {
 
   console.log(usersArray[0]);
 
-  changeCurrentUser(usersArray[0]);
+  // changeCurrentUser(usersArray[0]);
 };
 
 

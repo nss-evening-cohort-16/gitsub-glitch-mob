@@ -19,8 +19,10 @@ export const renderContent = () => {
             break;
 
         default:
-            listCards(currentUser.repos, renderPinnedRepoCard)
+            listCards(sampleRepo, renderPinnedRepoCard)
+            renderPinnedRepoForm(sampleRepo);
             break;
+           
     };
 };
 

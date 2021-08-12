@@ -53,8 +53,36 @@ export const yue_Zer = {
         }],
     sponsors: [],
 
-    overviewData: [],
-    repoData: [],
+    overviewData: [
+        { 
+            repoTitle: "Pinned Repo 1",
+            description: "description",
+            language: "language",
+            starred: 0,
+            branches:0
+        }],
+    repoData: [
+        {
+            repoTitle: "Repo NUmber 1",
+            description: "Test for repo 1",
+            language: "JavaScript",
+            tags: [],
+            starred: 0,
+            branches: 0,
+            issues: 0,
+            lastUpdated: Date(),
+        },
+    
+        {
+            repoTitle: "Repo NUmber 2",
+            description: "Test for repo 2",
+            language: "JavaScript",
+            tags: [],
+            starred: 0,
+            branches: 0,
+            issues: 0,
+            lastUpdated: Date(),
+        }],
     projectsData: [
         {
             title: "Project Title",
@@ -64,8 +92,22 @@ export const yue_Zer = {
             privacy: "Public",
             status: "Open"
         }],
-    packagesData: []
+    packagesData: [{
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+    }]
 };
+
+
+
+
+
+
+
+
+
 
 
 export const sampleUser1FormInput = {
