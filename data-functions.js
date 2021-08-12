@@ -57,3 +57,20 @@ export const addNewProject = (_projectObj) => {
   currentProjectsArray.push(_projectObj);
   return currentProjectsArray;
 };
+
+// Repos
+
+
+export const repoFormArray = () => {
+  // create new const newRepoForm
+  const newRepoForm = {
+      repoTitle: document.querySelector("#repo-title").value,
+      description: document.querySelector("#repo-description").value,
+      language: document.querySelector("#repo-language").value,
+      tags: [],
+      starred: 0,
+      branches: 0,
+      issues: 0,
+      lastUpdated: Date(),
+  }
+};
