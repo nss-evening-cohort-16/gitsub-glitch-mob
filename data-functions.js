@@ -58,12 +58,10 @@ export const addNewProject = (_projectObj) => {
   return currentProjectsArray;
 };
 
+
 // Repos
-
-
-export const repoFormArray = () => {
-  // create new const newRepoForm
-  const newRepoForm = {
+export const repoFormInput = () => {
+  return {
       repoTitle: document.querySelector("#repo-title").value,
       description: document.querySelector("#repo-description").value,
       language: document.querySelector("#repo-language").value,
@@ -73,4 +71,5 @@ export const repoFormArray = () => {
       issues: 0,
       lastUpdated: Date(),
   }
+
 };
