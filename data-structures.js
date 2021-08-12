@@ -23,9 +23,6 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         sponsors: [],
 
         repoData: [],
-        addRepoData: function(__newRepo) {
-            return this.repoData.push(__newRepo)
-        },
         projectsData: [],
         packagesData: []
     };

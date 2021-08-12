@@ -25,11 +25,7 @@ const changeCurrentUser = (_newUser) => {
   return currentUser = _newUser;
 };
   
-
-
-// Repos
-
-export const addNewRepo = (_newRepoObj) => {
-  currentUser.repoData.push(_newRepoObj);
-  return currentUser.repoData;
-}
+export const addObjectToUser = (_newObj, _targetArray) => {
+  _targetArray.push(_newObj);
+  return _targetArray;
+};
