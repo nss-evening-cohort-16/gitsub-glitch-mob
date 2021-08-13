@@ -46,10 +46,6 @@ export const sampleUser1 = {
             lastUpdated: Date(),
         }],
 
-    addRepoData: function(__newRepo) {
-        return this.repoData.push(__newRepo)
-    },
-
     projectsData: [
         {
             title: "Project Title",

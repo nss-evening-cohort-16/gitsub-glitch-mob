@@ -101,3 +101,31 @@ body {
 h3 {
     font-size: 130%;
 }
+
+
+/* Projects Page */
+
+#projects-container {
+    border: 1px solid var(--borderColor);
+}
+    #projects-searchbar {
+        width: 100%
+    }
+    #projects-list-header {
+        margin: 8px;
+
+        display: flex;
+        flex-direction: row;
+        flex-flow: row-reverse;
+    }
+        .projects-sort-btn {
+            margin: 4px;
+        }
+
+.project-card {
+    border: 2px solid var(--borderColor);
+    margin: 8px;
+}
+    .project-card-data {
+        margin: 10px;
+    }
