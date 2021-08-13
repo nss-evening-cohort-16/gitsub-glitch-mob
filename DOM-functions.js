@@ -7,8 +7,10 @@ import { newProjectObj, newRepoObj } from "./data-structures.js";
 // Render basic page layout
 export const renderLayout = () => {
     renderToDOM("body", pageLayout);
+
     renderToDOM("#page-navbar", header);    
     renderToDOM("#page-footer", footer);
+
     renderToDOM("#page-bio", bioPanel(currentUser));
 };
 
@@ -81,10 +83,10 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
   };
 
 // Generate a string containing a list of Cards
-const listOfCards = (_array, _cardTemplate) => {
+const listOfCards = (_userDataArray, _cardTemplate) => {
     let cardString = "";
     
-    _array.forEach((__obj) => {
+    _userDataArray.forEach((__obj) => {
         cardString += _cardTemplate(__obj);
     });
 

@@ -64,33 +64,3 @@ export const newPackageObj = (_titleImage, _title, _description, _beta) => {
         beta: "?"
   };
 };
-
-
-
-
-/////// WORKSPACE \\\\\\\\\
-
-
-export const newUserObj = (_name, _username, _description, _imgURL = defaultUserImg, _location = "", _email = "", _website = "", _twitter = "") => {
-        this.name = _name,
-        this.username = _username,
-        this.description = _description,
-        this.imgURL = _imgURL,
-
-        this.followers = 0,
-        this.following = 0,
-        this.starred = 0,
-
-        this.location = _location,
-        this.email = _email,
-        this.website = _website,
-        this.twitter = _twitter,
-
-        this.highlights = [],
-        this.orgs = [],
-        this.sponsors = [],
-
-        this.repoData = [],
-        this.projectsData = [],
-        this.packagesData = []
-};
