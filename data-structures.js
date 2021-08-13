@@ -1,4 +1,3 @@
-
 // Profile Panel
 const defaultUserImg = "https://user-images.githubusercontent.com/11250/39013954-f5091c3a-43e6-11e8-9cac-37cf8e8c8e4e.jpg";
 
@@ -23,9 +22,6 @@ export const newUser = (_name, _username, _description, _imgURL = defaultUserImg
         sponsors: [],
 
         repoData: [],
-        addRepoData: function(__newRepo) {
-            return this.repoData.push(__newRepo)
-        },
         projectsData: [],
         packagesData: []
     };
