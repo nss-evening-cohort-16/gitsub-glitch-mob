@@ -1,12 +1,11 @@
 import { injectSampleData } from "./data-functions.js";
-import { registerEvents, renderContent, renderLayout } from "./DOM-functions.js";
+import { registerEvents, renderPage } from "./DOM-functions.js";
 
 
 export const init = () => {
     injectSampleData();
 
-    renderLayout();
-    renderContent();
+    renderPage();
 
     registerEvents();
 };

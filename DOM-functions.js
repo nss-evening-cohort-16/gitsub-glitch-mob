@@ -4,18 +4,11 @@ import { newProjectObj, newRepoObj } from "./data-structures.js";
 
 //// Page Construction \\\\
 
-// Render basic page layout
-export const renderLayout = () => {
-    renderToDOM("body", pageLayout);
-
-    renderToDOM("#page-navbar", header);    
-    renderToDOM("#page-footer", footer);
-
-    renderToDOM("#page-bio", bioPanel(currentUser));
-};
-
 // Render page content
-export const renderContent = () => {
+export const renderPage = () => {
+    renderLayout();
+    renderBioPanel();
+
     switch (window.location.pathname) {
         case "/repos.html":
             renderReposPage();
@@ -34,6 +27,19 @@ export const renderContent = () => {
             break;           
     };
 };
+
+// Render basic page layout
+const renderLayout = () => {
+    renderToDOM("body", pageLayout);
+
+    renderToDOM("#page-navbar", header);    
+    renderToDOM("#page-footer", footer);
+};
+
+const renderBioPanel = () => {
+    renderToDOM("#page-bio", bioPanel(currentUser));
+};
+
 
 //// Page Specific Rendering \\\\
 
@@ -138,6 +144,12 @@ const buttonClicks = (_event) => {
 
 
     // Packages Page Buttons \\
+
+    // Bio Panel Buttons \\
+        // Follow Button
+        case "btn-follow":
+            followUser();
+            break;
     };
 };
 
@@ -173,3 +185,9 @@ const deleteProject = (_index) => {
 };
 
 // Packages
+
+// Bio Panel
+const followUser = () => {
+    currentUser.followers++;
+    renderBioPanel();
+};
