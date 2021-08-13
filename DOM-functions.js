@@ -61,10 +61,14 @@ const renderReposPage = () => {
 // Projects Page
 const renderProjectsPage = () => {
     renderToDOM("#list-container", projectsContent);
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
-
     renderToDOM("#form-container", projectForm);
+
+    renderProjectCards();
 };
+
+const renderProjectCards = () => {
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+}
 
 // Packages Page
 const renderPackagesPage = () => {
@@ -86,16 +90,16 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
 const listOfCards = (_userDataArray, _cardTemplate) => {
     let cardString = "";
     
-    _userDataArray.forEach((__obj) => {
-        cardString += _cardTemplate(__obj);
+    _userDataArray.forEach((__obj, __i) => {
+        cardString += _cardTemplate(__obj, __i);
     });
 
     return cardString;
 };
 
 // Print error if form fields are empty
-const inputError = (_input) => {
-    return _input ? "" : "Field required.";
+const inputError = (_input, _errorTextDiv) => {
+    return document.querySelector(_errorTextDiv).innerHTML = _input ? "" : "Field required.";
 };
 
 // Handle button clicks
@@ -104,7 +108,7 @@ export const registerEvents = () => {
 };
 
 const buttonClicks = (_event) => {
-    const targetID = _event.target.id;
+    const [targetID, targetIndex] = _event.target.id.split("--");
     
     // Log clicked ID -- Debug purposes
     console.log(targetID);
@@ -120,6 +124,11 @@ const buttonClicks = (_event) => {
         case "project-form-submitBtn":
             _event.preventDefault();
             submitNewProject();            
+            break;
+
+        // Delete project button
+        case "project-deleteBtn":
+            deleteProject(targetIndex);
             break;
         
         // Submit "Search" button
@@ -145,7 +154,7 @@ const submitNewProject = () => {
     const descInput = document.querySelector("#project-form-description").value;
     const privateCheck = document.querySelector("#project-form-privacy").checked;
 
-    if (!inputError(titleInput) && !inputError(descInput)) {
+    if (!inputError(titleInput, "#project-title-error") && !inputError(descInput, "#project-desc-error")) {
         addObjectToUser(
             newProjectObj(
                 titleInput, 
@@ -153,9 +162,14 @@ const submitNewProject = () => {
                 privateCheck ? "Private" : "Public"),
             currentUser.projectsData);
             
-        renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+        renderProjectCards();
         document.querySelector("#project-inputForm").reset();
     };
+};
+
+const deleteProject = (_index) => {
+    currentUser.projectsData.splice(_index, 1);
+    renderProjectCards();
 };
 
 // Packages

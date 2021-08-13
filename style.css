@@ -69,6 +69,11 @@ body {
 }
 
 
+.error-container {
+    color: var(--errorFontColor);
+}
+
+
 
 /* Bio Panel */
 

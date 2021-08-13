@@ -232,9 +232,9 @@ export const projectsContent = `
 
 
 // Card Template
-export const projectCardTemplate = (_projectDataObj) => {
+export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
-    <div class="project-card">
+    <div class="project-card" id="project-card--${_index}">
       <div class="project-card-data project-card-title">${_projectDataObj.title}</div> 
       <hr>
       <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
@@ -243,6 +243,7 @@ export const projectCardTemplate = (_projectDataObj) => {
       <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
       <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
       <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div> 
+      <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
     </div>
   `;
 };
@@ -252,12 +253,14 @@ export const projectForm = `
   <h2 id="project-form-label">Create New Project</h2>
   <form id="project-inputForm">
      <div class="mb-3">
-         <label for="project-form-title" class="form-label">Project Title:</label><br>
-         <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+        <label for="project-form-title" class="form-label">Project Title:</label><br>
+        <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+        <div class="error-container" id="project-title-error"></div>
      </div>
      <div class="mb-3">
-         <label for="project-form-description" class="form-label">Project Description:</label><br>
-         <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <label for="project-form-description" class="form-label">Project Description:</label><br>
+        <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <div class="error-container" id="project-desc-error"></div>
      </div>
      <div class="mb-3">
      <input type="checkbox" id="project-form-privacy">
