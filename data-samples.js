@@ -1,37 +1,5 @@
-import { addObjectToUser } from "./data-functions";
-
-// User Constructor
-export const constructSampleUser = (_sampleUserData) => {
-    const user = newUser(
-      _sampleUserData.name,
-      _sampleUserData.username,
-      _sampleUserData.description,
-      _sampleUserData.imgURL,
-      _sampleUserData.location,
-      _sampleUserData.email,
-      _sampleUserData.website,
-      _sampleUserData.twitter
-    );
-
-    sampleOrganizations.forEach(org => {
-      addObjectToUser(org, user.orgs);
-    });
-    sampleRepos.forEach(repo => {
-      addObjectToUser(repo, user.repoData);
-    });
-    sampleProjects.forEach(proj => {
-      addObjectToUser(proj, user.projectsData);
-    });
-    samplePackages.forEach(pack => {
-      addObjectToUser(pack, user.packagesData);
-    });
-
-    return user;
-};
-
-
 // User Data
-const sampleUserData1 = {
+export const sampleUserData1 = {
     name: "Yue Zer",
     username: "yue_zer",
     description: "Software developer",
@@ -43,7 +11,7 @@ const sampleUserData1 = {
     twitter: "@yue_zer"
 };
 
-const sampleUserData2 = {
+export const sampleUserData2 = {
     name: "John Doe",
     username: "doe_j",
     description: "Business executive",
@@ -58,7 +26,7 @@ const sampleUserData2 = {
 
 
 // Organizations
-const sampleOrganizations = [
+export const sampleOrganizations = [
     {
         name: "Friendly Folks Org",
         img: "https://i0.wp.com/raulotaolea.com/wp-content/uploads/2018/02/header_blog_800x469-1.jpg?fit=730%2C428&ssl=1"
@@ -71,7 +39,7 @@ const sampleOrganizations = [
 
 
 // Repos
-const sampleRepos = [
+export const sampleRepos = [
     {
         repoTitle: "Repo NUmber 1",
         description: "Test for repo 1",
@@ -95,7 +63,7 @@ const sampleRepos = [
 ];
 
 // Projects
-const sampleProjects = [
+export const sampleProjects = [
     {
         title: "Project Title",
         description: "This is a description.",
@@ -107,7 +75,7 @@ const sampleProjects = [
 ];
 
 // Packages
-const samplePackages = [
+export const samplePackages = [
     {
         titleImage: "",
         title: "",
