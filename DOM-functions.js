@@ -1,7 +1,7 @@
 import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
 import { pinnedRepoCardTemplate, projectsContent, reposContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
-import { newProjectObj, newRepoObj } from "./data-structures.js";
+import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
 
@@ -60,7 +60,7 @@ const renderProjectsPage = () => {
 // Packages Page
 const renderPackagesPage = () => {
     renderToDOM("#list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
-    renderToDOM("#form-container", packageForm());
+    renderToDOM("#form-container", packageForm);
 };
 
 
@@ -126,7 +126,11 @@ const buttonClicks = (_event) => {
 
 
     // Packages Page Buttons \\
-   
+    case "package-form-submitBtn":
+            _event.preventDefault();
+            submitNewPackage();            
+            break;
+    };
 };
 
 
@@ -178,3 +182,19 @@ const submitNewProject = () => {
 }
 
 // Packages
+const submitNewPackage = () => {
+    const packageTitleInput = document.querySelector("#package-form-name").value;
+    const packageDescInput = document.querySelector("#package-form-description").value;
+
+    if (!inputError(packageTitleInput) && !inputError(packageDescInput)) {
+        addObjectToUser(
+            newPackageObj(
+                packageTitleInput, 
+                packageDescInput), 
+            currentUser.packagesData);
+            
+        renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+        document.querySelector("#package-inputForm").reset();
+    };
+};
+};
