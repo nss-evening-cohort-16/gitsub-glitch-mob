@@ -101,9 +101,9 @@ export const footer = `<div id="yr-updated">2021 Us</div>
 //// Overview \\\\\
 
 // Card Template
-export const pinnedRepoCardTemplate = (_repoDataObj) => {
+export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
   return `
-    <div class="card" style="width: 18rem;"> 
+    <div class="card" style="width: 18rem;" id="pinnedrepos-card--${_index}"> 
       <div class="repo-body">
         <div>
           <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
@@ -124,6 +124,7 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
             <p>Issues: </p>
             <p href="#" class="repo-btn repo-btn-issues">0</p>
           </div>
+          <button class="btndelete-btn" id="pinned-repo-deleteBtn--${_index}">Delete</button>
         </div>
       </div>
     </div>

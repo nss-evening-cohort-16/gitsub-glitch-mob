@@ -49,6 +49,11 @@ const renderOverviewPage = () => {
     console.log(currentUser);
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
+    renderPinnedRepoCard();
+    
+};
+
+const renderPinnedRepoCard = ()=> {
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
 };
 
