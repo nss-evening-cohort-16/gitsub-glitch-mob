@@ -1,4 +1,4 @@
-import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -53,8 +53,13 @@ const renderOverviewPage = () => {
 // Repos Page
 const renderReposPage = () => {
     renderToDOM("#list-container", reposContent)
-    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
     renderToDOM("#form-container", repoForm);
+
+    renderRepoCards();
+};
+
+const renderRepoCards = () => {
+    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
 };
 
 // Projects Page
@@ -124,6 +129,11 @@ const buttonClicks = (_event) => {
             submitNewRepoForm();
             break;
 
+        // Delete Repos button
+        case "repo-deleteBtn";
+            deleteRepo(targetIndex);
+            break;
+
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
@@ -182,6 +192,11 @@ const submitNewRepoForm = () => {
         document.querySelector("#repo-inputForm").reset();
     };
 };
+
+const deleteRepo = (_index) => {
+    currentUser.profectsData.splice(_index, 1);
+    renderRepoCards();
+}
 
 // Projects
 const submitNewProject = () => {
