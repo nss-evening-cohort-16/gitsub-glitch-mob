@@ -150,7 +150,6 @@ export const pinnedRepoForm = (_repoDataObj) => {
 //// Repos \\\\
 
 // Layout
-
 export const reposContent = `
 <h2 id="repo-container-label">Repository</h2>
 <input id="repo-searchbar" type="text" placeholder="Search...">

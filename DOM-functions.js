@@ -66,7 +66,7 @@ const renderProjectsPage = () => {
 
 const renderProjectCards = () => {
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
-}
+};
 
 // Packages Page
 const renderPackagesPage = () => {
