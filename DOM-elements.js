@@ -137,22 +137,45 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
 };
     
 // Form
-export const pinnedRepoForm = (_repoDataObj) => {
-    return `
+
+export const simpleRepoCardTemplate = (_repoDataObj) => {
+  let element = "";
+    _repoDataObj.forEach((_obj) => {
+      element+= `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
           <div>
             <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
           </div>
             <div> 
-              <button href="#" class="Pinnedrepo-btn">Pin Repos</button>
+              <button type = "button" id = "pin-repo" class="Pinnedrepo-btn">Pin Repos</button>
             </div>
           </div>
         </div>
       </div>
       `;
+  }); 
+};
+    
+export const pinRepoForm  = () => {
+  return `<div id="page-body">
+          <div id="pinnedRepoForm-card-container" class="pinnedRepository"></div>
+      </div>
+ `
+};
+
+  const pinnedRepoArray = [];
+  export const pinnedRepo = (event) => {
+    //const targetType = event.target.type;
+    const targetId = event.target.Id;
+    if(targetId = "Pin-repo") {
+      return 
+    }
+    
   };
-      
+    
+  
+
 //// Repos \\\\
 
 // Card Template

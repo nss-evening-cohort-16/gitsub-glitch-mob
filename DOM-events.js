@@ -1,5 +1,5 @@
 import { injectSampleData } from "./data-functions.js";
-import { registerEvents, renderContent, renderLayout } from "./DOM-functions.js";
+import { registerEvents, renderContent, renderLayout} from "./DOM-functions.js";
 
 
 export const init = () => {
@@ -9,4 +9,5 @@ export const init = () => {
     renderContent();
 
     registerEvents();
+    
 };
