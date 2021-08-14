@@ -213,7 +213,7 @@ export const repoForm =  `
      <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <textarea class="form-control" id="repo-form-title" placeholder="Input Repositories Title"></textarea>
+            <input type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title">
             <div class="error-container" id="repo-title-error"></div>
         </div>
         <div class="mb-3">

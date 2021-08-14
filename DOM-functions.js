@@ -130,7 +130,7 @@ const buttonClicks = (_event) => {
             break;
 
         // Delete Repos button
-        case "repo-deleteBtn";
+        case "repo-deleteBtn":
             deleteRepo(targetIndex);
             break;
 
@@ -179,7 +179,7 @@ const submitNewRepoForm = () => {
     const repoTagsInput = document.querySelector("#repo-form-tags").value;
     const repoLangInput = document.querySelector("#repo-form-language").value;
 
-    if (!inputError(repoTitleInput) && !inputError(repoDescriptionInput) && !inputError(repoLangInput)) {
+    if (!inputError(repoTitleInput, "#repo-title-error") && !inputError(repoDescriptionInput, "#repo-desc-error") && !inputError(repoTagsInput, "#repo-tag-error") && !inputError(repoLangInput, "#repo-lang-error")) {
         addObjectToUser(
             newRepoObj(
                 repoTitleInput,
@@ -194,7 +194,7 @@ const submitNewRepoForm = () => {
 };
 
 const deleteRepo = (_index) => {
-    currentUser.profectsData.splice(_index, 1);
+    currentUser.repoData.splice(_index, 1);
     renderRepoCards();
 }
 
