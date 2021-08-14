@@ -274,10 +274,13 @@ export const projectForm = `
 export const packageCardTemplate = () => {
   return `
     <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Package Title</h5>
-        <p class="card-text">Description of the package</p>
-        <a href="#" class="btn btn-primary">Learn Some More</a>
+        <div class="card-body">
+          <h5 class="card-title">Package Title</h5>
+          <p class="card-text">Description of the package</p>
+          <button class="btn btn-primary">Learn Some More</button>
+        <div>
+          <button class="btn btn-dark">Delete</button>
+        </div>
       </div>
     </div>
   `;
