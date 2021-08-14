@@ -120,6 +120,7 @@ const buttonClicks = (_event) => {
             _event.preventDefault();
             submitNewRepoForm();
             break;
+
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
@@ -154,8 +155,6 @@ const buttonClicks = (_event) => {
 // Overview
 
 // Repos
-
-
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
     const repoDescriptionInput = document.querySelector("#repo-form-description").value;
@@ -167,14 +166,13 @@ const submitNewRepoForm = () => {
             newRepoObj(
                 repoTitleInput,
                 repoDescriptionInput, 
-                repoLangInput, 
+                repoTagsInput, 
                 repoLangInput),
             currentUser.repoData);
             
         renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
         document.querySelector("#repo-inputForm").reset();
-    }
-    
+    };
 };
 
 // Projects
