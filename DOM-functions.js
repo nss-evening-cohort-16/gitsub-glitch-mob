@@ -1,4 +1,5 @@
-import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -54,8 +55,13 @@ const renderOverviewPage = () => {
 // Repos Page
 const renderReposPage = () => {
     renderToDOM("#list-container", reposContent)
-    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
     renderToDOM("#form-container", repoForm);
+
+    renderRepoCards();
+};
+
+const renderRepoCards = () => {
+    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
 };
 
 // Projects Page
@@ -129,6 +135,11 @@ break;
             submitNewRepoForm();
             break;
 
+        // Delete Repos button
+        case "repo-deleteBtn":
+            deleteRepo(targetIndex);
+            break;
+
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
@@ -174,7 +185,7 @@ const submitNewRepoForm = () => {
     const repoTagsInput = document.querySelector("#repo-form-tags").value;
     const repoLangInput = document.querySelector("#repo-form-language").value;
 
-    if (!inputError(repoTitleInput) && !inputError(repoDescriptionInput) && !inputError(repoLangInput)) {
+    if (!inputError(repoTitleInput, "#repo-title-error") && !inputError(repoDescriptionInput, "#repo-desc-error") && !inputError(repoTagsInput, "#repo-tag-error") && !inputError(repoLangInput, "#repo-lang-error")) {
         addObjectToUser(
             newRepoObj(
                 repoTitleInput,
@@ -187,6 +198,11 @@ const submitNewRepoForm = () => {
         document.querySelector("#repo-inputForm").reset();
     };
 };
+
+const deleteRepo = (_index) => {
+    currentUser.repoData.splice(_index, 1);
+    renderRepoCards();
+}
 
 // Projects
 const submitNewProject = () => {

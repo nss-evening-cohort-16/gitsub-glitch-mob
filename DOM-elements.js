@@ -170,9 +170,9 @@ export const reposContent = `
 `;
 
 // Card Template
-export const repoCardTemplate = (_repoDataObj) => {
+export const repoCardTemplate = (_repoDataObj, _index) => {
   return `
-   <div class="card" style="width: 18rem;"> 
+   <div class="card" id="repos-card--${_index}"> 
       <div class="repo-body">
         <div>
           <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
@@ -202,6 +202,7 @@ export const repoCardTemplate = (_repoDataObj) => {
           </div>
         </div>
       </div>
+      <button class="btn btn-danger delete-btn" id="repo-deleteBtn--${_index}">Delete</button>
   </div>
   `;
 };
@@ -211,19 +212,23 @@ export const repoForm =  `
      <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <input required type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title"> 
+            <input type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title">
+            <div class="error-container" id="repo-title-error"></div>
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
-            <input required type="text" class="form-control" id="repo-form-description" placeholder="Input Repositories Description">
+            <textarea class="form-control" id="repo-form-description" placeholder="Input Repositories Description"></textarea>
+            <div class="error-container" id="repo-desc-error"></div>    
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Tags</label>
-            <input required type="text" class="form-control" id="repo-form-tags" placeholder="Input Repositories Tags">
+            <textarea class="form-control" id="repo-form-tags" placeholder="Input Repositories Tags"></textarea>
+            <div class="error-container" id="repo-tag-error"></div>
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
             <input required type="text" class="form-control" id="repo-form-language" placeholder="Input Repositories Language">
+            <div class="error-container" id="repo-lang-error"></div>
         </div>
 
         <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
