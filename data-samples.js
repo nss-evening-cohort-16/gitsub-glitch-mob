@@ -90,6 +90,7 @@ const sampleRepos = [
         branches: 0,
         issues: 0,
         lastUpdated: Date(),
+        pinned: false,
     },
     {
         repoTitle: "Repo NUmber 2",
@@ -100,6 +101,7 @@ const sampleRepos = [
         branches: 0,
         issues: 0,
         lastUpdated: Date(),
+        pinned: false,
     }
 ];
 
