@@ -23,7 +23,7 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
 
         repoData: [],
         projectsData: [],
-        packagesData: []
+        packagesData: []}
     };
 
 // Repos Page
