@@ -298,8 +298,8 @@ export const packageCardTemplate = (_packageDataObj) => {
 };
 
 // Form
-export const packageForm = () => {
-  return `
+export const packageForm = 
+  `
     <form id="package-inputForm">
       <div class="mb-3">
           <label for="package-form-name" class="form-label">Package Name:</label><br>
@@ -314,4 +314,3 @@ export const packageForm = () => {
       </div>
     </form>
   `;
-};

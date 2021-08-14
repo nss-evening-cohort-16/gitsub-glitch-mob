@@ -57,10 +57,8 @@ export const sampleUser1 = {
         }],
 
     packagesData: [{
-        titleImage: "",
-        title: "",
-        description: "",
-        beta: "?"
+        title: "Title",
+        description: "Description",
         }]
 };
 

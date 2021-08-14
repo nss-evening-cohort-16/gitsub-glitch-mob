@@ -59,7 +59,7 @@ const renderProjectsPage = () => {
 // Packages Page
 const renderPackagesPage = () => {
     renderToDOM("#list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
-    renderToDOM("#form-container", packageForm());
+    renderToDOM("#form-container", packageForm);
 };
 
 

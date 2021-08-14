@@ -59,8 +59,8 @@ export const newProjectObj = (_title, _description, _privacy) => {
 // Packages Page
 export const newPackageObj = (_title, _description) => {
     return {
-        title: "",
-        description: "",
+        title: _title,
+        description: _description,
   };
 };
 
