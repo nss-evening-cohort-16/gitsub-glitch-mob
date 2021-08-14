@@ -1,6 +1,6 @@
 import { pinnedRepoCardTemplate, pinnedRepoForm, projectsContent, reposContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
-import { newProjectObj, newRepoObj } from "./data-structures.js";
+import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
 
@@ -71,7 +71,7 @@ const renderProjectCards = () => {
 // Packages Page
 const renderPackagesPage = () => {
     renderToDOM("#list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
-    renderToDOM("#form-container", packageForm());
+    renderToDOM("#form-container", packageForm);
 };
 
 
@@ -140,6 +140,11 @@ const buttonClicks = (_event) => {
 
 
     // Packages Page Buttons \\
+        // Package Form Submit Button
+        case "package-form-submitBtn":
+            _event.preventDefault();
+            submitNewPackage();            
+            break;
 
     // Bio Panel Buttons \\
         // Follow Button
@@ -200,6 +205,21 @@ const deleteProject = (_index) => {
 };
 
 // Packages
+const submitNewPackage = () => {
+    const packageTitleInput = document.querySelector("#package-form-name").value;
+    const packageDescInput = document.querySelector("#package-form-description").value;
+
+    if (!inputError(packageTitleInput) && !inputError(packageDescInput)) {
+        addObjectToUser(
+            newPackageObj(
+                packageTitleInput, 
+                packageDescInput), 
+            currentUser.packagesData);
+            
+        renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+        document.querySelector("#package-inputForm").reset();
+    };
+};
 
 // Bio Panel
 const followUser = () => {

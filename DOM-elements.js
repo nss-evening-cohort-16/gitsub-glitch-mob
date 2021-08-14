@@ -288,34 +288,37 @@ export const projectForm = `
 //// Packages \\\\
 
 // Card Template
-export const packageCardTemplate = () => {
+export const packageCardTemplate = (_packageDataObj) => {
   return `
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Package Title</h5>
-        <p class="card-text">Description of the package</p>
-        <a href="#" class="btn btn-primary">Learn Some More</a>
+    <div id="packages-container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${_packageDataObj.title}</h5>
+            <p class="card-text">${_packageDataObj.description}</p>
+            <button class="btn btn-primary">Learn More</button>
+          <div>
+            <button class="btn btn-dark">Delete</button>
+          </div>
+        </div>
       </div>
     </div>
   `;
 };
 
 // Form
-export const packageForm = () => {
-  return `
-    <form>
-      <div>
-        <h5>Package Name</h5>
-          <input class="form-control" type="text" aria-label="default">
+export const packageForm = 
+  `
+    <form id="package-inputForm">
+      <div class="mb-3">
+          <label for="package-form-name" class="form-label">Package Name:</label><br>
+          <input required type="text" class="form-control" id="package-form-name" placeholder="Name">
       </div>
-      <div>
-          <label for="textArea" class="form-label"></label>
-            <h5>Description</h5>
-          <textarea class="form-control" id="textArea" rows="4"></textarea>
+      <div class="mb-3">
+          <label for="package-form-description" class="form-label">Package Description:</label><br>
+          <textarea class="form-control" id="package-form-description" placeholder="Description" rows="4"></textarea>
       </div>
       <div class="d-grid gap-2 d-md-block">
-        <button id="packageBtn" class="btn btn-primary" type="submit">Create Package</button>
+        <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
       </div>
     </form>
   `;
-};
