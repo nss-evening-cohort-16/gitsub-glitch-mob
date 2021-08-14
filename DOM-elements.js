@@ -133,8 +133,7 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
 // Form
 
 export const simpleRepoCardTemplate = (_repoDataObj) => {
-  let element = "";
-    _repoDataObj.forEach((_obj) => {
+  
   return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
@@ -146,25 +145,14 @@ export const simpleRepoCardTemplate = (_repoDataObj) => {
             </div>
           </div>
       `
-  }); 
 };
     
-export const pinRepoForm  = () => {
-  return `<div id="page-body">
+export const pinRepoForm  =
+`<div id="page-body">
           <div id="pinnedRepoForm-card-container" class="pinnedRepository"></div>
       </div>
- `
-};
-
+ `;
  
-  export const pinnedRepo = (event) => {
-    const targetType = event.target.targetType;
-    const targetId = event.target.targetId
-    
-  if(targetId= "Pin-repo") {
-      return  _repoDataObj.pinned === true;
-    }  
-  };
   
 //// Repos \\\\
 

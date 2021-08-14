@@ -1,5 +1,4 @@
 import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-import { pinnedRepoCardTemplate, projectsContent, reposContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -39,8 +38,8 @@ export const renderContent = () => {
 // Overview Page
 const renderOverviewPage = () => {
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
-    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
+    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
 };
 
 // Repos Page
@@ -92,9 +91,10 @@ const inputError = (_input) => {
 // Handle button clicks
 export const registerEvents = () => {
     document.querySelector("body").addEventListener("click", buttonClicks)
-    
+}; 
 const buttonClicks = (_event) => {
     const targetID = _event.target.id;
+
 
     
     // Log clicked ID -- Debug purposes
@@ -102,7 +102,9 @@ const buttonClicks = (_event) => {
 
     switch(targetID) {
     
-    // Overview Page Buttons \\  
+    // Overview Page Buttons \\ 
+    //case "pin-repo":
+    //_repoDataObj.pinned === true;
     
     // Repos Page Buttons \\
         // Repo Form Submit Button
@@ -116,9 +118,9 @@ const buttonClicks = (_event) => {
             _event.preventDefault();
             submitNewProject();            
             break;
-            case "Pin-repo":
-                _event.preventDefault();
-                pinnedRepo();
+            // case "Pin-repo":
+            //     _event.preventDefault();
+            //     pinnedRepo();
         // Submit "Search" button
         // Filter "Open" button
         // Filter for "Closed" button
@@ -196,5 +198,4 @@ const submitNewPackage = () => {
         renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
         document.querySelector("#package-inputForm").reset();
     };
-};
 };
