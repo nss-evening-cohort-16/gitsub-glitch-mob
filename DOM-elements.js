@@ -156,14 +156,14 @@ export const pinRepoForm  = () => {
  `
 };
 
-  const pinnedRepoArray = [];
+ 
   export const pinnedRepo = (event) => {
-    //const targetType = event.target.type;
-    const targetId = event.target.Id;
-    if(targetId = "Pin-repo") {
-      return 
-    }
+    const targetType = event.target.targetType;
+    const targetId = event.target.targetId
     
+  if(targetId= "Pin-repo") {
+      return  _repoDataObj.pinned === true;
+    }  
   };
   
 //// Repos \\\\
