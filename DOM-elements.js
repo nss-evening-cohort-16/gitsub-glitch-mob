@@ -271,15 +271,17 @@ export const projectForm = `
 //// Packages \\\\
 
 // Card Template
-export const packageCardTemplate = () => {
+export const packageCardTemplate = (_packageDataObj) => {
   return `
-    <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Package Title</h5>
-          <p class="card-text">Description of the package</p>
-          <button class="btn btn-primary">Learn Some More</button>
-        <div>
-          <button class="btn btn-dark">Delete</button>
+    <div id="packages-container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${_packageDataObj.title}</h5>
+            <p class="card-text">${_packageDataObj.description}</p>
+            <button class="btn btn-primary">Learn More</button>
+          <div>
+            <button class="btn btn-dark">Delete</button>
+          </div>
         </div>
       </div>
     </div>
@@ -289,18 +291,18 @@ export const packageCardTemplate = () => {
 // Form
 export const packageForm = () => {
   return `
-    <form>
+    <form id="package-inputForm">
       <div>
         <h5>Package Name</h5>
-          <input class="form-control" type="text" aria-label="default">
+          <input id="package-form-name" class="form-control" type="text" aria-label="default">
       </div>
       <div>
           <label for="textArea" class="form-label"></label>
             <h5>Description</h5>
-          <textarea class="form-control" id="textArea" rows="4"></textarea>
+          <textarea id="package-form-description" class="form-control" id="textArea" rows="4"></textarea>
       </div>
       <div class="d-grid gap-2 d-md-block">
-        <button id="packageBtn" class="btn btn-primary" type="submit">Create Package</button>
+        <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
       </div>
     </form>
   `;

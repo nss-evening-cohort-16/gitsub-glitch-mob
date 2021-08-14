@@ -129,7 +129,6 @@ export const sampleProject = {
 
 export const samplePackage = [
         {
-        titleImage: "",
         title: "",
         description: "",
         }
