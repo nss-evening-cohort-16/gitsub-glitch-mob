@@ -301,14 +301,13 @@ export const packageCardTemplate = (_packageDataObj) => {
 export const packageForm = () => {
   return `
     <form id="package-inputForm">
-      <div>
-        <h5>Package Name</h5>
-          <input id="package-form-name" class="form-control" type="text" aria-label="default">
+      <div class="mb-3">
+          <label for="package-form-name" class="form-label">Package Name:</label><br>
+          <input required type="text" class="form-control" id="package-form-name" placeholder="Name">
       </div>
-      <div>
-          <label for="textArea" class="form-label"></label>
-            <h5>Description</h5>
-          <textarea id="package-form-description" class="form-control" id="textArea" rows="4"></textarea>
+      <div class="mb-3">
+          <label for="package-form-description" class="form-label">Package Description:</label><br>
+          <textarea class="form-control" id="package-form-description" placeholder="Description" rows="4"></textarea>
       </div>
       <div class="d-grid gap-2 d-md-block">
         <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
