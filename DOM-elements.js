@@ -131,7 +131,9 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
 };
 
 // Form
-export const pinnedRepoForm = (_repoDataObj) => {
+
+export const simpleRepoCardTemplate = (_repoDataObj) => {
+  
   return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
@@ -139,14 +141,19 @@ export const pinnedRepoForm = (_repoDataObj) => {
             <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
           </div>
             <div> 
-              <button href="#" class="Pinnedrepo-btn">Pin Repos</button>
+              <button type = "button" id = "pin-repo" class="Pinnedrepo-btn">Pin Repos</button>
             </div>
           </div>
-        </div>
-      </div>
-      `;
+      `
 };
-
+    
+export const pinRepoForm  =
+`<div id="page-body">
+          <div id="pinnedRepoForm-card-container" class="pinnedRepository"></div>
+      </div>
+ `;
+ 
+  
 //// Repos \\\\
 
 // Layout
