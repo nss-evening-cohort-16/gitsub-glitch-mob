@@ -338,10 +338,12 @@ export const packageForm =
       <div class="mb-3">
           <label for="package-form-name" class="form-label">Package Name:</label><br>
           <input required type="text" class="form-control" id="package-form-name" placeholder="Name">
+          <div class="error-container" id="package-name-error"></div>
       </div>
       <div class="mb-3">
           <label for="package-form-description" class="form-label">Package Description:</label><br>
           <textarea class="form-control" id="package-form-description" placeholder="Description" rows="4"></textarea>
+          <div class="error-container" id="package-desc-error"></div>
       </div>
       <div class="d-grid gap-2 d-md-block">
         <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>

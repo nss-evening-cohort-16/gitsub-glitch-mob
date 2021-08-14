@@ -233,7 +233,7 @@ const submitNewPackage = () => {
     const packageTitleInput = document.querySelector("#package-form-name").value;
     const packageDescInput = document.querySelector("#package-form-description").value;
 
-    if (!inputError(packageTitleInput, "#packages-container") && !inputError(packageDescInput, "#packages-container")) {
+    if (!inputError(packageTitleInput, "#package-name-error") && !inputError(packageDescInput, "#package-desc-error")) {
         addObjectToUser(
             newPackageObj(
                 packageTitleInput, 
