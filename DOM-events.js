@@ -8,4 +8,5 @@ export const init = () => {
     renderPage();
 
     registerEvents();
+    
 };
