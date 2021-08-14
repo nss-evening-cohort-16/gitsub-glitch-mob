@@ -16,7 +16,7 @@ export const pageLayout = `<div id="page-body">
 // User bio profile
 export const bioPanel = (_currentUser) => {
   return `
-        <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
+        <img id="bio-img" src="${_currentUser.imgURL}" alt="User's profile image">
         <div id="bio-namesTray">
             <div id="bio-name">${_currentUser.name}</div>
             <div id="bio-username">/${_currentUser.username}</div>
@@ -157,7 +157,6 @@ export const pinRepoForm  =
 //// Repos \\\\
 
 // Layout
-
 export const reposContent = `
 <h2 id="repo-container-label">Repository</h2>
 <input id="repo-searchbar" type="text" placeholder="Search...">
@@ -240,26 +239,33 @@ export const projectsContent = `
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
         <div id="projects-list-header">
-          <button class="projects-sort-btn" id="projects-list-sort-sort">Sort v</button>
-          <button class="projects-sort-btn" id="projects-list-sort-closed">Closed</button>
-          <button class="projects-sort-btn" id="projects-list-sort-open">Open</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-closed">Closed</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-open">Open</button>
         </div>
         <div id="projects-list-container"></div>
       </div>
     `;
 
 // Card Template
-export const projectCardTemplate = (_projectDataObj) => {
+export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
-    <div class="project-card">
-      <div class="project-card-data project-card-title">${_projectDataObj.title}</div> 
+    <div class="project-card" id="project-card--${_index}">
+      <div class="project-card-data project-card-title">Title:<br>${_projectDataObj.title}</div> 
       <hr>
-      <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      <div class="project-card-data project-card-description">Description:<br>${_projectDataObj.description}</div> 
       <hr>
-      <div class="project-card-data project-card-created">Created:<br>${_projectDataObj.timeCreated}</div> 
-      <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
-      <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
-      <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div> 
+      <div class="project-card-data-container">
+        <div class="project-card-date-container">
+          <div class="project-card-data project-card-created">Created:<br>${_projectDataObj.timeCreated}</div> 
+          <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
+        </div>
+        <div class="project-card-status-container">
+          <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
+          <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div>
+        </div>  
+      </div>
+      <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
     </div>
   `;
 };
@@ -269,12 +275,14 @@ export const projectForm = `
   <h2 id="project-form-label">Create New Project</h2>
   <form id="project-inputForm">
      <div class="mb-3">
-         <label for="project-form-title" class="form-label">Project Title:</label><br>
-         <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+        <label for="project-form-title" class="form-label">Project Title:</label><br>
+        <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+        <div class="error-container" id="project-title-error"></div>
      </div>
      <div class="mb-3">
-         <label for="project-form-description" class="form-label">Project Description:</label><br>
-         <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <label for="project-form-description" class="form-label">Project Description:</label><br>
+        <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <div class="error-container" id="project-desc-error"></div>
      </div>
      <div class="mb-3">
      <input type="checkbox" id="project-form-privacy">

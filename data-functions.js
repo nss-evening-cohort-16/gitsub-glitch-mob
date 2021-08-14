@@ -1,14 +1,12 @@
-// Sample Data
-
 import { sampleUser1, sampleUser2 } from "./data-samples.js";
 
+// Register Sample Users
 export const injectSampleData = () => {
-  addNewUser(sampleUser1);
-  addNewUser(sampleUser2);
+  addNewUser(sampleUser1());
+  addNewUser(sampleUser2());
 
-  changeCurrentUser(usersArray[0]);
+  loginUser(0);
 };
-
 
 
 // Users
@@ -16,15 +14,15 @@ export const injectSampleData = () => {
 let usersArray = [];
 export let currentUser = {};
 
-export const addNewUser = (_userObj) => {
+const addNewUser = (_userObj) => {
   usersArray.push(_userObj);
   return usersArray;
 };
 
-const changeCurrentUser = (_newUser) => {
-  return currentUser = _newUser;
+const loginUser = (_index) => {
+  return currentUser = usersArray[_index];
 };
-  
+
 export const addObjectToUser = (_newObj, _targetArray) => {
   _targetArray.push(_newObj);
   return _targetArray;
