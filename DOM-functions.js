@@ -183,6 +183,10 @@ break;
 
 // Overview
 
+const deletePinnedRepo = (_index) => {
+    currentUser.repoData.splice(_index, 1);
+    renderPinnedRepoCard();
+
 // Repos
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
