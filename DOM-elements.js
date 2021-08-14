@@ -294,17 +294,31 @@ export const projectForm = `
 
 //// Packages \\\\
 
+// Layout
+export const packagesContent = `
+      <h2 id="packages-container-label">Packages</h2>
+      <input id="packages-searchbar" type="text" placeholder="Search...">
+      <div>
+        <div id="packages-list-header">
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-sort-sort">Sort...</button>
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-closed">Closed</button>
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-open">Open</button>
+        </div>
+        <div id="packages-list-container"></div>
+      </div>
+    `;
+
 // Card Template
-export const packageCardTemplate = (_packageDataObj) => {
+export const packageCardTemplate = (_packageDataObj, _index) => {
   return `
     <div id="packages-container">
-        <div class="card">
+        <div class="packages-card">
           <div class="card-body">
             <h5 class="card-title">${_packageDataObj.title}</h5>
             <p class="card-text">${_packageDataObj.description}</p>
             <button class="btn btn-primary">Learn More</button>
           <div>
-            <button class="btn btn-dark">Delete</button>
+            <button class="btn btn-danger delete-btn">Delete</button>
           </div>
         </div>
       </div>
@@ -315,6 +329,7 @@ export const packageCardTemplate = (_packageDataObj) => {
 // Form
 export const packageForm = 
   `
+  <h2 id="package-form-label">Create New Package</h2>
     <form id="package-inputForm">
       <div class="mb-3">
           <label for="package-form-name" class="form-label">Package Name:</label><br>
