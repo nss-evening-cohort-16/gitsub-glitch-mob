@@ -1,32 +1,17 @@
-// import { generateSampleUser, sampleUser1FormInput, sampleUser2FormInput } from "./data-samples";
-import { yue_Zer } from "./data-samples";
+import { constructSampleUser, sampleUserData1, sampleUserData2 } from "./data-samples";
 
-// Sample Data
+// Register Sample Users
 export const injectSampleData = () => {
-  // addNewUser(generateSampleUser(sampleUser1FormInput));
-  // addNewUser(generateSampleUser(sampleUser2FormInput));
-  // addNewUser(generateNewUser(
-  //   sampleUser1FormInput.name, 
-  //   sampleUser1FormInput.username, 
-  //   sampleUser1FormInput.description, 
-  //   sampleUser1FormInput.imgURL, 
-  //   sampleUser1FormInput.location, 
-  //   sampleUser1FormInput.email, 
-  //   sampleUser1FormInput.website, 
-  //   sampleUser1FormInput.twitter));
-  addNewUser(yue_Zer);
+  addNewUser(constructSampleUser(sampleUserData1));
+  addNewUser(constructSampleUser(sampleUserData2));
 
-
-  console.log(usersArray[0]);
-
-  // changeCurrentUser(usersArray[0]);
+  loginUser();
 };
-
 
 
 // Users
 
-const usersArray = [];
+export let usersArray = [];
 export let currentUser = {};
 
 const addNewUser = (_userObj) => {
@@ -34,32 +19,15 @@ const addNewUser = (_userObj) => {
   return usersArray;
 };
 
+export const loginUser = () => {
+  changeCurrentUser(usersArray[0]);
+};
+
 const changeCurrentUser = (_newUser) => {
   return currentUser = _newUser;
 };
 
-
-const generateNewUser = (_name, _username, _description, _imgURL, _location, _email, _website, _twitter) => {
-
-  const newUser = newUserObj(
-      _name,
-      _username,
-      _description,
-      _imgURL,
-      _location,
-      _email,
-      _website,
-      _twitter
-  );
-
-  // sampleUser.addNewOrg(sampleOrganization1);
-  // sampleUser.addNewOrg(sampleOrganization2);
-
-  // sampleUser.addNewProject(sampleProject);
-  // sampleUser.addNewPackage(samplePackage);
-  // sampleUser.addNewRepo(sampleRepos[0]);
-  // sampleUser.addNewRepo(sampleRepos[1]);
-  // sampleUser.addNewPinnedRepo(sampleRepos[0]);
-
-  return newUser;
+export const addObjectToUser = (_newObj, _targetArray) => {
+  _targetArray.push(_newObj);
+  return _targetArray;
 };

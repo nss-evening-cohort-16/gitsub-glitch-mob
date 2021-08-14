@@ -1,116 +1,37 @@
-// import { newUserObj } from "./data-structures";
+import { addObjectToUser } from "./data-functions";
 
-// Users
+// User Constructor
+export const constructSampleUser = (_sampleUserData) => {
+    const user = newUser(
+      _sampleUserData.name,
+      _sampleUserData.username,
+      _sampleUserData.description,
+      _sampleUserData.imgURL,
+      _sampleUserData.location,
+      _sampleUserData.email,
+      _sampleUserData.website,
+      _sampleUserData.twitter
+    );
 
-// export const generateSampleUser = (_formInput) => {
+    sampleOrganizations.forEach(org => {
+      addObjectToUser(org, user.orgs);
+    });
+    sampleRepos.forEach(repo => {
+      addObjectToUser(repo, user.repoData);
+    });
+    sampleProjects.forEach(proj => {
+      addObjectToUser(proj, user.projectsData);
+    });
+    samplePackages.forEach(pack => {
+      addObjectToUser(pack, user.packagesData);
+    });
 
-//     const sampleUser = newUserObj(
-//         _formInput.name,
-//         _formInput.username,
-//         _formInput.description,
-//         _formInput.imgURL,
-//         _formInput.location,
-//         _formInput.email,
-//         _formInput.website,
-//         _formInput.twitter
-//     );
-
-//     // sampleUser.addNewOrg(sampleOrganization1);
-//     // sampleUser.addNewOrg(sampleOrganization2);
-
-//     // sampleUser.addNewProject(sampleProject);
-//     // sampleUser.addNewPackage(samplePackage);
-//     // sampleUser.addNewRepo(sampleRepos[0]);
-//     // sampleUser.addNewRepo(sampleRepos[1]);
-//     // sampleUser.addNewPinnedRepo(sampleRepos[0]);
-
-//     return sampleUser;
-// };
-
-export const yue_Zer = {
-    name: "Yue Zer",
-    username: "yue_zer",
-    description: "Software developer",
-    img: "https://www.sacmag.com/wp-content/uploads/sites/50/2020/12/HI_RES_FIN_IMG_8626.jpg",
-
-    followers: 20,
-    following: 10,
-    starred: 0,
-
-    location: "Nashville, TN",
-    email: "yue_zer@email.com",
-    website: "http://www.yue_zer.biz",
-    twitter: "@yue_zer",
-
-    highlights: [],
-    orgs: [
-        {
-            name: "Friendly Folks Org",
-            img: "https://i0.wp.com/raulotaolea.com/wp-content/uploads/2018/02/header_blog_800x469-1.jpg?fit=730%2C428&ssl=1"
-        }, {
-            name: "Business Worker Foundation",
-            img: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q4/sales-org-structure/sales-organization-team-structure-header@2x.png"
-        }],
-    sponsors: [],
-
-    overviewData: [
-        { 
-            repoTitle: "Pinned Repo 1",
-            description: "description",
-            language: "language",
-            starred: 0,
-            branches:0
-        }],
-    repoData: [
-        {
-            repoTitle: "Repo NUmber 1",
-            description: "Test for repo 1",
-            language: "JavaScript",
-            tags: [],
-            starred: 0,
-            branches: 0,
-            issues: 0,
-            lastUpdated: Date(),
-        },
-    
-        {
-            repoTitle: "Repo NUmber 2",
-            description: "Test for repo 2",
-            language: "JavaScript",
-            tags: [],
-            starred: 0,
-            branches: 0,
-            issues: 0,
-            lastUpdated: Date(),
-        }],
-    projectsData: [
-        {
-            title: "Project Title",
-            description: "This is a description.",
-            timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-            lastUpdated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-            privacy: "Public",
-            status: "Open"
-        }],
-    packagesData: [{
-        titleImage: "",
-        title: "",
-        description: "",
-        beta: "?"
-    }]
+    return user;
 };
 
 
-
-
-
-
-
-
-
-
-
-export const sampleUser1FormInput = {
+// User Data
+const sampleUserData1 = {
     name: "Yue Zer",
     username: "yue_zer",
     description: "Software developer",
@@ -122,7 +43,7 @@ export const sampleUser1FormInput = {
     twitter: "@yue_zer"
 };
 
-export const sampleUser2FormInput = {
+const sampleUserData2 = {
     name: "John Doe",
     username: "doe_j",
     description: "Business executive",
@@ -137,45 +58,20 @@ export const sampleUser2FormInput = {
 
 
 // Organizations
-
-export const sampleOrganization1 = {
-    name: "Friendly Folks Org",
-    img: "https://i0.wp.com/raulotaolea.com/wp-content/uploads/2018/02/header_blog_800x469-1.jpg?fit=730%2C428&ssl=1"
-};
-
-export const sampleOrganization2 = {
-    name: "Business Worker Foundation",
-    img: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q4/sales-org-structure/sales-organization-team-structure-header@2x.png"
-};
-
-
-
-// Projects
-
-export const sampleProject = {
-    title: "Project Title",
-    description: "This is a description.",
-    timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-    lastUpdated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-    privacy: "Public",
-    status: "Open"
-};
-
-
-// Packages
-
-export const samplePackage = {
-    titleImage: "",
-    title: "",
-    description: "",
-    beta: "?"
-};
+const sampleOrganizations = [
+    {
+        name: "Friendly Folks Org",
+        img: "https://i0.wp.com/raulotaolea.com/wp-content/uploads/2018/02/header_blog_800x469-1.jpg?fit=730%2C428&ssl=1"
+    }, 
+    {
+        name: "Business Worker Foundation",
+        img: "https://d2slcw3kip6qmk.cloudfront.net/marketing/blog/2018Q4/sales-org-structure/sales-organization-team-structure-header@2x.png"
+    }
+];
 
 
 // Repos
-
-export const sampleRepos = [
-
+const sampleRepos = [
     {
         repoTitle: "Repo NUmber 1",
         description: "Test for repo 1",
@@ -186,7 +82,6 @@ export const sampleRepos = [
         issues: 0,
         lastUpdated: Date(),
     },
-
     {
         repoTitle: "Repo NUmber 2",
         description: "Test for repo 2",
@@ -199,14 +94,24 @@ export const sampleRepos = [
     }
 ];
 
-
-export const samplePinnedRepo = [
-    { 
-        repoTitle: "Pinned Repo 1",
-        description: "description",
-        language: "language",
-        starred: 0,
-        branches:0
+// Projects
+const sampleProjects = [
+    {
+        title: "Project Title",
+        description: "This is a description.",
+        timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
+        lastUpdated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
+        privacy: "Public",
+        status: "Open"
     }
+];
 
+// Packages
+const samplePackages = [
+    {
+        titleImage: "",
+        title: "",
+        description: "",
+        beta: "?"
+    }
 ];

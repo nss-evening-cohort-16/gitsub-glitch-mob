@@ -18,37 +18,13 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
         twitter: _twitter,
 
         highlights: [],
-        // addNewHighlight: function(__hlObj){
-        //     return this.highlights.push(__hlObj)
-        // },
         orgs: [],
-        // addNewOrg: function(__orgObj){
-        //     return this.orgs.push(__orgObj)
-        // },
         sponsors: [],
-        // addNewSponsor: function(__sponsorObj){
-        //     return this.sponsors.push(__sponsorObj)
-        // },
 
-        pinnedRepos: [],
-        // addNewPinnedRepo: function(__repoObj){
-        //     return this.pinnedRepos.push(__repoObj)
-        // },
-        repos: [],
-        // addNewRepo: function(__repoObj){
-        //     return this.repos.push(__repoObj)
-        // },
-        projects: [],
-        // addNewProject: function(__projObj){
-        //     return this.projects.push(__projObj)
-        // },
-        packages: [],
-        // addNewPackage: function(__packObj){
-        //     return this.packages.push(__packObj)
-        }
+        repoData: [],
+        projectsData: [],
+        packagesData: []
     };
-
-
 
 // Repos Page
 export const newRepoObj = (_repoTitle, _description, _tags, _language) => {

@@ -1,16 +1,12 @@
-import { currentUser, injectSampleData } from "./data-functions.js";
-import { pageLayout, header, footer, bioPanel } from "./DOM-elements.js"; 
-import { renderContent } from "./DOM-functions.js";
+import { loginUser, injectSampleData } from "./data-functions.js";
+import { renderPage, registerEvents } from "./DOM-functions.js";
 
 
 export const init = () => {
     injectSampleData();
+    // loginUser();
 
-    pageLayout();
-    
-    header();
-    footer();
-    bioPanel(currentUser);
+    renderPage();
 
-    renderContent();
+    registerEvents();
 };

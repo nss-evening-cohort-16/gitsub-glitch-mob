@@ -1,16 +1,6 @@
-//// Render Function \\\\
-const renderToDOM = (_targetDivID, _element, _clear = true) => {
-  const targetDiv = document.querySelector(_targetDivID);
-
-  _clear ? (targetDiv.innerHTML = _element) : (targetDiv.innerHTML += _element);
-};
-
-//// Elements \\\\
-
 // Basic page layout
-export const pageLayout = () => {
-  const element = `
-    <div id="page-body">
+export const pageLayout = 
+    `<div id="page-body">
         <div id="page-bio" class="panel"></div>
 
         <div id="page-viewer">
@@ -24,13 +14,10 @@ export const pageLayout = () => {
 
     <div id="page-footer" class="panel"></div>`;
 
-  renderToDOM("body", element);
-};
-
 // User bio profile
 export const bioPanel = (_currentUser) => {
-  const element = `
-        <img id="bio-img" src="${_currentUser.img}" alt="User's profile image">
+  return `
+        <img id="bio-img" src="${_currentUser.imgURL}" alt="User's profile image">
         <div id="bio-namesTray">
             <div id="bio-name">${_currentUser.name}</div>
             <div id="bio-username">/${_currentUser.username}</div>
@@ -66,14 +53,11 @@ export const bioPanel = (_currentUser) => {
             <h3>Sponsors</h3>
             <div id="sponsors-list">${_currentUser.sponsors}</div>
         </div>`;
-
-  renderToDOM("#page-bio", element);
 };
 
 // Header / NavBar
-export const header = () => {
-  const element = `
-      <nav class="navbar navbar-expand-lg navbar-dark">
+export const header =
+    `<nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -96,15 +80,11 @@ export const header = () => {
             </ul>
           </div>
         </div>
-      </nav>
-    `;
-  renderToDOM("#page-navbar", element);
-};
+      </nav>`;
 
 // Footer
-export const footer = () => {
-  const element = `
-    <div id="yr-updated">2021 Us</div>
+export const footer =
+`<div id="yr-updated">2021 Us</div>
         <div id="terms-btn">Terms</div>
         <div id="privacy-btn">Privacy</div>
         <div id="security-btn">Security</div>
@@ -118,12 +98,17 @@ export const footer = () => {
         <div id="blog-btn">Blog</div>
         <div id="about-btn">About</div>
     `;
-  renderToDOM("#page-footer", element);
-};
 
-// Overview
-export const renderPinnedRepoCard = (_repoDataObj) => {
-  const element = `
+
+
+
+////// Card Templates and Forms \\\\\\
+
+//// Overview \\\\\
+
+// Card Template
+export const pinnedRepoCardTemplate = (_repoDataObj) => {
+  return `
     <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
         <div>
@@ -149,12 +134,11 @@ export const renderPinnedRepoCard = (_repoDataObj) => {
       </div>
     </div>
     `;
-
-  renderToDOM("#list-container", element, false);
 };
     
-export const renderPinnedRepoForm = (_repoDataObj) => {
-    const element = `
+// Form
+export const pinnedRepoForm = (_repoDataObj) => {
+    return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
           <div>
@@ -167,13 +151,13 @@ export const renderPinnedRepoForm = (_repoDataObj) => {
         </div>
       </div>
       `;
-  
-    renderToDOM("#form-container", element);
   };
       
-// Repos
-export const renderRepoCard = (_repoDataObj) => {
-  const element = `
+//// Repos \\\\
+
+// Card Template
+export const repoCardTemplate = (_repoDataObj) => {
+  return `
    <div class="card" style="width: 18rem;"> 
       <div class="repo-body">
         <div>
@@ -206,51 +190,98 @@ export const renderRepoCard = (_repoDataObj) => {
       </div>
   </div>
   `;
-
-  renderToDOM("#list-container", element, false);
 };
 
-// Fillable Repo Form
+// Form
 export const repoForm = () => {
-  const element = `
-     <form id="repoFormForm">
+  return `
+     <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <input required type="text" class="form-control" id="repo-title" placeholder="Input Repositories Title">
+            <input required type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title" value="sample repo title">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
-            <input required type="text" class="form-control" id="repo-description" placeholder="Input Repositories Description">
+            <input required type="text" class="form-control" id="repo-form-description" placeholder="Input Repositories Description" value="sample repo desc">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
-            <input required type="text" class="form-control" id="repo-language" placeholder="Input Repositories Language">
+            <input required type="text" class="form-control" id="repo-form-language" placeholder="Input Repositories Language" value="python">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>    
+        <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
     </form>
     `;
-    renderToDOM("#form-container", element)
 };
 
-// Projects
-export const renderProjectCard = () => {
-  const element = `
+//// Projects \\\\
+
+// Layout
+export const projectsContent = `
+      <h2 id="projects-container-label">Projects</h2>
       <input id="projects-searchbar" type="text" placeholder="Search...">
       <div id="projects-container">
-        <div id="projects-list-header">Open Closed</div>
-        <div id="projects-list-content">List</div>
-        <div id="projects-list-content">List</div>
-        <div id="projects-list-content">List</div>
+        <div id="projects-list-header">
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-closed">Closed</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-open">Open</button>
+        </div>
+        <div id="projects-list-container"></div>
       </div>
     `;
 
-  renderToDOM("#list-container", element);
+
+// Card Template
+export const projectCardTemplate = (_projectDataObj, _index) => {
+  return `
+    <div class="project-card" id="project-card--${_index}">
+      <div class="project-card-data project-card-title">Title:<br>${_projectDataObj.title}</div> 
+      <hr>
+      <div class="project-card-data project-card-description">Description:<br>${_projectDataObj.description}</div> 
+      <hr>
+      <div class="project-card-data-container">
+        <div class="project-card-date-container">
+          <div class="project-card-data project-card-created">Created:<br>${_projectDataObj.timeCreated}</div> 
+          <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
+        </div>
+        <div class="project-card-status-container">
+          <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
+          <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div>
+        </div>  
+      </div>
+      <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+    </div>
+  `;
 };
 
-// Packages
-export const renderPackageCard = () => {
-  const element = `
+// Form
+export const projectForm = `
+  <h2 id="project-form-label">Create New Project</h2>
+  <form id="project-inputForm">
+     <div class="mb-3">
+        <label for="project-form-title" class="form-label">Project Title:</label><br>
+        <input required type="text" class="form-control" id="project-form-title" placeholder="Title">
+        <div class="error-container" id="project-title-error"></div>
+     </div>
+     <div class="mb-3">
+        <label for="project-form-description" class="form-label">Project Description:</label><br>
+        <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <div class="error-container" id="project-desc-error"></div>
+     </div>
+     <div class="mb-3">
+     <input type="checkbox" id="project-form-privacy">
+         <label for="project-form-privacy" class="form-label">Private</label>
+     </div>
+
+     <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
+  </form>`;
+ 
+
+//// Packages \\\\
+
+// Card Template
+export const packageCardTemplate = () => {
+  return `
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Package Title</h5>
@@ -259,12 +290,11 @@ export const renderPackageCard = () => {
       </div>
     </div>
   `;
-
-  renderToDOM("#list-container", element, false);
 };
 
+// Form
 export const packageForm = () => {
-  const element = `
+  return `
     <form>
       <div>
         <h5>Package Name</h5>
@@ -280,8 +310,6 @@ export const packageForm = () => {
       </div>
     </form>
   `;
-
-  renderToDOM("#form-container", element);
-}
+};
 
 
