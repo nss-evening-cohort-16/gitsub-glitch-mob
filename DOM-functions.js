@@ -45,6 +45,7 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
+    console.log(currentUser);
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
@@ -119,9 +120,12 @@ const buttonClicks = (_event) => {
     switch(targetID) {
     
     // Overview Page Buttons \\ 
-    //case "pin-repo":
-    //_repoDataObj.pinned === true;
-    
+    case "pin-repo":
+        
+        console.log(targetIndex);
+        currentUser.repoData[targetIndex].pinned = true;
+break;
+
     // Repos Page Buttons \\
         // Repo Form Submit Button
         case "repo-form-submitBtn":
