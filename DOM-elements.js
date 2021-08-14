@@ -1,6 +1,5 @@
 // Basic page layout
-export const pageLayout = 
-    `<div id="page-body">
+export const pageLayout = `<div id="page-body">
         <div id="page-bio" class="panel"></div>
 
         <div id="page-viewer">
@@ -56,8 +55,7 @@ export const bioPanel = (_currentUser) => {
 };
 
 // Header / NavBar
-export const header =
-    `<nav class="navbar navbar-expand-lg navbar-dark">
+export const header = `<nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,8 +81,7 @@ export const header =
       </nav>`;
 
 // Footer
-export const footer =
-`<div id="yr-updated">2021 Us</div>
+export const footer = `<div id="yr-updated">2021 Us</div>
         <div id="terms-btn">Terms</div>
         <div id="privacy-btn">Privacy</div>
         <div id="security-btn">Security</div>
@@ -98,9 +95,6 @@ export const footer =
         <div id="blog-btn">Blog</div>
         <div id="about-btn">About</div>
     `;
-
-
-
 
 ////// Card Templates and Forms \\\\\\
 
@@ -135,13 +129,13 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
     </div>
     `;
 };
-    
+
 // Form
 
 export const simpleRepoCardTemplate = (_repoDataObj) => {
   let element = "";
     _repoDataObj.forEach((_obj) => {
-      element+= `
+  return `
       <div class="card" style="width: 18rem;"> 
         <div class="repo-body">
           <div>
@@ -151,9 +145,7 @@ export const simpleRepoCardTemplate = (_repoDataObj) => {
               <button type = "button" id = "pin-repo" class="Pinnedrepo-btn">Pin Repos</button>
             </div>
           </div>
-        </div>
-      </div>
-      `;
+      `
   }); 
 };
     
@@ -173,10 +165,23 @@ export const pinRepoForm  = () => {
     }
     
   };
-    
   
-
 //// Repos \\\\
+
+// Layout
+
+export const reposContent = `
+<h2 id="repo-container-label">Repository</h2>
+<input id="repo-searchbar" type="text" placeholder="Search...">
+<div id="repos-container">
+  <div id="repos-list-header">
+    <button class="repos-sort-btn" id="repos-list-sort-sort">Sort</button>
+    <button class="repos-sort-btn" id="repos-list-sort-closed">Closed</button>
+    <button class="repos-sort-btn" id="repos-list-sort-open">Open</button>
+  </div>
+  <div id="repo-list-container"></div>
+</div>
+`;
 
 // Card Template
 export const repoCardTemplate = (_repoDataObj) => {
@@ -216,26 +221,28 @@ export const repoCardTemplate = (_repoDataObj) => {
 };
 
 // Form
-export const repoForm = () => {
-  return `
+export const repoForm =  `
      <form id="repo-inputForm">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
-            <input required type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title" value="sample repo title">
+            <input required type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title"> 
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Repositories Description</label>
-            <input required type="text" class="form-control" id="repo-form-description" placeholder="Input Repositories Description" value="sample repo desc">
+            <input required type="text" class="form-control" id="repo-form-description" placeholder="Input Repositories Description">
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Repositories Tags</label>
+            <input required type="text" class="form-control" id="repo-form-tags" placeholder="Input Repositories Tags">
         </div>
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Repositories Language</label>
-            <input required type="text" class="form-control" id="repo-form-language" placeholder="Input Repositories Language" value="python">
+            <input required type="text" class="form-control" id="repo-form-language" placeholder="Input Repositories Language">
         </div>
 
         <button id="repo-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
     </form>
     `;
-};
 
 //// Projects \\\\
 
@@ -252,7 +259,6 @@ export const projectsContent = `
         <div id="projects-list-container"></div>
       </div>
     `;
-
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj) => {
@@ -289,7 +295,6 @@ export const projectForm = `
 
      <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
   </form>`;
- 
 
 //// Packages \\\\
 
@@ -325,5 +330,3 @@ export const packageForm = () => {
     </form>
   `;
 };
-
-

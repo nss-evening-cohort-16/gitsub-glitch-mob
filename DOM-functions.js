@@ -1,4 +1,5 @@
 import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate, projectsContent, reposContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel } from "./DOM-elements.js";
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj } from "./data-structures.js";
 
@@ -44,24 +45,15 @@ const renderOverviewPage = () => {
 
 // Repos Page
 const renderReposPage = () => {
-    renderToDOM("#form-container", repoForm());
-
-    addObjectToUser(
-        newRepoObj(
-            document.querySelector("#repo-form-title").value,
-            document.querySelector("#repo-form-description").value,
-            document.querySelector("#repo-form-language").value,
-            Date()), 
-        currentUser.repoData);
-
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, repoCardTemplate));
+    renderToDOM("#list-container", reposContent)
+    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
+    renderToDOM("#form-container", repoForm);
 };
 
 // Projects Page
 const renderProjectsPage = () => {
     renderToDOM("#list-container", projectsContent);
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
-
     renderToDOM("#form-container", projectForm);
 };
 
@@ -114,7 +106,10 @@ const buttonClicks = (_event) => {
     
     // Repos Page Buttons \\
         // Repo Form Submit Button
-
+        case "repo-form-submitBtn":
+            _event.preventDefault();
+            submitNewRepoForm();
+            break;
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
@@ -141,6 +136,28 @@ const buttonClicks = (_event) => {
 
 // Repos
 
+
+const submitNewRepoForm = () => {
+    const repoTitleInput = document.querySelector("#repo-form-title").value;
+    const repoDescriptionInput = document.querySelector("#repo-form-description").value;
+    const repoTagsInput = document.querySelector("#repo-form-tags").value;
+    const repoLangInput = document.querySelector("#repo-form-language").value;
+
+    if (!inputError(repoTitleInput) && !inputError(repoDescriptionInput) && !inputError(repoLangInput)) {
+        addObjectToUser(
+            newRepoObj(
+                repoTitleInput,
+                repoDescriptionInput, 
+                repoLangInput, 
+                repoLangInput),
+            currentUser.repoData);
+            
+        renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
+        document.querySelector("#repo-inputForm").reset();
+    }
+    
+};
+
 // Projects
 const submitNewProject = () => {
     const titleInput = document.querySelector("#project-form-title").value;
@@ -158,6 +175,6 @@ const submitNewProject = () => {
         renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
         document.querySelector("#project-inputForm").reset();
     };
-};
+}
 
 // Packages
