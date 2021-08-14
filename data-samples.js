@@ -120,9 +120,7 @@ const sampleProjects = [
 // Packages
 const samplePackages = [
     {
-        titleImage: "",
-        title: "",
-        description: "",
-        beta: "?"
+        title: "Title",
+        description: "Description",
     }
 ];

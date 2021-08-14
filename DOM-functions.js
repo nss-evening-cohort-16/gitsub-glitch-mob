@@ -1,4 +1,5 @@
-import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -77,7 +78,8 @@ const renderProjectCards = () => {
 
 // Packages Page
 const renderPackagesPage = () => {
-    renderToDOM("#list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+    renderToDOM("#list-container", packagesContent);
+    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
     renderToDOM("#form-container", packageForm);
 };
 
@@ -231,7 +233,7 @@ const submitNewPackage = () => {
     const packageTitleInput = document.querySelector("#package-form-name").value;
     const packageDescInput = document.querySelector("#package-form-description").value;
 
-    if (!inputError(packageTitleInput) && !inputError(packageDescInput)) {
+    if (!inputError(packageTitleInput, "#package-name-error") && !inputError(packageDescInput, "#package-desc-error")) {
         addObjectToUser(
             newPackageObj(
                 packageTitleInput, 

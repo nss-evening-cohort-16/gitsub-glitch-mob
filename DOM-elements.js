@@ -298,17 +298,31 @@ export const projectForm = `
 
 //// Packages \\\\
 
+// Layout
+export const packagesContent = `
+      <h2 id="packages-container-label">Packages</h2>
+      <input id="packages-searchbar" type="text" placeholder="Search...">
+      <div>
+        <div id="packages-list-header">
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-sort-sort">Sort...</button>
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-closed">Closed</button>
+          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-open">Open</button>
+        </div>
+        <div id="packages-list-container"></div>
+      </div>
+    `;
+
 // Card Template
-export const packageCardTemplate = (_packageDataObj) => {
+export const packageCardTemplate = (_packageDataObj, _index) => {
   return `
     <div id="packages-container">
-        <div class="card">
+        <div class="packages-card">
           <div class="card-body">
             <h5 class="card-title">${_packageDataObj.title}</h5>
             <p class="card-text">${_packageDataObj.description}</p>
             <button class="btn btn-primary">Learn More</button>
           <div>
-            <button class="btn btn-dark">Delete</button>
+            <button class="btn btn-danger delete-btn">Delete</button>
           </div>
         </div>
       </div>
@@ -319,14 +333,17 @@ export const packageCardTemplate = (_packageDataObj) => {
 // Form
 export const packageForm = 
   `
+  <h2 id="package-form-label">Create New Package</h2>
     <form id="package-inputForm">
       <div class="mb-3">
           <label for="package-form-name" class="form-label">Package Name:</label><br>
           <input required type="text" class="form-control" id="package-form-name" placeholder="Name">
+          <div class="error-container" id="package-name-error"></div>
       </div>
       <div class="mb-3">
           <label for="package-form-description" class="form-label">Package Description:</label><br>
           <textarea class="form-control" id="package-form-description" placeholder="Description" rows="4"></textarea>
+          <div class="error-container" id="package-desc-error"></div>
       </div>
       <div class="d-grid gap-2 d-md-block">
         <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
