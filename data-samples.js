@@ -57,10 +57,8 @@ export const sampleUser1 = {
         }],
 
     packagesData: [{
-        titleImage: "",
-        title: "",
-        description: "",
-        beta: "?"
+        title: "Title",
+        description: "Description",
         }]
 };
 
@@ -129,10 +127,8 @@ export const sampleProject = {
 
 export const samplePackage = [
         {
-        titleImage: "",
         title: "",
         description: "",
-        beta: "?"
         }
 ];
 
