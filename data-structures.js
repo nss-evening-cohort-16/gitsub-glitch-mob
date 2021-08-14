@@ -38,6 +38,7 @@ export const newRepoObj = (_repoTitle, _description, _tags, _language) => {
         branches: 0,
         issues: 0,
         lastUpdated: Date(),
+        pinned: false,
     };
 };
 
