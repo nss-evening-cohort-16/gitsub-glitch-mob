@@ -1,5 +1,4 @@
 import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-
 import { addObjectToUser, currentUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -46,7 +45,6 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
-    console.log(currentUser);
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
@@ -73,7 +71,10 @@ const renderProjectsPage = () => {
 };
 
 const renderProjectCards = () => {
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+    currentUser.projectsData.forEach(project => {
+        // if ()
+        renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+    });
 };
 
 // Packages Page
@@ -113,6 +114,7 @@ const inputError = (_input, _errorTextDiv) => {
 export const registerEvents = () => {
     document.querySelector("body").addEventListener("click", buttonClicks)
 }; 
+
 const buttonClicks = (_event) => {
     const [targetID, targetIndex] = _event.target.id.split("--");
     
@@ -122,11 +124,10 @@ const buttonClicks = (_event) => {
     switch(targetID) {
     
     // Overview Page Buttons \\ 
-    case "pin-repo":
-        
-        console.log(targetIndex);
-        currentUser.repoData[targetIndex].pinned = true;
-break;
+        // Pin Repo button
+        case "pin-repo":
+            currentUser.repoData[targetIndex].pinned = true;
+            break;
 
     // Repos Page Buttons \\
         // Repo Form Submit Button

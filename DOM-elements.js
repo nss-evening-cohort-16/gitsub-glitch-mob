@@ -131,7 +131,6 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
 };
 
 // Form
-
 export const simpleRepoCardTemplate = (_repoDataObj,_index) => {
   
   return `
