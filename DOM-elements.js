@@ -267,12 +267,14 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
         </div>
         <div class="project-card-status-container">
           <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
-          <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div>
+          <div class="project-card-data project-card-status">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</div>
         </div>  
-      </div>
-      <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
-    </div>
-  `;
+      </div> ` +
+      (_projectDataObj.open ? 
+        `<button class="btn btn-secondary close-btn" id="project-statusBtn--${_index}">Close</button>`
+        : `<button class="btn btn-secondary open-btn" id="project-statusBtn--${_index}">Open</button>`)
+      + `<button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+    </div>`;
 };
 
 // Form

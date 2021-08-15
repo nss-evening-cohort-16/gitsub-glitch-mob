@@ -152,6 +152,11 @@ const buttonClicks = (_event) => {
         case "project-deleteBtn":
             deleteProject(targetIndex);
             break;
+
+        // Open or Close project button
+        case "project-statusBtn":
+            changeProjectStatus(targetIndex);
+            break;
         
         // Submit "Search" button
         // Filter "Open" button
@@ -227,7 +232,12 @@ const submitNewProject = () => {
         renderProjectCards();
         document.querySelector("#project-inputForm").reset();
     };
-}
+};
+
+const changeProjectStatus = (_index) => {
+    currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
+    renderProjectCards();
+};
 
 const deleteProject = (_index) => {
     currentUser.projectsData.splice(_index, 1);

@@ -84,20 +84,14 @@ const sampleRepos = [
     newRepoObj(
         "Repo NUmber 1",
         "Test for repo 1",
-        "JavaScript",
         [],
-        0, 0, 0,
-        Date(),
-        false
+        "JavaScript"
     ),
     newRepoObj(
         "Repo NUmber 2",
         "Test for repo 2",
-        "JavaScript",
         [],
-        0, 0, 0,
-        Date(),
-        false
+        "JavaScript"
     )
 ];
 
@@ -106,10 +100,7 @@ const sampleProjects = [
     newProjectObj(
         "Project Title",
         "This is a description.",
-        "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-        "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-        "Public",
-        true
+        "Public"
     )
 ];
 
