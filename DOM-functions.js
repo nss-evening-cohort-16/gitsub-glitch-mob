@@ -138,6 +138,12 @@ break;
             deleteRepo(targetIndex);
             break;
 
+        // Submit "Search" button
+        case "repos-list-sort-sort":
+            _event.preventDefault();
+            sortRepos();
+            break;
+
     // Projects Page Buttons \\
         // Project Form Submit Button
         case "project-form-submitBtn":
@@ -201,6 +207,15 @@ const deleteRepo = (_index) => {
     currentUser.repoData.splice(_index, 1);
     renderRepoCards();
 }
+
+const sortRepos = () => {
+    const repoSeachInput = document.querySelector("#repo-searchbar").value.toLowerCase();
+
+        const searchedItems = sampleRepos.filter( (item) => {
+        return (item.repoTitle.includes(repoSeachInput) || item.description.includes(repoSeachInput) || item.tags.includes(repoSeachInput) )
+    });
+   console.log(searchedItems); 
+};
 
 // Projects
 const submitNewProject = () => {
