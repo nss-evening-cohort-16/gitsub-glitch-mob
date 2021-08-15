@@ -146,3 +146,11 @@ h3 {
             display: flex;
             flex-direction: row;
         }
+    
+    .project-card-btn-container {
+        margin: 8px;
+
+        display: flex;
+        flex-direction: row-reverse;
+        column-gap: 8px;
+    }

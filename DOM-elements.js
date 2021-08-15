@@ -269,11 +269,14 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
           <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
           <div class="project-card-data project-card-status">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</div>
         </div>  
-      </div> ` +
-      (_projectDataObj.open ? 
-        `<button class="btn btn-secondary close-btn" id="project-statusBtn--${_index}">Close</button>`
-        : `<button class="btn btn-secondary open-btn" id="project-statusBtn--${_index}">Open</button>`)
-      + `<button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+      </div>
+      <div class="project-card-btn-container">
+        <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+        ` + (_projectDataObj.open ? 
+          `<button class="btn btn-danger close-btn" id="project-statusBtn--${_index}">Close</button>`
+          : `<button class="btn btn-success open-btn" id="project-statusBtn--${_index}">Open</button>`)
+        + `
+      </div>
     </div>`;
 };
 
@@ -288,7 +291,7 @@ export const projectForm = `
      </div>
      <div class="mb-3">
         <label for="project-form-description" class="form-label">Project Description:</label><br>
-        <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <textarea required class="form-control" id="project-form-description" placeholder="Description"></textarea>
         <div class="error-container" id="project-desc-error"></div>
      </div>
      <div class="mb-3">
@@ -296,7 +299,7 @@ export const projectForm = `
          <label for="project-form-privacy" class="form-label">Private</label>
      </div>
 
-     <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
+     <button id="project-form-submitBtn" class="btn btn-primary">Submit</button>    
   </form>`;
 
 //// Packages \\\\

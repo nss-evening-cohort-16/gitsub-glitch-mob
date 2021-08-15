@@ -70,11 +70,8 @@ const renderProjectsPage = () => {
     renderProjectCards();
 };
 
-const renderProjectCards = () => {
-    currentUser.projectsData.forEach(project => {
-        // if ()
-        renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
-    });
+const renderProjectCards = (_filter = null, _filterValue = null) => {    
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 };
 
 // Packages Page
@@ -95,11 +92,17 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
   };
 
 // Generate a string containing a list of Cards
-const listOfCards = (_userDataArray, _cardTemplate) => {
+const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
     let cardString = "";
     
     _userDataArray.forEach((__obj, __i) => {
-        cardString += _cardTemplate(__obj, __i);
+        if (_filter) {
+            if (__obj[_filter] === _filterValue) {
+                cardString += _cardTemplate(__obj, __i);
+            };
+        } else {
+            cardString += _cardTemplate(__obj, __i);
+        };
     });
 
     return cardString;
@@ -159,8 +162,17 @@ const buttonClicks = (_event) => {
             break;
         
         // Submit "Search" button
+        
         // Filter "Open" button
+        case "projects-list-filter-open":
+            renderProjectCards("open", true);
+            break;
+
         // Filter for "Closed" button
+        case "projects-list-filter-closed":
+            renderProjectCards("open", false);
+            break;
+
         // Sort by
 
 
