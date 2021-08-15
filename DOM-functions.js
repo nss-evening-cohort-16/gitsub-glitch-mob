@@ -49,13 +49,14 @@ const renderOverviewPage = () => {
     console.log(currentUser);
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
-    renderPinnedRepoCard();
-    
+    renderPinnedRepoCard();  
+
 };
 
 const renderPinnedRepoCard = ()=> {
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
 };
+
 
 // Repos Page
 const renderReposPage = () => {
@@ -127,12 +128,14 @@ const buttonClicks = (_event) => {
     switch(targetID) {
     
     // Overview Page Buttons \\ 
+    //pinned repo submit button
     case "pin-repo":
-        
-        console.log(targetIndex);
+       console.log(targetIndex);
         currentUser.repoData[targetIndex].pinned = true;
-break;
+        renderToDOM("#list-container",renderPinnedRepoCard()); 
 
+break;
+//delete pinned Repo
     // Repos Page Buttons \\
         // Repo Form Submit Button
         case "repo-form-submitBtn":
@@ -182,11 +185,6 @@ break;
 //// Button Functions \\\\
 
 // Overview
-
-const deletePinnedRepo = (_index) => {
-    currentUser.repoData.splice(_index, 1);
-    renderPinnedRepoCard();
-
 // Repos
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
@@ -259,3 +257,4 @@ const followUser = () => {
     currentUser.followers++;
     renderBioPanel();
 };
+
