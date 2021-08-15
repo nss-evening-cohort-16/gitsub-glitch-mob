@@ -88,7 +88,7 @@ const sampleRepos = [
         [],
         0, 0, 0,
         Date(),
-        false,
+        false
     ),
     newRepoObj(
         "Repo NUmber 2",
@@ -97,7 +97,7 @@ const sampleRepos = [
         [],
         0, 0, 0,
         Date(),
-        false,
+        false
     )
 ];
 
@@ -109,7 +109,7 @@ const sampleProjects = [
         "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
         "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
         "Public",
-        "Open"
+        true
     )
 ];
 

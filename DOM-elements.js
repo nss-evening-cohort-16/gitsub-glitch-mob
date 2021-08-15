@@ -51,7 +51,9 @@ export const bioPanel = (_currentUser) => {
         <div id="bio-sponsors">
             <h3>Sponsors</h3>
             <div id="sponsors-list">${_currentUser.sponsors}</div>
-        </div>`;
+        </div>
+        <button id="btn-changeUser" class="btn btn-secondary btn-sm bio-btn">Change User</button>
+        `;
 };
 
 // Header / NavBar

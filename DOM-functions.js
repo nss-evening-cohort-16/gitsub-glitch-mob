@@ -1,5 +1,5 @@
 import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-import { addObjectToUser, currentUser } from "./data-functions.js";
+import { addObjectToUser, currentUser, followOtherUser, switchUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -171,6 +171,11 @@ const buttonClicks = (_event) => {
         case "btn-follow":
             followUser();
             break;
+
+        // Switch User Buttton
+        case "btn-changeUser":
+            changeUser();
+            break;
     };
 };
 
@@ -248,6 +253,13 @@ const submitNewPackage = () => {
 
 // Bio Panel
 const followUser = () => {
-    currentUser.followers++;
-    renderBioPanel();
+    if (currentUser.followers == 0) {
+        followOtherUser();
+        renderBioPanel();
+    };
+};
+
+const changeUser = () => {
+    switchUser();
+    renderPage();
 };
