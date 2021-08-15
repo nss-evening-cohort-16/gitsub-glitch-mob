@@ -211,12 +211,13 @@ const deleteRepo = (_index) => {
 const sortRepos = () => {
     const repoSeachInput = document.querySelector("#repo-searchbar").value.toLowerCase();
 
-        const searchedItems = sampleRepos.filter( (item) => {
-        return (item.repoTitle.includes(repoSeachInput) || item.description.includes(repoSeachInput) || item.tags.includes(repoSeachInput) )
+    const searchedItems = currentUser.filter((item) =>  {
+        item.repoTitle.includes(repoSeachInput) || item.description.includes(repoSeachInput) || item.tags.includes(repoSeachInput);
     });
-   console.log(searchedItems); 
+    console.log(searchedItems); 
 };
-
+        
+    
 // Projects
 const submitNewProject = () => {
     const titleInput = document.querySelector("#project-form-title").value;
