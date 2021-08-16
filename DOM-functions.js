@@ -287,13 +287,19 @@ const filterOpenClosed = (_buttonID) => {
     renderProjectCards("open", _buttonID === "open" ? true : false);
 };
 
+const projectUpdated = (_index) => {
+    currentUser.projectsData[_index].lastUpdated = Date();
+};
+
 const changeProjectPrivacy = (_index) => {
     currentUser.projectsData[_index].private = !currentUser.projectsData[_index].private;
+    projectUpdated(_index);
     renderProjectCards();
 };
 
 const changeProjectStatus = (_index) => {
     currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
+    projectUpdated(_index);
     renderProjectCards();
 };
 
