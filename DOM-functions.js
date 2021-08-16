@@ -78,11 +78,11 @@ const renderProjectForm = () => {
     renderToDOM("#form-container", projectForm);
 };
 
-let filterForPrivateProjects = true;
+let filterForOpenProjects = true;
 const btnRed = "#dc3545";
 const btnGreen = "#198754";
 
-const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateProjects) => {    
+const renderProjectCards = (_filter = "open", _filterValue = filterForOpenProjects) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 
     currentUser.projectsData.forEach((__proj, __i) => {
@@ -283,12 +283,12 @@ const submitNewProject = () => {
 };
 
 const filterOpenClosed = (_buttonID) => {
-    filterForPrivateProjects = _buttonID === "open" ? true : false;
+    filterForOpenProjects = _buttonID === "open" ? true : false;
     renderProjectCards("open", _buttonID === "open" ? true : false);
 };
 
 const projectUpdated = (_index) => {
-    currentUser.projectsData[_index].lastUpdated = Date();
+    currentUser.projectsData[_index].lastUpdated = Math.floor((new Date().getTime() - currentUser.projectsData[_index].lastUpdated) / (1000*60*60));
 };
 
 const changeProjectPrivacy = (_index) => {

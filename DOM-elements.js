@@ -242,7 +242,7 @@ export const repoForm =  `
 export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
       <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
-      <divid="projects-container">
+      <div id="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
           <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
@@ -262,14 +262,12 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
       </div>  
       <hr>
       <div class="project-card-data-container">
-        <div class="project-card-date-container">
-          <div class="project-card-data project-card-created"><u>Created:</u><br>${_projectDataObj.timeCreated}</div> 
-          <div class="project-card-data project-card-updated"><u>Last Updated:</u><br>${_projectDataObj.lastUpdated}</div> 
-        </div>
-        <div class="project-card-status-container">
+        <div class="project-card-info-container">
+          <div class="project-card-data project-card-created"><u>Created:</u> ${_projectDataObj.timeCreated}</div> 
+          <div class="project-card-data project-card-updated"><u>Last Updated:</u> ${_projectDataObj.lastUpdated}</div> 
           <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
           <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
-        </div>  
+        </div>
       </div>
       <div class="project-card-btn-container">
         <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
