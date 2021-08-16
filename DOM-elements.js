@@ -241,7 +241,7 @@ export const repoForm =  `
 // Layout
 export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
-      <input id="projects-searchbar" type="text" placeholder="Search...">
+      <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
       <divid="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
