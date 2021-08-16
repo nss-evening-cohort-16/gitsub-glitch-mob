@@ -70,8 +70,11 @@ const renderProjectsPage = () => {
     renderProjectCards();
 };
 
-let filterForPrivateObjects = true;
-const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateObjects) => {    
+let filterForPrivateProjects = true;
+const btnRed = "#dc3545";
+const btnGreen = "#198754";
+
+const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateProjects) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 
     currentUser.projectsData.forEach((__proj, __i) => {
@@ -79,12 +82,12 @@ const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateObj
             document
                 .getElementById("project-card-status--" + __i)
                 .style
-                .backgroundColor = currentUser.projectsData[__i].open ? "#198754" : "#dc3545";
+                .backgroundColor = currentUser.projectsData[__i].open ? btnGreen : btnRed;
 
             document
                 .getElementById("project-card-privacy--" + __i)
                 .style
-                .backgroundColor = currentUser.projectsData[__i].private ? "#dc3545" : "#198754";
+                .backgroundColor = currentUser.projectsData[__i].private ? btnRed : btnGreen;
             };
         });
 };
@@ -262,7 +265,7 @@ const submitNewProject = () => {
 };
 
 const filterOpenClosed = (_buttonID) => {
-    filterForPrivateObjects = !filterForPrivateObjects;
+    filterForPrivateProjects = !filterForPrivateProjects;
     renderProjectCards("open", _buttonID === "open" ? true : false);
 };
 
