@@ -119,7 +119,7 @@ const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue
                 break;
             
             case "string":
-                if (__obj[_filter].includes(_filterValue)) { addCardToList(__obj, __i); };
+                if (__obj[_filter].toLowerCase().includes(_filterValue.toLowerCase())) { addCardToList(__obj, __i); };
                 break;
             
             default:
