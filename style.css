@@ -161,25 +161,21 @@ h3 {
 }
     .project-card-content-container {
         display: flex;
+        column-gap: 16px;
     }
         .project-card-description, .project-card-created, .project-card-updated {
             color: gray;
         }
-    .project-card-data {
-        margin: 10px;
-    }
     .project-card-data-container {
+        padding: 8px;
+
         font-size: 70%;
+        display: flex;
+        justify-content: space-between;
     }
         .project-card-info-container {
+            column-gap: 16px;
+
             display: flex;
             flex-direction: row;
         }
-        
-    .project-card-btn-container {
-        margin: 8px;
-        
-        display: flex;
-        flex-direction: row-reverse;
-        column-gap: 8px;
-    }

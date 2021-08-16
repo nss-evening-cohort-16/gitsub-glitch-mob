@@ -262,13 +262,13 @@ export const projectsContent = (_filterForOpenProjects) => {
   `;
 };
 
-  const filterOpenButton = `
-    <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
-  `;
-
-  const filterClosedButton = `
-    <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
-  `;
+// Filter: Open/Closed buttons
+const filterOpenButton = `
+  <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
+`;
+const filterClosedButton = `
+  <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
+`;
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
@@ -281,14 +281,14 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
       <hr>
       <div class="project-card-data-container">
         <div class="project-card-info-container">
-          <div class="project-card-data project-card-created"><u>Created:</u> ${_projectDataObj.timeCreated}</div> 
-          <div class="project-card-data project-card-updated"><u>Last Updated:</u> ${_projectDataObj.lastUpdated}</div> 
-          <button class="btn ` + (_projectDataObj.private ? "btn-danger" : "btn-success") + ` project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
-          <button class="btn ` + (_projectDataObj.open ? "btn-success" : "btn-danger") + ` project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
+          <div class="project-card-dates">
+            <div class="project-card-data project-card-created"><u>Created:</u> ${_projectDataObj.timeCreated}</div> 
+            <div class="project-card-data project-card-updated"><u>Last Updated:</u> ${_projectDataObj.lastUpdated}</div> 
+          </div>
+          <button class="btn btn-sm ` + (_projectDataObj.private ? "btn-danger" : "btn-success") + ` project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+          <button class="btn btn-sm ` + (_projectDataObj.open ? "btn-success" : "btn-danger") + ` project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>
-      </div>
-      <div class="project-card-btn-container">
-        <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+        <button class="btn btn-sm btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
       </div>
     </div>`;
 };
