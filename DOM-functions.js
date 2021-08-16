@@ -182,14 +182,9 @@ const buttonClicks = (_event) => {
         
         // Submit "Search" button
 
-        // Filter by Open button
-        case "projects-list-filter-open":
-            renderProjectCards("open", true);
-            break;
-
-        // Filter by Closed button
-        case "projects-list-filter-closed":
-            renderProjectCards("open", false);
+        // Filter by Open/Closed button
+        case "projects-list-filter":
+            renderProjectCards("open", targetIndex === "open" ? true : false);
             break;
 
         // Sort by

@@ -245,8 +245,8 @@ export const projectsContent = `
       <div id="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-closed">Closed</button>
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-open">Open</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter--closed">Closed</button>
+          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter--open">Open</button>
         </div>
         <div id="projects-list-container"></div>
       </div>
@@ -266,8 +266,8 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
           <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
         </div>
         <div class="project-card-status-container">
-        <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
-        <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
+          <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+          <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>  
       </div>
       <div class="project-card-btn-container">
