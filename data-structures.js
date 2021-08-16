@@ -49,7 +49,7 @@ export const newProjectObj = (_title, _description, _privacy) => {
         description: _description,
         timeCreated: Date(),
         lastUpdated: Date(),
-        privacy: _privacy,
+        private: _privacy,
         open: true
     }
 };

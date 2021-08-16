@@ -73,8 +73,8 @@ const renderProjectsPage = () => {
 const renderProjectCards = (_filter = null, _filterValue = null) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 
-    if (document.querySelector(".project-card")) {
-        currentUser.projectsData.forEach((__proj, __i) => {
+    currentUser.projectsData.forEach((__proj, __i) => {
+        if (document.getElementById("project-card--" + __i)) {
             document
                 .getElementById("project-card-status--" + __i)
                 .style
@@ -84,8 +84,8 @@ const renderProjectCards = (_filter = null, _filterValue = null) => {
                 .getElementById("project-card-privacy--" + __i)
                 .style
                 .backgroundColor = currentUser.projectsData[__i].private ? "#dc3545" : "#198754";
+            };
         });
-    };
 };
 
 // Packages Page
@@ -252,7 +252,7 @@ const submitNewProject = () => {
             newProjectObj(
                 titleInput, 
                 descInput, 
-                privateCheck ? "Private" : "Public"),
+                privateCheck),
             currentUser.projectsData);
             
         renderProjectCards();
