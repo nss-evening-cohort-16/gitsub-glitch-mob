@@ -265,7 +265,7 @@ const submitNewProject = () => {
 };
 
 const filterOpenClosed = (_buttonID) => {
-    filterForPrivateProjects = !filterForPrivateProjects;
+    filterForPrivateProjects = _buttonID === "open" ? true : false;
     renderProjectCards("open", _buttonID === "open" ? true : false);
 };
 
