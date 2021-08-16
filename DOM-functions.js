@@ -1,5 +1,5 @@
 import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm, newProjectBtn} from "./DOM-elements.js";
-import { addObjectToUser, currentUser, followOtherUser, switchUser } from "./data-functions.js";
+import { addObjectToUser, currentUser, deleteObjectFromUser, followOtherUser, switchUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -63,15 +63,17 @@ const renderRepoCards = () => {
 };
 
 // Projects Page
-let displayedProjects = [];
 let filterForOpenProjects = true;
 
 const renderProjectsPage = () => {
-    renderToDOM("#list-container", projectsContent);
-    renderNewProjectButton();
-
-    displayedProjects = currentUser.projectsData;
+    renderProjectsContentContainer();
     renderProjectCards();
+
+    renderNewProjectButton();
+};
+
+const renderProjectsContentContainer = () => {
+    renderToDOM("#list-container", projectsContent(filterForOpenProjects));
 };
 
 const renderNewProjectButton = () => {
@@ -82,8 +84,8 @@ const renderProjectForm = () => {
     renderToDOM("#form-container", projectForm);
 };
 
-const renderProjectCards = (_filter = "open", _filterValue = filterForOpenProjects) => {    
-    renderToDOM("#projects-list-container", listOfCards(displayedProjects, projectCardTemplate, _filter, _filterValue));
+const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenProjects, _clear = true) => {    
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _keyFilter, _filterValue), _clear);
 };
 
 // Packages Page
@@ -106,18 +108,35 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
 // Generate a string containing a list of Cards
 const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
     let cardString = "";
-    
+    const addCardToList = (_object, _index) => { 
+        cardString += _cardTemplate(_object, _index); 
+    };
+
     _userDataArray.forEach((__obj, __i) => {
-        if (_filter) {
-            if (__obj[_filter] === _filterValue) {
-                cardString += _cardTemplate(__obj, __i);
-            };
-        } else {
-            cardString += _cardTemplate(__obj, __i);
+        switch(typeof(_filterValue)) {
+            case "boolean":
+                if (__obj[_filter] === _filterValue) { addCardToList(__obj, __i); };
+                break;
+            
+            case "string":
+                if (__obj[_filter].includes(_filterValue)) { addCardToList(__obj, __i); };
+                break;
+            
+            default:
+                addCardToList(__obj, __i);
+                break;
         };
     });
 
     return cardString;
+};
+
+// Render objects with search term included in Title or Description
+const searchObjects = (_searchBarID, _renderCardsFunction) => {
+    const searchTerm = document.querySelector(_searchBarID).value;
+
+    _renderCardsFunction("title", searchTerm);
+    _renderCardsFunction("description", searchTerm, false);
 };
 
 // Print error if form fields are empty
@@ -176,12 +195,13 @@ const buttonClicks = (_event) => {
         // Search Projects button
         case "projects-search-button":
         case "projects-search-btn-img":
-            searchProjects();
+            searchObjects("#projects-searchbar", renderProjectCards);
             break;
 
         // Delete project button
         case "project-deleteBtn":
-            deleteProject(targetIndex);
+            deleteObjectFromUser(currentUser.projectsData, targetIndex);
+            renderProjectCards();
             break;
 
         // Change Privacy button
@@ -223,11 +243,11 @@ const buttonClicks = (_event) => {
 };
 
 
-//// Button Functions \\\\
+//////// Button Functions \\\\\\\\
 
-// Overview
+//// Overview \\\\
 
-// Repos
+//// Repos \\\\
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
     const repoDescriptionInput = document.querySelector("#repo-form-description").value;
@@ -251,9 +271,10 @@ const submitNewRepoForm = () => {
 const deleteRepo = (_index) => {
     currentUser.repoData.splice(_index, 1);
     renderRepoCards();
-}
+};
 
-// Projects
+//// Projects \\\\
+// Create new project
 const submitNewProject = () => {
     const titleInput = document.querySelector("#project-form-title").value;
     const descInput = document.querySelector("#project-form-description").value;
@@ -272,54 +293,33 @@ const submitNewProject = () => {
     };
 };
 
+// Render only Open projects or Closed projects
 const filterOpenClosed = (_buttonID) => {
-    filterForOpenProjects = _buttonID === "open" ? true : false;
-    renderProjectCards("open", _buttonID === "open" ? true : false);
+    filterForOpenProjects = _buttonID === "open" ? false : true;
+    renderProjectsContentContainer();
+    renderProjectCards("open", _buttonID === "open" ? false : true);
 };
 
+// Update the "Last Updated" attribute
 const projectUpdated = (_index) => {
     currentUser.projectsData[_index].lastUpdated = new Date().toLocaleString();
 };
-
+ 
+// Toggle project between Public and Private status
 const changeProjectPrivacy = (_index) => {
     currentUser.projectsData[_index].private = !currentUser.projectsData[_index].private;
     projectUpdated(_index);
     renderProjectCards();
 };
 
+// Toggle project between Open and Closed status
 const changeProjectStatus = (_index) => {
     currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
     projectUpdated(_index);
     renderProjectCards();
 };
 
-const searchProjects = () => {
-    const searchTerm = document.querySelector("#projects-searchbar").value;
-
-    const allProjectTitles = currentUser.projectsData.map(_proj => {
-        return _proj['title'];
-    });
-
-    let searchHits = [];
-    const filteredProjectTitles = allProjectTitles.filter((_projTitle, _i) => {
-        if (_projTitle.includes(searchTerm)) {
-            searchHits.push(currentUser.projectsData[_i]);
-            return true;
-        };
-    });
-
-    displayedProjects = searchHits;
-    renderProjectCards();
-
-    return searchHits;
-};
-
-const deleteProject = (_index) => {
-    currentUser.projectsData.splice(_index, 1);
-    renderProjectCards();
-};
-
-// Packages
+//// Packages \\\\
 const submitNewPackage = () => {
     const packageTitleInput = document.querySelector("#package-form-name").value;
     const packageDescInput = document.querySelector("#package-form-description").value;
@@ -336,7 +336,8 @@ const submitNewPackage = () => {
     };
 };
 
-// Bio Panel
+//// Bio Panel \\\\
+// Follow the other user
 const followUser = () => {
     if (currentUser.followers == 0) {
         followOtherUser();
@@ -344,6 +345,7 @@ const followUser = () => {
     };
 };
 
+// Switch to the other user
 const changeUser = () => {
     switchUser();
     renderPage();

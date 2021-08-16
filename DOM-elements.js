@@ -239,7 +239,9 @@ export const repoForm =  `
 //// Projects \\\\
 
 // Layout
-export const projectsContent = `
+export const projectsContent = (_filterForOpenProjects) => {
+  return `
+    <div class="panel" id="projects-container">
       <h2 id="projects-container-label">Projects</h2>
       <div id="projects-search-container">
         <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
@@ -247,15 +249,26 @@ export const projectsContent = `
           <img id="projects-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
         </button>
       </div>
-      <div id="projects-container">
         <div id="projects-list-header">
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
-          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
+          <div id="projects-list-filterBtn-container">
+          ` + (_filterForOpenProjects ? filterOpenButton : filterClosedButton) + `
+          </div>
+          <div id="projects-list-sortBtn-container">
+            <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
+          </div>
         </div>
         <div id="projects-list-container"></div>
-      </div>
-    `;
+    </div>
+  `;
+};
+
+  const filterOpenButton = `
+    <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
+  `;
+
+  const filterClosedButton = `
+    <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
+  `;
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {

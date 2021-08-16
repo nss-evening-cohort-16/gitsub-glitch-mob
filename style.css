@@ -142,10 +142,16 @@ h3 {
         margin: 8px;
 
         display: flex;
-        flex-direction: row;
-        flex-flow: row-reverse;
-        column-gap: 8px;
     }
+        #projects-list-sortBtn-container {
+            width: 50%;
+            display: flex;
+            flex: row;
+            flex-flow: row-reverse;
+        }
+        #projects-list-filterBtn-container {
+            width: 50%;
+        }
 
 .project-card {
     background-color: var(--backgroundColor);
