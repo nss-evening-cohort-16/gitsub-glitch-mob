@@ -1,5 +1,5 @@
-import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-import { addObjectToUser, currentUser, mapRepoObj } from "./data-functions.js";
+import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { addObjectToUser, currentUser, followOtherUser, switchUser, mapRepoObj } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -45,7 +45,6 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
-    console.log(currentUser);
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
@@ -71,8 +70,26 @@ const renderProjectsPage = () => {
     renderProjectCards();
 };
 
-const renderProjectCards = () => {
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate));
+let filterForPrivateProjects = true;
+const btnRed = "#dc3545";
+const btnGreen = "#198754";
+
+const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateProjects) => {    
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
+
+    currentUser.projectsData.forEach((__proj, __i) => {
+        if (document.getElementById("project-card--" + __i)) {
+            document
+                .getElementById("project-card-status--" + __i)
+                .style
+                .backgroundColor = currentUser.projectsData[__i].open ? btnGreen : btnRed;
+
+            document
+                .getElementById("project-card-privacy--" + __i)
+                .style
+                .backgroundColor = currentUser.projectsData[__i].private ? btnRed : btnGreen;
+            };
+        });
 };
 
 // Packages Page
@@ -93,11 +110,17 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
   };
 
 // Generate a string containing a list of Cards
-const listOfCards = (_userDataArray, _cardTemplate) => {
+const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
     let cardString = "";
     
     _userDataArray.forEach((__obj, __i) => {
-        cardString += _cardTemplate(__obj, __i);
+        if (_filter) {
+            if (__obj[_filter] === _filterValue) {
+                cardString += _cardTemplate(__obj, __i);
+            };
+        } else {
+            cardString += _cardTemplate(__obj, __i);
+        };
     });
 
     return cardString;
@@ -112,20 +135,20 @@ const inputError = (_input, _errorTextDiv) => {
 export const registerEvents = () => {
     document.querySelector("body").addEventListener("click", buttonClicks)
 }; 
+
 const buttonClicks = (_event) => {
     const [targetID, targetIndex] = _event.target.id.split("--");
     
-    // Log clicked ID -- Debug purposes
-    console.log(targetID);
+    // Log clicked target -- Debug purposes
+    console.log("Target: (ID: " + targetID + ") (Index: " + targetIndex + ")");
 
     switch(targetID) {
     
     // Overview Page Buttons \\ 
-    case "pin-repo":
-        
-        console.log(targetIndex);
-        currentUser.repoData[targetIndex].pinned = true;
-break;
+        // Pin Repo button
+        case "pin-repo":
+            currentUser.repoData[targetIndex].pinned = true;
+            break;
 
     // Repos Page Buttons \\
         // Repo Form Submit Button
@@ -140,9 +163,7 @@ break;
             break;
 
         // Submit "Search" button
-        case "repos-list-sort-sort":
-            console.log(mapRepoObj());
-            
+        case "repos-list-sort-sort":            
             searchRepos(mapRepoObj());
             break;
 
@@ -157,10 +178,24 @@ break;
         case "project-deleteBtn":
             deleteProject(targetIndex);
             break;
+
+        // Change Privacy button
+        case "project-card-privacy":
+            changeProjectPrivacy(targetIndex);
+            break;
+
+        // Open or Close project button
+        case "project-card-status":
+            changeProjectStatus(targetIndex);
+            break;
         
         // Submit "Search" button
-        // Filter "Open" button
-        // Filter for "Closed" button
+
+        // Filter by Open/Closed button
+        case "projects-list-filter":
+            filterOpenClosed(targetIndex);
+            break;
+
         // Sort by
 
 
@@ -175,6 +210,11 @@ break;
         // Follow Button
         case "btn-follow":
             followUser();
+            break;
+
+        // Switch User Buttton
+        case "btn-changeUser":
+            changeUser();
             break;
     };
 };
@@ -212,12 +252,11 @@ const deleteRepo = (_index) => {
 
 const searchRepos = (_array) => {
     const repoSearchInput = document.querySelector("#repo-searchbar").value.toLowerCase();
-    console.log(repoSearchInput);
-    console.log(_array);
     const searchedItems = _array.filter(function(_item) {
-        return (_item.includes(repoSearchInput));  //|| item.includes(repoSearchInput) || item.includes(repoSearchInput)
+        return _item.includes(repoSearchInput) || _item.includes(repoSearchInput) || _item.includes(repoSearchInput);
      });
-    console.log(searchedItems); 
+     console.log(searchedItems);
+     //renderRepoCards(); 
 };
         
     
@@ -232,13 +271,28 @@ const submitNewProject = () => {
             newProjectObj(
                 titleInput, 
                 descInput, 
-                privateCheck ? "Private" : "Public"),
+                privateCheck),
             currentUser.projectsData);
             
         renderProjectCards();
         document.querySelector("#project-inputForm").reset();
     };
-}
+};
+
+const filterOpenClosed = (_buttonID) => {
+    filterForPrivateProjects = _buttonID === "open" ? true : false;
+    renderProjectCards("open", _buttonID === "open" ? true : false);
+};
+
+const changeProjectPrivacy = (_index) => {
+    currentUser.projectsData[_index].private = !currentUser.projectsData[_index].private;
+    renderProjectCards();
+};
+
+const changeProjectStatus = (_index) => {
+    currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
+    renderProjectCards();
+};
 
 const deleteProject = (_index) => {
     currentUser.projectsData.splice(_index, 1);
@@ -264,6 +318,13 @@ const submitNewPackage = () => {
 
 // Bio Panel
 const followUser = () => {
-    currentUser.followers++;
-    renderBioPanel();
+    if (currentUser.followers == 0) {
+        followOtherUser();
+        renderBioPanel();
+    };
+};
+
+const changeUser = () => {
+    switchUser();
+    renderPage();
 };

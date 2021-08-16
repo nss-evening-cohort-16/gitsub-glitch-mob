@@ -23,6 +23,15 @@ const loginUser = (_index) => {
   return currentUser = usersArray[_index];
 };
 
+export const switchUser = () => {
+  currentUser.username === usersArray[0].username ? loginUser(1) : loginUser(0);
+};
+
+export const followOtherUser = () => {
+  currentUser.username === usersArray[0].username ? usersArray[0].followers++ : usersArray[1].followers++;
+  currentUser.username === usersArray[0].username ? usersArray[1].following++ : usersArray[0].following++;
+};
+
 export const addObjectToUser = (_newObj, _targetArray) => {
   _targetArray.push(_newObj);
   return _targetArray;
@@ -33,7 +42,8 @@ export const addObjectToUser = (_newObj, _targetArray) => {
 export const mapRepoObj = () => {
   
   const mappedRepoObj = currentUser.repoData.map(_repo => {
-     _repo["repoTitle"]; 
+    return `${_repo.repoTitle}, ${_repo.description}, ${_repo.language}`; 
   });
+  //console.log(mappedRepoObj);
   return mappedRepoObj
 };
