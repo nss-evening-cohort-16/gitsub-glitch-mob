@@ -49,8 +49,8 @@ export const newProjectObj = (_title, _description, _privacy) => {
         description: _description,
         timeCreated: Date(),
         lastUpdated: Date(),
-        privacy: _privacy,
-        status: "Open"
+        private: _privacy,
+        open: true
     }
 };
 

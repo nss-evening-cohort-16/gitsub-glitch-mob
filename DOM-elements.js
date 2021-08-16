@@ -51,7 +51,9 @@ export const bioPanel = (_currentUser) => {
         <div id="bio-sponsors">
             <h3>Sponsors</h3>
             <div id="sponsors-list">${_currentUser.sponsors}</div>
-        </div>`;
+        </div>
+        <button id="btn-changeUser" class="btn btn-secondary btn-sm bio-btn">Change User</button>
+        `;
 };
 
 // Header / NavBar
@@ -132,7 +134,6 @@ export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
 };
 
 // Form
-
 export const simpleRepoCardTemplate = (_repoDataObj,_index) => {
   
   return `
@@ -241,12 +242,12 @@ export const repoForm =  `
 // Layout
 export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
-      <input id="projects-searchbar" type="text" placeholder="Search...">
-      <div id="projects-container">
+      <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+      <divid="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-closed">Closed</button>
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-filter-open">Open</button>
+          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
+          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
         </div>
         <div id="projects-list-container"></div>
       </div>
@@ -255,25 +256,32 @@ export const projectsContent = `
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
-    <div class="project-card" id="project-card--${_index}">
-      <div class="project-card-data project-card-title">Title:<br>${_projectDataObj.title}</div> 
-      <hr>
-      <div class="project-card-data project-card-description">Description:<br>${_projectDataObj.description}</div> 
+    <div class="project-card panel" id="project-card--${_index}">
+      <div class="project-card-content-container">
+        <div class="project-card-data project-card-title">${_projectDataObj.title}</div>
+        <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      </div>  
       <hr>
       <div class="project-card-data-container">
         <div class="project-card-date-container">
-          <div class="project-card-data project-card-created">Created:<br>${_projectDataObj.timeCreated}</div> 
-          <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
+          <div class="project-card-data project-card-created"><u>Created:</u><br>${_projectDataObj.timeCreated}</div> 
+          <div class="project-card-data project-card-updated"><u>Last Updated:</u><br>${_projectDataObj.lastUpdated}</div> 
         </div>
         <div class="project-card-status-container">
-          <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
-          <div class="project-card-data project-card-status">Status: ${_projectDataObj.status}</div>
+          <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+          <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>  
       </div>
-      <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
-    </div>
-  `;
+      <div class="project-card-btn-container">
+        <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+      </div>
+    </div>`;
 };
+
+// New Project Button
+export const newProjectBtn = `
+  <button class="btn btn-success" id="create-project-btn">Create New Project</button>
+`;
 
 // Form
 export const projectForm = `
@@ -286,7 +294,7 @@ export const projectForm = `
      </div>
      <div class="mb-3">
         <label for="project-form-description" class="form-label">Project Description:</label><br>
-        <textarea class="form-control" id="project-form-description" placeholder="Description"></textarea>
+        <textarea required class="form-control" id="project-form-description" placeholder="Description"></textarea>
         <div class="error-container" id="project-desc-error"></div>
      </div>
      <div class="mb-3">
@@ -294,7 +302,8 @@ export const projectForm = `
          <label for="project-form-privacy" class="form-label">Private</label>
      </div>
 
-     <button id="project-form-submitBtn" type="submit" class="btn btn-primary">Submit</button>    
+     <button id="project-form-submitBtn" class="btn btn-primary">Submit</button>    
+     <button id="project-form-cancelBtn" class="btn btn-danger">Cancel</button>    
   </form>`;
 
 //// Packages \\\\

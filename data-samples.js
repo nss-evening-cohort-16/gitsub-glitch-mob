@@ -1,4 +1,4 @@
-import { newUserObj } from "./data-structures.js";
+import { newPackageObj, newProjectObj, newRepoObj, newUserObj } from "./data-structures.js";
 import { addObjectToUser } from "./data-functions.js";
 
 // Generate Sample Users
@@ -81,46 +81,33 @@ const sampleOrganizations = [
 
 // Repos
 const sampleRepos = [
-    {
-        repoTitle: "Repo NUmber 1",
-        description: "Test for repo 1",
-        language: "JavaScript",
-        tags: [],
-        starred: 0,
-        branches: 0,
-        issues: 0,
-        lastUpdated: Date(),
-        pinned: false,
-    },
-    {
-        repoTitle: "Repo NUmber 2",
-        description: "Test for repo 2",
-        language: "JavaScript",
-        tags: [],
-        starred: 0,
-        branches: 0,
-        issues: 0,
-        lastUpdated: Date(),
-        pinned: false,
-    }
+    newRepoObj(
+        "Repo NUmber 1",
+        "Test for repo 1",
+        [],
+        "JavaScript"
+    ),
+    newRepoObj(
+        "Repo NUmber 2",
+        "Test for repo 2",
+        [],
+        "JavaScript"
+    )
 ];
 
 // Projects
 const sampleProjects = [
-    {
-        title: "Project Title",
-        description: "This is a description.",
-        timeCreated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-        lastUpdated: "Sun Aug 08 2021 22:39:03 GMT-0500 (Central Daylight Time)",
-        privacy: "Public",
-        status: "Open"
-    }
+    newProjectObj(
+        "Project Title",
+        "This is a description.",
+        false
+    )
 ];
 
 // Packages
 const samplePackages = [
-    {
-        title: "Title",
-        description: "Description",
-    }
+    newPackageObj(
+        "Title",
+        "Description"
+    )
 ];
