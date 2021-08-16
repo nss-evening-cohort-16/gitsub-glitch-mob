@@ -28,6 +28,7 @@ body {
 
         padding: 16px;
         border: 1px solid var(--borderColor);
+        border-radius: 5px;
         margin: 8px;
     }
 
@@ -59,6 +60,10 @@ body {
 
             #form-container {
                 margin: 15px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }  
 
 
@@ -129,9 +134,17 @@ h3 {
     }
 
 .project-card {
+    background-color: var(--backgroundColor);
+
     border: 1px solid var(--borderColor);
     margin: 8px;
 }
+    .project-card-content-container {
+        display: flex;
+    }
+        .project-card-description, .project-card-created, .project-card-updated {
+            color: gray;
+        }
     .project-card-data {
         margin: 10px;
     }
@@ -142,21 +155,17 @@ h3 {
             display: flex;
             flex-direction: row;
         }
-        .project-card-status-container {
-            display: flex;
-            flex-direction: row;
-        }
-            .project-card-privacy, .project-card-status {
-                padding: 6px;
-                border: 1px solid var(--borderColor);
-                border-radius: 5px;
-                color: white;
-            }
-    
+        
     .project-card-btn-container {
         margin: 8px;
-
+        
         display: flex;
         flex-direction: row-reverse;
         column-gap: 8px;
     }
+        .project-card-privacy, .project-card-status {
+            padding: 6px;
+            border: 1px solid var(--borderColor);
+            border-radius: 5px;
+            color: white;
+        }

@@ -241,12 +241,12 @@ export const repoForm =  `
 // Layout
 export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
-      <input id="projects-searchbar" type="text" placeholder="Search...">
-      <div id="projects-container">
+      <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+      <divid="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Closed</button>
-          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Open</button>
+          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
+          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
         </div>
         <div id="projects-list-container"></div>
       </div>
@@ -255,10 +255,11 @@ export const projectsContent = `
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
-    <div class="project-card" id="project-card--${_index}">
-      <div class="project-card-data project-card-title"><u>Title:</u><br>${_projectDataObj.title}</div> 
-      <hr>
-      <div class="project-card-data project-card-description"><u>Description:</u><br>${_projectDataObj.description}</div> 
+    <div class="project-card panel" id="project-card--${_index}">
+      <div class="project-card-content-container">
+        <div class="project-card-data project-card-title">${_projectDataObj.title}</div>
+        <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      </div>  
       <hr>
       <div class="project-card-data-container">
         <div class="project-card-date-container">
@@ -275,6 +276,11 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
       </div>
     </div>`;
 };
+
+// New Project Button
+export const newProjectBtn = `
+  <button class="btn btn-success" id="create-project-btn">Create New Project</button>
+`;
 
 // Form
 export const projectForm = `
@@ -296,6 +302,7 @@ export const projectForm = `
      </div>
 
      <button id="project-form-submitBtn" class="btn btn-primary">Submit</button>    
+     <button id="project-form-cancelBtn" class="btn btn-danger">Cancel</button>    
   </form>`;
 
 //// Packages \\\\
