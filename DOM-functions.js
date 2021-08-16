@@ -63,6 +63,9 @@ const renderRepoCards = () => {
 };
 
 // Projects Page
+let displayedProjects = [];
+let filterForOpenProjects = true;
+
 const renderProjectsPage = () => {
     renderToDOM("#list-container", projectsContent);
     renderNewProjectButton();
@@ -79,28 +82,8 @@ const renderProjectForm = () => {
     renderToDOM("#form-container", projectForm);
 };
 
-let displayedProjects = [];
-let filterForOpenProjects = true;
-const btnRed = "#dc3545";
-const btnGreen = "#198754";
-
 const renderProjectCards = (_filter = "open", _filterValue = filterForOpenProjects) => {    
     renderToDOM("#projects-list-container", listOfCards(displayedProjects, projectCardTemplate, _filter, _filterValue));
-
-    displayedProjects.forEach((__proj, __i) => {
-        if (document.getElementById("project-card--" + __i)) {
-            document
-                .getElementById("project-card-status--" + __i)
-                .style
-                .backgroundColor = displayedProjects[__i].open ? btnGreen : btnRed;
-
-            document
-                .getElementById("project-card-privacy--" + __i)
-                .style
-                .backgroundColor = displayedProjects[__i].private ? btnRed : btnGreen;
-            };
-        }
-    );
 };
 
 // Packages Page
