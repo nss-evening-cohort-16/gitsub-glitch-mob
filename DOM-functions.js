@@ -70,7 +70,7 @@ const renderProjectsPage = () => {
     renderProjectCards();
 };
 
-const renderProjectCards = (_filter = null, _filterValue = null) => {    
+const renderProjectCards = (_filter = "open", _filterValue = true) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 
     currentUser.projectsData.forEach((__proj, __i) => {
