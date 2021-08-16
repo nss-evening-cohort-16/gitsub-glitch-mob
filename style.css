@@ -28,6 +28,7 @@ body {
 
         padding: 16px;
         border: 1px solid var(--borderColor);
+        border-radius: 5px;
         margin: 8px;
     }
 
@@ -129,6 +130,8 @@ h3 {
     }
 
 .project-card {
+    background-color: var(--backgroundColor);
+
     border: 1px solid var(--borderColor);
     margin: 8px;
 }
