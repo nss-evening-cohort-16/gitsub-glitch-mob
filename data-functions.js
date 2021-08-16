@@ -27,3 +27,12 @@ export const addObjectToUser = (_newObj, _targetArray) => {
   _targetArray.push(_newObj);
   return _targetArray;
 };
+
+// Search
+
+export const mapRepoObj = () => {
+  const mappedRepoObj = currentUser.repoData.map(_repo => {
+    return _repo["repoTitle"]; 
+  });
+  console.log(mappedRepoObj);
+};

@@ -1,5 +1,5 @@
 import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-import { addObjectToUser, currentUser } from "./data-functions.js";
+import { addObjectToUser, currentUser, mapRepoObj } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -140,8 +140,9 @@ break;
 
         // Submit "Search" button
         case "repos-list-sort-sort":
-            _event.preventDefault();
-            sortRepos();
+            console.log(mapRepoObj());
+            
+            searchRepos(mapRepoObj());
             break;
 
     // Projects Page Buttons \\
@@ -208,13 +209,14 @@ const deleteRepo = (_index) => {
     renderRepoCards();
 }
 
-const sortRepos = () => {
-    const repoSeachInput = document.querySelector("#repo-searchbar").value.toLowerCase();
-
-    const searchedItems = currentUser.filter((item) =>  {
-        item.repoTitle.includes(repoSeachInput) || item.description.includes(repoSeachInput) || item.tags.includes(repoSeachInput);
-    });
-    console.log(searchedItems); 
+const searchRepos = (_array) => {
+    const repoSearchInput = document.querySelector("#repo-searchbar").value.toLowerCase();
+    console.log(repoSearchInput);
+    console.log(_array);
+    // const searchedItems = _array.filter(function(_item) {
+    //     return (_item.includes(repoSearchInput));  //|| item.includes(repoSearchInput) || item.includes(repoSearchInput)
+    //  });
+    // console.log(searchedItems); 
 };
         
     
