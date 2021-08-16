@@ -1,11 +1,5 @@
-<<<<<<< HEAD
 import { pinnedRepoCardTemplate,projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
 import { addObjectToUser, currentUser, mapRepoObj } from "./data-functions.js";
-=======
-import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-
-import { addObjectToUser, currentUser } from "./data-functions.js";
->>>>>>> main
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -220,10 +214,10 @@ const searchRepos = (_array) => {
     const repoSearchInput = document.querySelector("#repo-searchbar").value.toLowerCase();
     console.log(repoSearchInput);
     console.log(_array);
-    // const searchedItems = _array.filter(function(_item) {
-    //     return (_item.includes(repoSearchInput));  //|| item.includes(repoSearchInput) || item.includes(repoSearchInput)
-    //  });
-    // console.log(searchedItems); 
+    const searchedItems = _array.filter(function(_item) {
+        return (_item.includes(repoSearchInput));  //|| item.includes(repoSearchInput) || item.includes(repoSearchInput)
+     });
+    console.log(searchedItems); 
 };
         
     
