@@ -47,17 +47,19 @@ const renderBioPanel = () => {
 // Overview Page
 const renderOverviewPage = () => {
     console.log(currentUser);
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
+    renderPinnedReposList();
     renderToDOM("#form-container", pinRepoForm);
-    renderPinnedRepoCard();  
+    renderUnpinnedReposList();  
 
 };
 
-const renderPinnedRepoCard = ()=> {
+const renderUnpinnedReposList = ()=> {
     renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
 };
 
-
+const renderPinnedReposList = () => {
+    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
+}
 // Repos Page
 const renderReposPage = () => {
     renderToDOM("#list-container", reposContent)
@@ -132,7 +134,8 @@ const buttonClicks = (_event) => {
     case "pin-repo":
        console.log(targetIndex);
         currentUser.repoData[targetIndex].pinned = true;
-        renderToDOM("#list-container",renderPinnedRepoCard()); 
+        renderPinnedReposList();
+        renderUnpinnedReposList();
 
 break;
 //delete pinned Repo
