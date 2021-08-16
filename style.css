@@ -141,16 +141,25 @@ h3 {
         .project-card-date-container {
             display: flex;
             flex-direction: row;
+            justify-content: center;
         }
         .project-card-status-container {
             display: flex;
             flex-direction: row;
+            justify-content: center;
         }
+            .project-card-privacy, .project-card-status {
+                padding: 6px;
+                border: 1px solid var(--borderColor);
+                border-radius: 5px;
+                color: white;
+            }
     
     .project-card-btn-container {
         margin: 8px;
 
         display: flex;
-        flex-direction: row-reverse;
+        /* flex-direction: row-reverse; */
+        justify-content: center;
         column-gap: 8px;
     }

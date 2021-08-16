@@ -72,6 +72,20 @@ const renderProjectsPage = () => {
 
 const renderProjectCards = (_filter = null, _filterValue = null) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
+
+    if (document.querySelector(".project-card")) {
+        currentUser.projectsData.forEach((__proj, __i) => {
+            document
+                .getElementById("project-card-status--" + __i)
+                .style
+                .backgroundColor = currentUser.projectsData[__i].open ? "#198754" : "#dc3545";
+
+            document
+                .getElementById("project-card-privacy--" + __i)
+                .style
+                .backgroundColor = currentUser.projectsData[__i].private ? "#dc3545" : "#198754";
+        });
+    };
 };
 
 // Packages Page
@@ -121,8 +135,8 @@ export const registerEvents = () => {
 const buttonClicks = (_event) => {
     const [targetID, targetIndex] = _event.target.id.split("--");
     
-    // Log clicked ID -- Debug purposes
-    console.log(targetID);
+    // Log clicked target -- Debug purposes
+    console.log("Target: (ID: " + targetID + ") (Index: " + targetIndex + ")");
 
     switch(targetID) {
     
@@ -156,19 +170,24 @@ const buttonClicks = (_event) => {
             deleteProject(targetIndex);
             break;
 
+        // Change Privacy button
+        case "project-card-privacy":
+            changeProjectPrivacy(targetIndex);
+            break;
+
         // Open or Close project button
-        case "project-statusBtn":
+        case "project-card-status":
             changeProjectStatus(targetIndex);
             break;
         
         // Submit "Search" button
-        
-        // Filter "Open" button
+
+        // Filter by Open button
         case "projects-list-filter-open":
             renderProjectCards("open", true);
             break;
 
-        // Filter for "Closed" button
+        // Filter by Closed button
         case "projects-list-filter-closed":
             renderProjectCards("open", false);
             break;
@@ -244,6 +263,11 @@ const submitNewProject = () => {
         renderProjectCards();
         document.querySelector("#project-inputForm").reset();
     };
+};
+
+const changeProjectPrivacy = (_index) => {
+    currentUser.projectsData[_index].private = !currentUser.projectsData[_index].private;
+    renderProjectCards();
 };
 
 const changeProjectStatus = (_index) => {

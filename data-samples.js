@@ -100,7 +100,7 @@ const sampleProjects = [
     newProjectObj(
         "Project Title",
         "This is a description.",
-        "Public"
+        false
     )
 ];
 

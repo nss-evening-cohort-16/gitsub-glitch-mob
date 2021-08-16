@@ -266,16 +266,12 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
           <div class="project-card-data project-card-updated">Last Updated:<br>${_projectDataObj.lastUpdated}</div> 
         </div>
         <div class="project-card-status-container">
-          <div class="project-card-data project-card-privacy">Privacy: ${_projectDataObj.privacy}</div> 
-          <div class="project-card-data project-card-status">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</div>
+        <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+        <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>  
       </div>
       <div class="project-card-btn-container">
         <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
-        ` + (_projectDataObj.open ? 
-          `<button class="btn btn-danger close-btn" id="project-statusBtn--${_index}">Close</button>`
-          : `<button class="btn btn-success open-btn" id="project-statusBtn--${_index}">Open</button>`)
-        + `
       </div>
     </div>`;
 };
