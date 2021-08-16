@@ -257,14 +257,9 @@ break;
 
 //////// Button Functions \\\\\\\\
 
-<<<<<<< HEAD
 //// Overview \\\\
 
 //// Repos \\\\
-=======
-// Overview
-// Repos
->>>>>>> main
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
     const repoDescriptionInput = document.querySelector("#repo-form-description").value;
