@@ -243,6 +243,7 @@ export const projectsContent = (_filterForOpenProjects) => {
   return `
     <div class="panel" id="projects-container">
       <h2 id="projects-container-label">Projects</h2>
+      <br>
       <div id="projects-search-container">
         <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
         <button id="projects-search-button">
@@ -257,18 +258,15 @@ export const projectsContent = (_filterForOpenProjects) => {
             <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
           </div>
         </div>
+        <hr>
         <div id="projects-list-container"></div>
     </div>
   `;
 };
 
 // Filter: Open/Closed buttons
-const filterOpenButton = `
-  <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
-`;
-const filterClosedButton = `
-  <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
-`;
+const filterOpenButton = `<button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>`;
+const filterClosedButton = `<button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>`;
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
