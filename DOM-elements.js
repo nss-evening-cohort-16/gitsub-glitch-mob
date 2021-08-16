@@ -241,7 +241,12 @@ export const repoForm =  `
 // Layout
 export const projectsContent = `
       <h2 id="projects-container-label">Projects</h2>
-      <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+      <div id="projects-search-container">
+        <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+        <button id="projects-search-button">
+          <img id="projects-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+        </button>
+      </div>
       <div id="projects-container">
         <div id="projects-list-header">
           <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>

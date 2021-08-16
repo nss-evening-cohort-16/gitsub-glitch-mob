@@ -121,9 +121,23 @@ h3 {
 #projects-container {
     border: 1px solid var(--borderColor);
 }
-    #projects-searchbar {
-        width: 100%
+    #projects-search-container{
+        display: flex;
     }
+        #projects-searchbar {
+            width: 100%
+        }
+        #projects-search-button {
+            border-radius: 5px;
+
+            width: 40px;
+            height: 40px;
+        }
+            #projects-search-btn-img {
+                width: 25px;
+                height: 25px;
+            }
+
     #projects-list-header {
         margin: 8px;
 

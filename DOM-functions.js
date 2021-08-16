@@ -67,6 +67,7 @@ const renderProjectsPage = () => {
     renderToDOM("#list-container", projectsContent);
     renderNewProjectButton();
 
+    displayedProjects = currentUser.projectsData;
     renderProjectCards();
 };
 
@@ -78,26 +79,28 @@ const renderProjectForm = () => {
     renderToDOM("#form-container", projectForm);
 };
 
+let displayedProjects = [];
 let filterForOpenProjects = true;
 const btnRed = "#dc3545";
 const btnGreen = "#198754";
 
 const renderProjectCards = (_filter = "open", _filterValue = filterForOpenProjects) => {    
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
+    renderToDOM("#projects-list-container", listOfCards(displayedProjects, projectCardTemplate, _filter, _filterValue));
 
-    currentUser.projectsData.forEach((__proj, __i) => {
+    displayedProjects.forEach((__proj, __i) => {
         if (document.getElementById("project-card--" + __i)) {
             document
                 .getElementById("project-card-status--" + __i)
                 .style
-                .backgroundColor = currentUser.projectsData[__i].open ? btnGreen : btnRed;
+                .backgroundColor = displayedProjects[__i].open ? btnGreen : btnRed;
 
             document
                 .getElementById("project-card-privacy--" + __i)
                 .style
-                .backgroundColor = currentUser.projectsData[__i].private ? btnRed : btnGreen;
+                .backgroundColor = displayedProjects[__i].private ? btnRed : btnGreen;
             };
-        });
+        }
+    );
 };
 
 // Packages Page
@@ -187,6 +190,12 @@ const buttonClicks = (_event) => {
             renderNewProjectButton();
             break;
 
+        // Search Projects button
+        case "projects-search-button":
+        case "projects-search-btn-img":
+            searchProjects();
+            break;
+
         // Delete project button
         case "project-deleteBtn":
             deleteProject(targetIndex);
@@ -201,8 +210,6 @@ const buttonClicks = (_event) => {
         case "project-card-status":
             changeProjectStatus(targetIndex);
             break;
-        
-        // Submit "Search" button
 
         // Filter by Open/Closed button
         case "projects-list-filter":
@@ -288,7 +295,7 @@ const filterOpenClosed = (_buttonID) => {
 };
 
 const projectUpdated = (_index) => {
-    currentUser.projectsData[_index].lastUpdated = Math.floor((new Date().getTime() - currentUser.projectsData[_index].lastUpdated) / (1000*60*60));
+    currentUser.projectsData[_index].lastUpdated = new Date().toLocaleString();
 };
 
 const changeProjectPrivacy = (_index) => {
@@ -301,6 +308,27 @@ const changeProjectStatus = (_index) => {
     currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
     projectUpdated(_index);
     renderProjectCards();
+};
+
+const searchProjects = () => {
+    const searchTerm = document.querySelector("#projects-searchbar").value;
+
+    const allProjectTitles = currentUser.projectsData.map(_proj => {
+        return _proj['title'];
+    });
+
+    let searchHits = [];
+    const filteredProjectTitles = allProjectTitles.filter((_projTitle, _i) => {
+        if (_projTitle.includes(searchTerm)) {
+            searchHits.push(currentUser.projectsData[_i]);
+            return true;
+        };
+    });
+
+    displayedProjects = searchHits;
+    renderProjectCards();
+
+    return searchHits;
 };
 
 const deleteProject = (_index) => {

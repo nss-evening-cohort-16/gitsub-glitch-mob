@@ -48,7 +48,7 @@ export const newProjectObj = (_title, _description, _privacy) => {
         title: _title,
         description: _description,
         timeCreated: new Date().toLocaleString(),
-        lastUpdated: new Date().getTime(),
+        lastUpdated: new Date().toLocaleString(),
         private: _privacy,
         open: true
     }
