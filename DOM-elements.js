@@ -276,6 +276,11 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
     </div>`;
 };
 
+// New Project Button
+export const newProjectBtn = `
+  <button class="btn btn-success" id="create-project-btn">Create New Project</button>
+`;
+
 // Form
 export const projectForm = `
   <h2 id="project-form-label">Create New Project</h2>
@@ -296,6 +301,7 @@ export const projectForm = `
      </div>
 
      <button id="project-form-submitBtn" class="btn btn-primary">Submit</button>    
+     <button id="project-form-cancelBtn" class="btn btn-danger">Cancel</button>    
   </form>`;
 
 //// Packages \\\\

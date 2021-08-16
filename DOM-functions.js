@@ -1,4 +1,4 @@
-import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
+import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm, newProjectBtn} from "./DOM-elements.js";
 import { addObjectToUser, currentUser, followOtherUser, switchUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
@@ -65,9 +65,17 @@ const renderRepoCards = () => {
 // Projects Page
 const renderProjectsPage = () => {
     renderToDOM("#list-container", projectsContent);
-    renderToDOM("#form-container", projectForm);
+    renderNewProjectButton();
 
     renderProjectCards();
+};
+
+const renderNewProjectButton = () => {
+    renderToDOM("#form-container", newProjectBtn);
+};
+
+const renderProjectForm = () => {
+    renderToDOM("#form-container", projectForm);
 };
 
 let filterForPrivateProjects = true;
@@ -163,10 +171,20 @@ const buttonClicks = (_event) => {
             break;
 
     // Projects Page Buttons \\
-        // Project Form Submit Button
+        // Create New Project button
+        case "create-project-btn":
+            renderProjectForm();
+            break;
+
+        // Project Form Submit button
         case "project-form-submitBtn":
             _event.preventDefault();
             submitNewProject();            
+            break;
+        
+        // Project Form Cancel button
+        case "project-form-cancelBtn":
+            renderNewProjectButton();
             break;
 
         // Delete project button
@@ -260,7 +278,7 @@ const submitNewProject = () => {
             currentUser.projectsData);
             
         renderProjectCards();
-        document.querySelector("#project-inputForm").reset();
+        renderNewProjectButton();
     };
 };
 
