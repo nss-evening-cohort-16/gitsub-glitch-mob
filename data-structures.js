@@ -29,7 +29,7 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
 // Repos Page
 export const newRepoObj = (_repoTitle, _description, _tags, _language) => {
     return {
-        repoTitle: _repoTitle,
+        title: _repoTitle,
         description: _description,
         tags: _tags,
         language: _language,

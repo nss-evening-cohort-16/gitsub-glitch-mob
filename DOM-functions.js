@@ -136,7 +136,7 @@ const searchObjects = (_searchBarID, _renderCardsFunction) => {
     const searchTerm = document.querySelector(_searchBarID).value;
 
     _renderCardsFunction("title", searchTerm);
-    _renderCardsFunction("description", searchTerm, false);
+    if (searchTerm) { _renderCardsFunction("description", searchTerm, false); };
 };
 
 // Print error if form fields are empty
