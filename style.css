@@ -127,6 +127,7 @@ h3 {
         #projects-searchbar, #projects-search-button, #project-form-title, #project-form-description {
             background-color: var(--backgroundColor);
             border: 1px solid var(--borderColor);
+            color: var(--primaryFontColor);
         }
         #projects-search-btn-img {
             background-color: var(--backgroundColor);
