@@ -70,7 +70,8 @@ const renderProjectsPage = () => {
     renderProjectCards();
 };
 
-const renderProjectCards = (_filter = "open", _filterValue = true) => {    
+let filterForPrivateObjects = true;
+const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateObjects) => {    
     renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
 
     currentUser.projectsData.forEach((__proj, __i) => {
@@ -184,7 +185,7 @@ const buttonClicks = (_event) => {
 
         // Filter by Open/Closed button
         case "projects-list-filter":
-            renderProjectCards("open", targetIndex === "open" ? true : false);
+            filterOpenClosed(targetIndex);
             break;
 
         // Sort by
@@ -258,6 +259,11 @@ const submitNewProject = () => {
         renderProjectCards();
         document.querySelector("#project-inputForm").reset();
     };
+};
+
+const filterOpenClosed = (_buttonID) => {
+    filterForPrivateObjects = !filterForPrivateObjects;
+    renderProjectCards("open", _buttonID === "open" ? true : false);
 };
 
 const changeProjectPrivacy = (_index) => {
