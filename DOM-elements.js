@@ -256,9 +256,10 @@ export const projectsContent = `
 export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
     <div class="project-card panel" id="project-card--${_index}">
-      <div class="project-card-data project-card-title"><u>Title:</u><br>${_projectDataObj.title}</div> 
-      <hr>
-      <div class="project-card-data project-card-description"><u>Description:</u><br>${_projectDataObj.description}</div> 
+      <div class="project-card-content-container">
+        <div class="project-card-data project-card-title">${_projectDataObj.title}</div>
+        <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      </div>  
       <hr>
       <div class="project-card-data-container">
         <div class="project-card-date-container">
