@@ -190,13 +190,32 @@ h3 {
 
 /* Packages Page */
 
-#packages-search-button {
-    border-radius: 5px;
-
-    width: 40px;
-    height: 40px;
+#packages-search-container{
+    display: flex;
 }
+    #packages-searchbar, #packages-search-button, #package-form-name, #package-form-description{
+        background-color: var(--backgroundColor);
+        border: 1px solid var(--borderColor);
+        color: var(--primaryFontColor);
+    }
+    #packages-search-btn-img {
+        background-color: var(--backgroundColor);
+    }
+    #packages-search-button {
+        border-radius: 5px;
+        width: 40px;
+        height: 40px;
+    }
+        #packages-search-btn-img {
+            width: 25px;
+            height: 25px;
+        }
 
+.packages-card {
+    background-color: var(--backgroundColor);
+    border: 1px solid var(--borderColor);
+    margin: 8px;
+        }
 #packages-search-btn-img {
     width: 25px;
     height: 25px;
