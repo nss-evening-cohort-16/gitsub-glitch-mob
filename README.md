@@ -25,17 +25,17 @@
         - Has a form that allows the user to pin any repository to their overview page.
 
     - Repositories Page: 
-        <!-- Has a search bar that allows the user to search for a specific saved repository by title, description, tag, or language. -->
+        - Has a search bar that allows the user to search for a specific saved repository by title, description, tag, or language.
         - Has a list of repositories which can be deleted.
         - Has a form that allows the user to create a new repository that will add it to the list above.
 
     - Projects Page:
-        <!-- Has a search bar that allows the user to search for a specific saved project by title, description, or private/public status. -->
+        - Has a search bar that allows the user to search for a specific saved project by title, description, or private/public status.
         - Has a list of projects. These projects can can be deleted from the list.
         - Has a form that allows the user to create a new project that will then be added to the list above. 
     
     - Packages Page:
-        <!-- Has a search bar that allows the user to search for a specific saved package by title, or description. -->
+        - Has a search bar that allows the user to search for a specific saved package by title, or description.
         - Has a list of packages. These package can can be deleted from the list.
         - Has a form that allows the user to create a new package that will then be added to the list above.
         
@@ -69,8 +69,11 @@
     - The user will be able to splice a package from the Packages page when the delete button is clicked on the specific package. 
      
 
-## Screenshots
-    Screenshots of your project
+## Loom Video
+    - Overview Page: 
+    - Repositories Page: https://www.loom.com/share/2fca2ef0810d408380665b4f0b065cd0
+    - Projects Page: 
+    - Packages Page:
 
 
 ## Contributors

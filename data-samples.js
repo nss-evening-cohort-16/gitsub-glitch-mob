@@ -92,6 +92,19 @@ const sampleRepos = [
         "Test for repo 2",
         [],
         "JavaScript"
+    ),
+    newRepoObj(
+        "Repo Number 3",
+        "Test for repo 2",
+        [],
+        "JavaScript"
+    ),
+
+    newRepoObj(
+        "Repo Number 4",
+        "Test for repo 2",
+        [],
+        "JavaScript"
     )
 ];
 

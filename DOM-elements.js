@@ -105,7 +105,8 @@ export const footer = `<div id="yr-updated">2021 Us</div>
 // Card Template
 export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
   return `
-    <div class="card" style="width: 18rem;" id="pinnedrepos-card--${_index}"> 
+  <div class = "card">
+    <div class="card-unpinned" style="width: 80rem;" id="pinnedrepos-card--${_index}"> 
       <div class="repo-body">
         <div>
           <h5 class="pinnedrepo-title" id="pinnedrepo-title">${_repoDataObj.title}</h5>
@@ -137,13 +138,13 @@ export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
 export const simpleRepoCardTemplate = (_repoDataObj,_index) => {
   
   return `
-      <div class="card" style="width: 18rem;" id = "simplerepocard--${_index}> 
+      <div class="card-pin" style="width: 80rem;"id = "simplerepocard--${_index}"> 
         <div class="repo-body">
           <div>
             <h5 class="pinnedrepo-title">${_repoDataObj.title}</h5>
           </div>
             <div> 
-              <button type = "button" id="pin-repo--${_index}" class="Pinnedrepo-btn">Pin Repos</button>
+              <button type = "button" id="pin-repo--${_index}" class="Pinnedrepo-btn">Pin</button>
             </div>
           </div>
       `
@@ -160,12 +161,10 @@ export const pinRepoForm  =
 // Layout
 export const reposContent = `
 <h2 id="repo-container-label">Repository</h2>
-<input id="repo-searchbar" type="text" placeholder="Search...">
+<input class="form-control" id="repo-searchbar" type="text" placeholder="Search...">
 <div id="repos-container">
   <div id="repos-list-header">
-    <button class="repos-sort-btn" id="repos-list-sort-sort">Sort</button>
-    <button class="repos-sort-btn" id="repos-list-sort-closed">Closed</button>
-    <button class="repos-sort-btn" id="repos-list-sort-open">Open</button>
+    <button class="repos-sort-btn" id="repos-list-sort-sort">Search</button>
   </div>
   <div id="repo-list-container"></div>
 </div>
@@ -174,33 +173,37 @@ export const reposContent = `
 // Card Template
 export const repoCardTemplate = (_repoDataObj, _index) => {
   return `
-   <div class="card" id="repos-card--${_index}"> 
+   <div class="panel repo-card" id="repos-card--${_index}"> 
       <div class="repo-body">
-        <div>
-          <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
+        <div class="panel">
+          <div>
+          <h5 class=" repo-title" id="repo-title-style">${_repoDataObj.title}</h5>
+          </div>
+          <div>
+          <h6 class="repo-text" id="repo-description-style">${_repoDataObj.description}</h6>
+          </div>
         </div>
-        <div>
-          <h6 class="repo-text">${_repoDataObj.description}</h6>
-        </div>
-        <div>
+        <div id="repo-tag-style">
           <p class="repo-tags">${_repoDataObj.tags}</p>
         </div>
-        <div>
-          <p class="repo-language">${_repoDataObj.language}</p>
-          <div> 
-            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          <div class="panel">
+            <p class="repo-language">${_repoDataObj.language}</p>
           </div>
-          <div>
+        <div class="repo-details panel">
+          <div >
+            <button href="#" class=" repo-btn repo-btn-starred">0</button>
+          </div>
+          <div >
             <p>Branches:</p>
-            <p href="#" class="repo-btn repo-btn-branches">0</p>
+            <p href="#" class=" repo-btn repo-btn-branches">0</p>
           </div>
-          <div>
+          <div >
             <p>Issues: </p>
-            <p href="#" class="repo-btn repo-btn-issues">0</p>
+            <p href="#" class=" repo-btn repo-btn-issues">0</p>
           </div>
-          <div>
+          <div >
             <p>Last Updated:</p>
-            <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
+            <p href="#" class=" repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
           </div>
         </div>
       </div>
@@ -212,7 +215,7 @@ export const repoCardTemplate = (_repoDataObj, _index) => {
 // Form
 export const repoForm =  `
      <form id="repo-inputForm">
-        <div class="mb-3">
+        <div class="mb-3 panel">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
             <input type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title">
             <div class="error-container" id="repo-title-error"></div>
@@ -324,14 +327,16 @@ export const projectForm = `
 
 // Layout
 export const packagesContent = `
-      <h2 id="packages-container-label">Packages</h2>
-      <input id="packages-searchbar" type="text" placeholder="Search...">
+      <h2  class="panel" id="packages-container-label">Packages</h2>
       <div>
           <div id="packages-list-header">
-            <button id="packages-search-button">
-              <img id="packages-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
-            </button>
-          </div>    
+              <div id="packages-search-container">
+                <input class="form-control" id="packages-searchbar" type="text" placeholder="Search...">
+                <button id="packages-search-button">
+                <img id="packages-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+                </button>
+            </div>
+          </div> 
         <div id="packages-list-container"></div>
       </div>
     `;
@@ -339,14 +344,16 @@ export const packagesContent = `
 // Card Template
 export const packageCardTemplate = (_packageDataObj, _index) => {
   return `
-    <div>
+    <div class="panel packages-card" id="packages-card-container">
         <div id="packages-card--${_index}">
           <div class="card-body">
-            <h5 class="card-title">${_packageDataObj.title}</h5>
-            <p class="card-text">${_packageDataObj.description}</p>
-            <button class="btn btn-primary">Learn More</button>
-          <div>
-            <button class="btn btn-danger delete-btn" id="package-deleteBtn--${_index}">Delete</button>
+            <div class="panel">
+              <h5 class="card-title">${_packageDataObj.title}</h5>
+              <p class="card-text">${_packageDataObj.description}</p>
+            </div>
+            <div class="btn-container">
+              <button class="btn btn-success">Learn More</button>
+              <button class="btn btn-danger delete-btn" id="package-deleteBtn--${_index}">Delete</button>
           </div>
         </div>
       </div>
@@ -370,7 +377,7 @@ export const packageForm =
           <div class="error-container" id="package-desc-error"></div>
       </div>
       <div class="d-grid gap-2 d-md-block">
-        <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
+        <button id="package-form-submitBtn" class="btn btn-success" type="submit">Create Package</button>
       </div>
     </form>
   `;
