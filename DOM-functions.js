@@ -56,7 +56,8 @@ const renderUnpinnedReposList = ()=> {
 
 const renderPinnedReposList = () => {
     renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate , "pinned", true));
-}
+};
+
 // Repos Page
 const renderReposPage = () => {
     renderToDOM("#list-container", reposContent)
@@ -116,22 +117,27 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
   };
 
 // Generate a string containing a list of Cards
-const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
+const listOfCards = (_objectDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
     let cardString = "";
     const addCardToList = (_object, _index) => { 
         cardString += _cardTemplate(_object, _index); 
     };
 
-    _userDataArray.forEach((__obj, __i) => {
+    _objectDataArray.forEach((__obj, __i) => {
         switch(typeof(_filterValue)) {
             case "boolean":
-                if (__obj[_filter] === _filterValue) { addCardToList(__obj, __i); };
+                if (__obj[_filter] === _filterValue) {
+                    addCardToList(__obj, __i);
+                };
                 break;
             
             case "string":
-                _filter.forEach(__filterTerm => {
-                    if (__obj[__filterTerm].toLowerCase().includes(_filterValue.toLowerCase())) { addCardToList(__obj, __i); };
-                });
+                for (String of _filter) {
+                    if (__obj[String].toLowerCase().includes(_filterValue.toLowerCase())) {
+                        addCardToList(__obj, __i);
+                        break;
+                    };                    
+                };
                 break;
             
             default:
@@ -147,7 +153,7 @@ const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue
 const searchObjects = (_searchBarID, _renderCardsFunction, _searchKeys = ["title", "description"]) => {
     const searchTerm = document.querySelector(_searchBarID).value;
 
-    if (searchTerm) { _renderCardsFunction(_searchKeys, searchTerm); };
+    _renderCardsFunction(_searchKeys, searchTerm);
 };
 
 // Print error if form fields are empty
@@ -162,25 +168,22 @@ export  const registerEvents = () => {
 
 const buttonClicks = (_event) => {
     const [targetID, targetIndex] = _event.target.id.split("--");
-    
-    // Log clicked target -- Debug purposes
-    console.log("Target: (ID: " + targetID + ") (Index: " + targetIndex + ")");
 
     switch(targetID) {
     
     // Overview Page Buttons \\ 
-    //pinned repo submit button
-    case "pin-repo":
-        currentUser.repoData[targetIndex].pinned = true;
-        renderPinnedReposList();
-        renderUnpinnedReposList();
-        break;
+        // pinned repo submit button
+        case "pin-repo":
+            currentUser.repoData[targetIndex].pinned = true;
+            renderPinnedReposList();
+            renderUnpinnedReposList();
+            break;
 
-    case "pinned-repo-deleteBtn":
-        currentUser.repoData[targetIndex].pinned = false;
-        renderPinnedReposList();
-        renderUnpinnedReposList();
-        break;
+        case "pinned-repo-deleteBtn":
+            currentUser.repoData[targetIndex].pinned = false;
+            renderPinnedReposList();
+            renderUnpinnedReposList();
+            break;
     
 //delete pinned Repo
     // Repos Page Buttons \\
@@ -332,7 +335,7 @@ const submitNewProject = () => {
 const filterOpenClosed = (_buttonID) => {
     filterForOpenProjects = _buttonID === "open" ? false : true;
     renderProjectsContentContainer();
-    renderProjectCards("open", _buttonID === "open" ? false : true);
+    renderProjectCards("open", filterForOpenProjects);
 };
 
 // Update the "Last Updated" attribute
