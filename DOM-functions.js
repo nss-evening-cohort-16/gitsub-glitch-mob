@@ -45,18 +45,18 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
+    renderPinnedReposList();
     renderUnpinnedReposList();  
 
 };
 
 const renderUnpinnedReposList = ()=> {
-    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
+    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate, "pinned" , false));  
 };
 
 const renderPinnedReposList = () => {
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
+    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate , "pinned", true));
 }
 // Repos Page
 const renderReposPage = () => {
@@ -174,6 +174,12 @@ const buttonClicks = (_event) => {
         renderUnpinnedReposList();
 
 break;
+case "pinned-repo-deleteBtn":
+    currentUser.repoData[targetIndex].pinned = false;
+    renderPinnedReposList();
+    renderUnpinnedReposList();
+    break;
+    
 //delete pinned Repo
     // Repos Page Buttons \\
         // Repo Form Submit Button
