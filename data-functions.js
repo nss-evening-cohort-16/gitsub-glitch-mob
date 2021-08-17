@@ -32,18 +32,12 @@ export const followOtherUser = () => {
   currentUser.username === usersArray[0].username ? usersArray[1].following++ : usersArray[0].following++;
 };
 
+
+// Alter user object arrays
 export const addObjectToUser = (_newObj, _targetArray) => {
-  _targetArray.push(_newObj);
-  return _targetArray;
+  return _targetArray.push(_newObj);
 };
 
-// Search
-
-export const mapRepoObj = () => {
-  
-  const mappedRepoObj = currentUser.repoData.map(_repo => {
-    return `${_repo.repoTitle}, ${_repo.description}, ${_repo.language}`; 
-  });
-  //console.log(mappedRepoObj);
-  return mappedRepoObj
+export const deleteObjectFromUser = (_targetArray, _index) => {
+  return _targetArray.splice(_index, 1);
 };

@@ -57,16 +57,16 @@ export const bioPanel = (_currentUser) => {
 };
 
 // Header / NavBar
-export const header = `<nav class="navbar navbar-expand-lg navbar-dark">
+export const header = `
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html" id ="Overview">Overview</a>
+                <a class="nav-link" href="index.html" id ="Overview">Overview</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="repos.html" id="Repositories">Repositories</a>
@@ -103,15 +103,15 @@ export const footer = `<div id="yr-updated">2021 Us</div>
 //// Overview \\\\\
 
 // Card Template
-export const pinnedRepoCardTemplate = (_repoDataObj) => {
+export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
   return `
-    <div class="card" style="width: 18rem;"> 
+    <div class="card" style="width: 18rem;" id="pinnedrepos-card--${_index}"> 
       <div class="repo-body">
         <div>
-          <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
+          <h5 class="pinnedrepo-title" id="pinnedrepo-title">${_repoDataObj.title}</h5>
         </div>
         <div>
-          <h6 class="pinnedrepo-text">${_repoDataObj.description}</h6>
+          <h6 class="pinnedrepo-text id = "pinnedrepo-description">${_repoDataObj.description}</h6>
         </div>
         <div>
           <p class="pinnedrepo-language">${_repoDataObj.language}</p>
@@ -126,6 +126,7 @@ export const pinnedRepoCardTemplate = (_repoDataObj) => {
             <p>Issues: </p>
             <p href="#" class="repo-btn repo-btn-issues">0</p>
           </div>
+          <button type ="button" class="btn delete-btn" id="pinned-repo-deleteBtn--${_index}">Unpinned</button>
         </div>
       </div>
     </div>
@@ -139,7 +140,7 @@ export const simpleRepoCardTemplate = (_repoDataObj,_index) => {
       <div class="card" style="width: 18rem;" id = "simplerepocard--${_index}> 
         <div class="repo-body">
           <div>
-            <h5 class="pinnedrepo-title">${_repoDataObj.repoTitle}</h5>
+            <h5 class="pinnedrepo-title">${_repoDataObj.title}</h5>
           </div>
             <div> 
               <button type = "button" id="pin-repo--${_index}" class="Pinnedrepo-btn">Pin Repos</button>
@@ -239,42 +240,62 @@ export const repoForm =  `
 //// Projects \\\\
 
 // Layout
-export const projectsContent = `
+export const projectsContent = (_filterForOpenProjects) => {
+  return `
+    <div class="panel" id="projects-container">
       <h2 id="projects-container-label">Projects</h2>
-      <input id="projects-searchbar" type="text" placeholder="Search...">
-      <div id="projects-container">
-        <div id="projects-list-header">
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Closed</button>
-          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Open</button>
-        </div>
-        <div id="projects-list-container"></div>
+      <br>
+      <div id="projects-search-container">
+        <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+        <button id="projects-search-button">
+          <img id="projects-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+        </button>
       </div>
-    `;
+        <div id="projects-list-header">
+          <div id="projects-list-filterBtn-container">
+          ` + (_filterForOpenProjects ? filterOpenButton : filterClosedButton) + `
+          </div>
+          <div id="projects-list-sortBtn-container">
+            <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
+          </div>
+        </div>
+        <hr>
+        <div id="projects-list-container"></div>
+    </div>
+  `;
+};
+
+// Filter: Open/Closed buttons
+const filterOpenButton = `<button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>`;
+const filterClosedButton = `<button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>`;
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
   return `
-    <div class="project-card" id="project-card--${_index}">
-      <div class="project-card-data project-card-title"><u>Title:</u><br>${_projectDataObj.title}</div> 
-      <hr>
-      <div class="project-card-data project-card-description"><u>Description:</u><br>${_projectDataObj.description}</div> 
+    <div class="project-card panel" id="project-card--${_index}">
+      <div class="project-card-content-container">
+        <div class="project-card-data project-card-title">${_projectDataObj.title}</div>
+        <div class="project-card-data project-card-description">${_projectDataObj.description}</div> 
+      </div>  
       <hr>
       <div class="project-card-data-container">
-        <div class="project-card-date-container">
-          <div class="project-card-data project-card-created"><u>Created:</u><br>${_projectDataObj.timeCreated}</div> 
-          <div class="project-card-data project-card-updated"><u>Last Updated:</u><br>${_projectDataObj.lastUpdated}</div> 
+        <div class="project-card-info-container">
+          <div class="project-card-dates">
+            <div class="project-card-data project-card-created"><u>Created:</u> ${_projectDataObj.timeCreated}</div> 
+            <div class="project-card-data project-card-updated"><u>Last Updated:</u> ${_projectDataObj.lastUpdated}</div> 
+          </div>
+          <button class="btn btn-sm ` + (_projectDataObj.private ? "btn-danger" : "btn-success") + ` project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+          <button class="btn btn-sm ` + (_projectDataObj.open ? "btn-success" : "btn-danger") + ` project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>
-        <div class="project-card-status-container">
-          <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
-          <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
-        </div>  
-      </div>
-      <div class="project-card-btn-container">
-        <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+        <button class="btn btn-sm btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
       </div>
     </div>`;
 };
+
+// New Project Button
+export const newProjectBtn = `
+  <button class="btn btn-success" id="create-project-btn">Create New Project</button>
+`;
 
 // Form
 export const projectForm = `
@@ -296,6 +317,7 @@ export const projectForm = `
      </div>
 
      <button id="project-form-submitBtn" class="btn btn-primary">Submit</button>    
+     <button id="project-form-cancelBtn" class="btn btn-danger">Cancel</button>    
   </form>`;
 
 //// Packages \\\\
@@ -324,7 +346,7 @@ export const packageCardTemplate = (_packageDataObj, _index) => {
             <p class="card-text">${_packageDataObj.description}</p>
             <button class="btn btn-primary">Learn More</button>
           <div>
-            <button class="btn btn-danger delete-btn">Delete</button>
+            <button class="btn btn-danger delete-btn" id="package-deleteBtn">Delete</button>
           </div>
         </div>
       </div>

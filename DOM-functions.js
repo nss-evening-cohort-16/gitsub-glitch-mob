@@ -1,5 +1,5 @@
-import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm} from "./DOM-elements.js";
-import { addObjectToUser, currentUser, followOtherUser, switchUser, mapRepoObj } from "./data-functions.js";
+import { pinnedRepoCardTemplate, projectsContent, projectCardTemplate, projectForm, packageCardTemplate, packageForm, packagesContent, reposContent, repoCardTemplate, repoForm, pageLayout, header, footer, bioPanel, simpleRepoCardTemplate, pinRepoForm, newProjectBtn} from "./DOM-elements.js";
+import { addObjectToUser, currentUser, deleteObjectFromUser, followOtherUser, switchUser } from "./data-functions.js";
 import { newProjectObj, newRepoObj, newPackageObj } from "./data-structures.js";
 
 //// Page Construction \\\\
@@ -45,11 +45,19 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
-    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate));  
+    renderPinnedReposList();
+    renderUnpinnedReposList();  
+
 };
 
+const renderUnpinnedReposList = ()=> {
+    renderToDOM("#pinnedRepoForm-card-container", listOfCards(currentUser.repoData, simpleRepoCardTemplate, "pinned" , false));  
+};
+
+const renderPinnedReposList = () => {
+    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate , "pinned", true));
+}
 // Repos Page
 const renderReposPage = () => {
     renderToDOM("#list-container", reposContent)
@@ -63,33 +71,29 @@ const renderRepoCards = () => {
 };
 
 // Projects Page
-const renderProjectsPage = () => {
-    renderToDOM("#list-container", projectsContent);
-    renderToDOM("#form-container", projectForm);
+let filterForOpenProjects = true;
 
+const renderProjectsPage = () => {
+    renderProjectsContentContainer();
     renderProjectCards();
+
+    renderNewProjectButton();
 };
 
-let filterForPrivateProjects = true;
-const btnRed = "#dc3545";
-const btnGreen = "#198754";
+const renderProjectsContentContainer = () => {
+    renderToDOM("#list-container", projectsContent(filterForOpenProjects));
+};
 
-const renderProjectCards = (_filter = "open", _filterValue = filterForPrivateProjects) => {    
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _filter, _filterValue));
+const renderNewProjectButton = () => {
+    renderToDOM("#form-container", newProjectBtn);
+};
 
-    currentUser.projectsData.forEach((__proj, __i) => {
-        if (document.getElementById("project-card--" + __i)) {
-            document
-                .getElementById("project-card-status--" + __i)
-                .style
-                .backgroundColor = currentUser.projectsData[__i].open ? btnGreen : btnRed;
+const renderProjectForm = () => {
+    renderToDOM("#form-container", projectForm);
+};
 
-            document
-                .getElementById("project-card-privacy--" + __i)
-                .style
-                .backgroundColor = currentUser.projectsData[__i].private ? btnRed : btnGreen;
-            };
-        });
+const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenProjects, _clear = true) => {    
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _keyFilter, _filterValue), _clear);
 };
 
 // Packages Page
@@ -112,18 +116,35 @@ const renderToDOM = (_targetDivID, _element, _clear = true) => {
 // Generate a string containing a list of Cards
 const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue = null) => {
     let cardString = "";
-    
+    const addCardToList = (_object, _index) => { 
+        cardString += _cardTemplate(_object, _index); 
+    };
+
     _userDataArray.forEach((__obj, __i) => {
-        if (_filter) {
-            if (__obj[_filter] === _filterValue) {
-                cardString += _cardTemplate(__obj, __i);
-            };
-        } else {
-            cardString += _cardTemplate(__obj, __i);
+        switch(typeof(_filterValue)) {
+            case "boolean":
+                if (__obj[_filter] === _filterValue) { addCardToList(__obj, __i); };
+                break;
+            
+            case "string":
+                if (__obj[_filter].toLowerCase().includes(_filterValue.toLowerCase())) { addCardToList(__obj, __i); };
+                break;
+            
+            default:
+                addCardToList(__obj, __i);
+                break;
         };
     });
 
     return cardString;
+};
+
+// Render objects with search term included in Title or Description
+const searchObjects = (_searchBarID, _renderCardsFunction) => {
+    const searchTerm = document.querySelector(_searchBarID).value;
+
+    _renderCardsFunction("title", searchTerm);
+    if (searchTerm) { _renderCardsFunction("description", searchTerm, false); };
 };
 
 // Print error if form fields are empty
@@ -145,11 +166,21 @@ const buttonClicks = (_event) => {
     switch(targetID) {
     
     // Overview Page Buttons \\ 
-        // Pin Repo button
-        case "pin-repo":
-            currentUser.repoData[targetIndex].pinned = true;
-            break;
+    //pinned repo submit button
+    case "pin-repo":
+       console.log(targetIndex);
+        currentUser.repoData[targetIndex].pinned = true;
+        renderPinnedReposList();
+        renderUnpinnedReposList();
 
+break;
+case "pinned-repo-deleteBtn":
+    currentUser.repoData[targetIndex].pinned = false;
+    renderPinnedReposList();
+    renderUnpinnedReposList();
+    break;
+    
+//delete pinned Repo
     // Repos Page Buttons \\
         // Repo Form Submit Button
         case "repo-form-submitBtn":
@@ -168,15 +199,32 @@ const buttonClicks = (_event) => {
             break;
 
     // Projects Page Buttons \\
-        // Project Form Submit Button
+        // Create New Project button
+        case "create-project-btn":
+            renderProjectForm();
+            break;
+
+        // Project Form Submit button
         case "project-form-submitBtn":
             _event.preventDefault();
             submitNewProject();            
             break;
+        
+        // Project Form Cancel button
+        case "project-form-cancelBtn":
+            renderNewProjectButton();
+            break;
+
+        // Search Projects button
+        case "projects-search-button":
+        case "projects-search-btn-img":
+            searchObjects("#projects-searchbar", renderProjectCards);
+            break;
 
         // Delete project button
         case "project-deleteBtn":
-            deleteProject(targetIndex);
+            deleteObjectFromUser(currentUser.projectsData, targetIndex);
+            renderProjectCards();
             break;
 
         // Change Privacy button
@@ -188,8 +236,6 @@ const buttonClicks = (_event) => {
         case "project-card-status":
             changeProjectStatus(targetIndex);
             break;
-        
-        // Submit "Search" button
 
         // Filter by Open/Closed button
         case "projects-list-filter":
@@ -206,6 +252,10 @@ const buttonClicks = (_event) => {
             submitNewPackage();            
             break;
 
+        case "package-deleteBtn":
+            deletePackage(targetIndex);
+            break;
+
     // Bio Panel Buttons \\
         // Follow Button
         case "btn-follow":
@@ -220,11 +270,11 @@ const buttonClicks = (_event) => {
 };
 
 
-//// Button Functions \\\\
+//////// Button Functions \\\\\\\\
 
-// Overview
+//// Overview \\\\
 
-// Repos
+//// Repos \\\\
 const submitNewRepoForm = () => {
     const repoTitleInput = document.querySelector("#repo-form-title").value;
     const repoDescriptionInput = document.querySelector("#repo-form-description").value;
@@ -248,19 +298,10 @@ const submitNewRepoForm = () => {
 const deleteRepo = (_index) => {
     currentUser.repoData.splice(_index, 1);
     renderRepoCards();
-}
-
-const searchRepos = (_array) => {
-    const repoSearchInput = document.querySelector("#repo-searchbar").value.toLowerCase();
-    const searchedItems = _array.filter(function(_item) {
-        return _item.includes(repoSearchInput) || _item.includes(repoSearchInput) || _item.includes(repoSearchInput);
-     });
-     console.log(searchedItems);
-     //renderRepoCards(); 
 };
-        
-    
-// Projects
+
+//// Projects \\\\
+// Create new project
 const submitNewProject = () => {
     const titleInput = document.querySelector("#project-form-title").value;
     const descInput = document.querySelector("#project-form-description").value;
@@ -275,31 +316,37 @@ const submitNewProject = () => {
             currentUser.projectsData);
             
         renderProjectCards();
-        document.querySelector("#project-inputForm").reset();
+        renderNewProjectButton();
     };
 };
 
+// Render only Open projects or Closed projects
 const filterOpenClosed = (_buttonID) => {
-    filterForPrivateProjects = _buttonID === "open" ? true : false;
-    renderProjectCards("open", _buttonID === "open" ? true : false);
+    filterForOpenProjects = _buttonID === "open" ? false : true;
+    renderProjectsContentContainer();
+    renderProjectCards("open", _buttonID === "open" ? false : true);
 };
 
+// Update the "Last Updated" attribute
+const projectUpdated = (_index) => {
+    currentUser.projectsData[_index].lastUpdated = new Date().toLocaleString();
+};
+ 
+// Toggle project between Public and Private status
 const changeProjectPrivacy = (_index) => {
     currentUser.projectsData[_index].private = !currentUser.projectsData[_index].private;
+    projectUpdated(_index);
     renderProjectCards();
 };
 
+// Toggle project between Open and Closed status
 const changeProjectStatus = (_index) => {
     currentUser.projectsData[_index].open = !currentUser.projectsData[_index].open;
+    projectUpdated(_index);
     renderProjectCards();
 };
 
-const deleteProject = (_index) => {
-    currentUser.projectsData.splice(_index, 1);
-    renderProjectCards();
-};
-
-// Packages
+//// Packages \\\\
 const submitNewPackage = () => {
     const packageTitleInput = document.querySelector("#package-form-name").value;
     const packageDescInput = document.querySelector("#package-form-description").value;
@@ -316,7 +363,13 @@ const submitNewPackage = () => {
     };
 };
 
-// Bio Panel
+const deletePackage = (_index) => {
+    currentUser.packagesData.splice(_index, 1);
+    renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+};
+
+//// Bio Panel \\\\
+// Follow the other user
 const followUser = () => {
     if (currentUser.followers == 0) {
         followOtherUser();
@@ -324,6 +377,7 @@ const followUser = () => {
     };
 };
 
+// Switch to the other user
 const changeUser = () => {
     switchUser();
     renderPage();
