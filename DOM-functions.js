@@ -99,10 +99,13 @@ const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenPro
 // Packages Page
 const renderPackagesPage = () => {
     renderToDOM("#list-container", packagesContent);
-    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+    renderPackageCards();
     renderToDOM("#form-container", packageForm);
 };
 
+const renderPackageCards = () => {
+    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+}
 
 //// Rendering and Events \\\\
 
@@ -239,6 +242,12 @@ break;
         case "package-form-submitBtn":
             _event.preventDefault();
             submitNewPackage();            
+            break;
+
+        // Search Projects button
+        case "packages-search-button":
+        case "packages-search-btn-img":
+            searchObjects("#packages-searchbar", renderPackageCards);
             break;
 
         case "package-deleteBtn":

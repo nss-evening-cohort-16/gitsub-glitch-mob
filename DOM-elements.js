@@ -327,11 +327,11 @@ export const packagesContent = `
       <h2 id="packages-container-label">Packages</h2>
       <input id="packages-searchbar" type="text" placeholder="Search...">
       <div>
-        <div id="packages-list-header">
-          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-sort-sort">Sort...</button>
-          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-closed">Closed</button>
-          <button class="btn btn-secondary btn-sm packages-sort-btn" id="packages-list-filter-open">Open</button>
-        </div>
+          <div id="packages-list-header">
+            <button id="packages-search-button">
+              <img id="packages-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+            </button>
+          </div>    
         <div id="packages-list-container"></div>
       </div>
     `;
