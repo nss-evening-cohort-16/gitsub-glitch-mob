@@ -121,17 +121,42 @@ h3 {
 #projects-container {
     border: 1px solid var(--borderColor);
 }
-    #projects-searchbar {
-        width: 100%
+    #projects-search-container{
+        display: flex;
     }
+        #projects-searchbar, #projects-search-button, #project-form-title, #project-form-description {
+            background-color: var(--backgroundColor);
+            border: 1px solid var(--borderColor);
+            color: var(--primaryFontColor);
+        }
+        #projects-search-btn-img {
+            background-color: var(--backgroundColor);
+        }
+        #projects-search-button {
+            border-radius: 5px;
+
+            width: 40px;
+            height: 40px;
+        }
+            #projects-search-btn-img {
+                width: 25px;
+                height: 25px;
+            }
+
     #projects-list-header {
         margin: 8px;
 
         display: flex;
-        flex-direction: row;
-        flex-flow: row-reverse;
-        column-gap: 8px;
     }
+        #projects-list-sortBtn-container {
+            width: 50%;
+            display: flex;
+            flex: row;
+            flex-flow: row-reverse;
+        }
+        #projects-list-filterBtn-container {
+            width: 50%;
+        }
 
 .project-card {
     background-color: var(--backgroundColor);
@@ -140,32 +165,24 @@ h3 {
     margin: 8px;
 }
     .project-card-content-container {
+        column-gap: 16px;
+
         display: flex;
     }
         .project-card-description, .project-card-created, .project-card-updated {
             color: gray;
         }
-    .project-card-data {
-        margin: 10px;
-    }
     .project-card-data-container {
+        padding: 8px;
+        column-gap: 16px;
+
         font-size: 70%;
+        display: flex;
+        justify-content: space-between;
     }
-        .project-card-date-container {
+        .project-card-info-container {
+            column-gap: 16px;
+
             display: flex;
             flex-direction: row;
-        }
-        
-    .project-card-btn-container {
-        margin: 8px;
-        
-        display: flex;
-        flex-direction: row-reverse;
-        column-gap: 8px;
-    }
-        .project-card-privacy, .project-card-status {
-            padding: 6px;
-            border: 1px solid var(--borderColor);
-            border-radius: 5px;
-            color: white;
         }
