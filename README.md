@@ -69,8 +69,11 @@
     - The user will be able to splice a package from the Packages page when the delete button is clicked on the specific package. 
      
 
-## Screenshots
-    Screenshots of your project
+## Loom Video
+    - Overview Page: 
+    - Repositories Page: https://www.loom.com/share/2fca2ef0810d408380665b4f0b065cd0
+    - Projects Page: 
+    - Packages Page:
 
 
 ## Contributors
