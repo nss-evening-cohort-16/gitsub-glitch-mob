@@ -45,10 +45,9 @@ const renderBioPanel = () => {
 
 // Overview Page
 const renderOverviewPage = () => {
-    renderToDOM("#list-container", listOfCards(currentUser.repoData, pinnedRepoCardTemplate));
     renderToDOM("#form-container", pinRepoForm);
+    renderPinnedReposList();
     renderUnpinnedReposList();  
-
 };
 
 const renderUnpinnedReposList = ()=> {
