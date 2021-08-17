@@ -246,3 +246,28 @@ h3 {
     border: 1px solid var(--borderColor);
     color: white;
 }
+/* Overview Page */
+.Pinnedrepo-btn { 
+
+ margin-left: 45%;
+ margin-right: 45%;
+ width: 10%;
+ background-color: green;
+ border-radius: 5px;
+
+}
+#simplerepocard {
+    padding: 8px;
+    column-gap: 16px;
+
+    font-size: 100%;
+    display: flex;
+}
+
+.unpinnedbtn{
+    margin-left: 45%;
+    margin-right: 45%;
+    width: 10%;
+    background-color: green;
+    border-radius: 5px;
+}
