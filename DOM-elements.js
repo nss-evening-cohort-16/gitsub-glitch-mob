@@ -324,14 +324,16 @@ export const projectForm = `
 
 // Layout
 export const packagesContent = `
-      <h2 id="packages-container-label">Packages</h2>
-      <input id="packages-searchbar" type="text" placeholder="Search...">
+      <h2  class="panel" id="packages-container-label">Packages</h2>
       <div>
           <div id="packages-list-header">
-            <button id="packages-search-button">
-              <img id="packages-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
-            </button>
-          </div>    
+              <div id="packages-search-container">
+                <input class="form-control" id="packages-searchbar" type="text" placeholder="Search...">
+                <button id="packages-search-button">
+                <img id="packages-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+                </button>
+            </div>
+          </div> 
         <div id="packages-list-container"></div>
       </div>
     `;
@@ -339,14 +341,16 @@ export const packagesContent = `
 // Card Template
 export const packageCardTemplate = (_packageDataObj, _index) => {
   return `
-    <div>
+    <div class="panel packages-card" id="packages-card-container">
         <div id="packages-card--${_index}">
           <div class="card-body">
-            <h5 class="card-title">${_packageDataObj.title}</h5>
-            <p class="card-text">${_packageDataObj.description}</p>
-            <button class="btn btn-primary">Learn More</button>
-          <div>
-            <button class="btn btn-danger delete-btn" id="package-deleteBtn--${_index}">Delete</button>
+            <div class="panel">
+              <h5 class="card-title">${_packageDataObj.title}</h5>
+              <p class="card-text">${_packageDataObj.description}</p>
+            </div>
+            <div class="btn-container">
+              <button class="btn btn-success">Learn More</button>
+              <button class="btn btn-danger delete-btn" id="package-deleteBtn--${_index}">Delete</button>
           </div>
         </div>
       </div>
@@ -370,7 +374,7 @@ export const packageForm =
           <div class="error-container" id="package-desc-error"></div>
       </div>
       <div class="d-grid gap-2 d-md-block">
-        <button id="package-form-submitBtn" class="btn btn-primary" type="submit">Create Package</button>
+        <button id="package-form-submitBtn" class="btn btn-success" type="submit">Create Package</button>
       </div>
     </form>
   `;
