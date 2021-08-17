@@ -201,3 +201,21 @@ h3 {
     width: 25px;
     height: 25px;
 }
+
+/* Overview Page */
+.Pinnedrepo-btn { 
+
+ margin-left: 45%;
+ margin-right: 45%;
+ width: 10%;
+ background-color: green;
+ border-radius: 5px;
+
+}
+#simplerepocard {
+    padding: 8px;
+    column-gap: 16px;
+
+    font-size: 100%;
+    display: flex;
+}

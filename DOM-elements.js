@@ -105,7 +105,7 @@ export const footer = `<div id="yr-updated">2021 Us</div>
 // Card Template
 export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
   return `
-    <div class="card" style="width: 18rem;" id="pinnedrepos-card--${_index}"> 
+    <div class="card-unpinned" style="width: 18rem;" id="pinnedrepos-card--${_index}"> 
       <div class="repo-body">
         <div>
           <h5 class="pinnedrepo-title" id="pinnedrepo-title">${_repoDataObj.title}</h5>
@@ -137,13 +137,13 @@ export const pinnedRepoCardTemplate = (_repoDataObj, _index) => {
 export const simpleRepoCardTemplate = (_repoDataObj,_index) => {
   
   return `
-      <div class="card" style="width: 18rem;" id = "simplerepocard--${_index}> 
+      <div class="card-pin" style="width: 80rem;"id = "simplerepocard--${_index}"> 
         <div class="repo-body">
           <div>
             <h5 class="pinnedrepo-title">${_repoDataObj.title}</h5>
           </div>
             <div> 
-              <button type = "button" id="pin-repo--${_index}" class="Pinnedrepo-btn">Pin Repos</button>
+              <button type = "button" id="pin-repo--${_index}" class="Pinnedrepo-btn">Pin</button>
             </div>
           </div>
       `
