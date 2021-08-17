@@ -357,7 +357,8 @@ const deletePackage = (_index) => {
     renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
 };
 
-// Bio Panel
+//// Bio Panel \\\\
+// Follow the other user
 const followUser = () => {
     if (currentUser.followers == 0) {
         followOtherUser();
