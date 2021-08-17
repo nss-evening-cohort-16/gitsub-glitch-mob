@@ -346,7 +346,7 @@ export const packageCardTemplate = (_packageDataObj, _index) => {
             <p class="card-text">${_packageDataObj.description}</p>
             <button class="btn btn-primary">Learn More</button>
           <div>
-            <button class="btn btn-danger delete-btn">Delete</button>
+            <button class="btn btn-danger delete-btn" id="package-deleteBtn">Delete</button>
           </div>
         </div>
       </div>
