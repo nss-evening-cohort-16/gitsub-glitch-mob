@@ -98,10 +98,13 @@ const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenPro
 // Packages Page
 const renderPackagesPage = () => {
     renderToDOM("#list-container", packagesContent);
-    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+    renderPackageCards();
     renderToDOM("#form-container", packageForm);
 };
 
+const renderPackageCards = () => {
+    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+}
 
 //// Rendering and Events \\\\
 
@@ -246,6 +249,12 @@ const buttonClicks = (_event) => {
             submitNewPackage();            
             break;
 
+        // Search Projects button
+        case "packages-search-button":
+        case "packages-search-btn-img":
+            searchObjects("#packages-searchbar", renderPackageCards);
+            break;
+
         case "package-deleteBtn":
             deletePackage(targetIndex);
             break;
@@ -352,14 +361,14 @@ const submitNewPackage = () => {
                 packageDescInput), 
             currentUser.packagesData);
             
-        renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+            renderPackageCards();
         document.querySelector("#package-inputForm").reset();
     };
 };
 
 const deletePackage = (_index) => {
     currentUser.packagesData.splice(_index, 1);
-    renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+    renderPackageCards();
 };
 
 //// Bio Panel \\\\
