@@ -48,7 +48,6 @@ const renderOverviewPage = () => {
     renderToDOM("#form-container", pinRepoForm);
     renderPinnedReposList();
     renderUnpinnedReposList();  
-
 };
 
 const renderUnpinnedReposList = ()=> {
@@ -92,8 +91,8 @@ const renderProjectForm = () => {
     renderToDOM("#form-container", projectForm);
 };
 
-const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenProjects, _clear = true) => {    
-    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _keyFilter, _filterValue), _clear);
+const renderProjectCards = (_keyFilter = "open", _filterValue = filterForOpenProjects) => {    
+    renderToDOM("#projects-list-container", listOfCards(currentUser.projectsData, projectCardTemplate, _keyFilter, _filterValue));
 };
 
 // Packages Page
@@ -130,7 +129,9 @@ const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue
                 break;
             
             case "string":
-                if (__obj[_filter].toLowerCase().includes(_filterValue.toLowerCase())) { addCardToList(__obj, __i); };
+                _filter.forEach(__filterTerm => {
+                    if (__obj[__filterTerm].toLowerCase().includes(_filterValue.toLowerCase())) { addCardToList(__obj, __i); };
+                });
                 break;
             
             default:
@@ -143,11 +144,10 @@ const listOfCards = (_userDataArray, _cardTemplate, _filter = null, _filterValue
 };
 
 // Render objects with search term included in Title or Description
-const searchObjects = (_searchBarID, _renderCardsFunction) => {
+const searchObjects = (_searchBarID, _renderCardsFunction, _searchKeys = ["title", "description"]) => {
     const searchTerm = document.querySelector(_searchBarID).value;
 
-    _renderCardsFunction("title", searchTerm);
-    if (searchTerm) { _renderCardsFunction("description", searchTerm, false); };
+    if (searchTerm) { _renderCardsFunction(_searchKeys, searchTerm); };
 };
 
 // Print error if form fields are empty
@@ -156,7 +156,7 @@ const inputError = (_input, _errorTextDiv) => {
 };
 
 // Handle button clicks
-export const registerEvents = () => {
+export  const registerEvents = () => {
     document.querySelector("body").addEventListener("click", buttonClicks)
 }; 
 
@@ -171,17 +171,16 @@ const buttonClicks = (_event) => {
     // Overview Page Buttons \\ 
     //pinned repo submit button
     case "pin-repo":
-       console.log(targetIndex);
         currentUser.repoData[targetIndex].pinned = true;
         renderPinnedReposList();
         renderUnpinnedReposList();
+        break;
 
-break;
-case "pinned-repo-deleteBtn":
-    currentUser.repoData[targetIndex].pinned = false;
-    renderPinnedReposList();
-    renderUnpinnedReposList();
-    break;
+    case "pinned-repo-deleteBtn":
+        currentUser.repoData[targetIndex].pinned = false;
+        renderPinnedReposList();
+        renderUnpinnedReposList();
+        break;
     
 //delete pinned Repo
     // Repos Page Buttons \\
