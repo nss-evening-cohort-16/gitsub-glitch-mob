@@ -102,8 +102,8 @@ const renderPackagesPage = () => {
     renderToDOM("#form-container", packageForm);
 };
 
-const renderPackageCards = () => {
-    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+const renderPackageCards = (_keyFilter, _filterValue) => {
+    renderToDOM("#packages-list-container", listOfCards(currentUser.packagesData, packageCardTemplate, _keyFilter, _filterValue));
 }
 
 //// Rendering and Events \\\\
