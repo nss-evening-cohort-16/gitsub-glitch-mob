@@ -153,7 +153,7 @@ const inputError = (_input, _errorTextDiv) => {
 };
 
 // Handle button clicks
-export const registerEvents = () => {
+export  const registerEvents = () => {
     document.querySelector("body").addEventListener("click", buttonClicks)
 }; 
 
@@ -168,17 +168,16 @@ const buttonClicks = (_event) => {
     // Overview Page Buttons \\ 
     //pinned repo submit button
     case "pin-repo":
-       console.log(targetIndex);
         currentUser.repoData[targetIndex].pinned = true;
         renderPinnedReposList();
         renderUnpinnedReposList();
+        break;
 
-break;
-case "pinned-repo-deleteBtn":
-    currentUser.repoData[targetIndex].pinned = false;
-    renderPinnedReposList();
-    renderUnpinnedReposList();
-    break;
+    case "pinned-repo-deleteBtn":
+        currentUser.repoData[targetIndex].pinned = false;
+        renderPinnedReposList();
+        renderUnpinnedReposList();
+        break;
     
 //delete pinned Repo
     // Repos Page Buttons \\
