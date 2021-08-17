@@ -177,7 +177,7 @@ export const repoCardTemplate = (_repoDataObj, _index) => {
    <div class="card" id="repos-card--${_index}"> 
       <div class="repo-body">
         <div>
-          <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
+          <h5 class="repo-title">${_repoDataObj.title}</h5>
         </div>
         <div>
           <h6 class="repo-text">${_repoDataObj.description}</h6>

@@ -195,7 +195,7 @@ case "pinned-repo-deleteBtn":
 
         // Submit "Search" button
         case "repos-list-sort-sort":            
-            searchRepos(mapRepoObj());
+            searchObjects("repo-searchbar", renderRepoCards)
             break;
 
     // Projects Page Buttons \\
