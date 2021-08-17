@@ -339,14 +339,14 @@ export const packagesContent = `
 // Card Template
 export const packageCardTemplate = (_packageDataObj, _index) => {
   return `
-    <div id="packages-container">
-        <div class="packages-card">
+    <div>
+        <div id="packages-card--${_index}">
           <div class="card-body">
             <h5 class="card-title">${_packageDataObj.title}</h5>
             <p class="card-text">${_packageDataObj.description}</p>
             <button class="btn btn-primary">Learn More</button>
           <div>
-            <button class="btn btn-danger delete-btn" id="package-deleteBtn">Delete</button>
+            <button class="btn btn-danger delete-btn" id="package-deleteBtn--${_index}">Delete</button>
           </div>
         </div>
       </div>

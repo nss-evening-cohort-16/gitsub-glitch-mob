@@ -362,14 +362,14 @@ const submitNewPackage = () => {
                 packageDescInput), 
             currentUser.packagesData);
             
-        renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+            renderPackageCards();
         document.querySelector("#package-inputForm").reset();
     };
 };
 
 const deletePackage = (_index) => {
     currentUser.packagesData.splice(_index, 1);
-    renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
+    renderPackageCards();
 };
 
 //// Bio Panel \\\\
