@@ -57,16 +57,16 @@ export const bioPanel = (_currentUser) => {
 };
 
 // Header / NavBar
-export const header = `<nav class="navbar navbar-expand-lg navbar-dark">
+export const header = `
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="index.html" id ="Overview">Overview</a>
+                <a class="nav-link" href="index.html" id ="Overview">Overview</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="repos.html" id="Repositories">Repositories</a>
@@ -240,18 +240,34 @@ export const repoForm =  `
 //// Projects \\\\
 
 // Layout
-export const projectsContent = `
+export const projectsContent = (_filterForOpenProjects) => {
+  return `
+    <div class="panel" id="projects-container">
       <h2 id="projects-container-label">Projects</h2>
-      <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
-      <divid="projects-container">
-        <div id="projects-list-header">
-          <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
-          <button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>
-          <button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>
-        </div>
-        <div id="projects-list-container"></div>
+      <br>
+      <div id="projects-search-container">
+        <input class="form-control" id="projects-searchbar" type="text" placeholder="Search...">
+        <button id="projects-search-button">
+          <img id="projects-search-btn-img" src="https://cdn3.iconfinder.com/data/icons/search-engine-optimization-seo-3/320/loupe_magnifier_magnifying_search-512.png"</img>
+        </button>
       </div>
-    `;
+        <div id="projects-list-header">
+          <div id="projects-list-filterBtn-container">
+          ` + (_filterForOpenProjects ? filterOpenButton : filterClosedButton) + `
+          </div>
+          <div id="projects-list-sortBtn-container">
+            <button class="btn btn-secondary btn-sm projects-sort-btn" id="projects-list-sort-sort">Sort...</button>
+          </div>
+        </div>
+        <hr>
+        <div id="projects-list-container"></div>
+    </div>
+  `;
+};
+
+// Filter: Open/Closed buttons
+const filterOpenButton = `<button class="btn btn-success btn-sm projects-sort-btn" id="projects-list-filter--open">Filter: Open</button>`;
+const filterClosedButton = `<button class="btn btn-danger btn-sm projects-sort-btn" id="projects-list-filter--closed">Filter: Closed</button>`;
 
 // Card Template
 export const projectCardTemplate = (_projectDataObj, _index) => {
@@ -263,17 +279,15 @@ export const projectCardTemplate = (_projectDataObj, _index) => {
       </div>  
       <hr>
       <div class="project-card-data-container">
-        <div class="project-card-date-container">
-          <div class="project-card-data project-card-created"><u>Created:</u><br>${_projectDataObj.timeCreated}</div> 
-          <div class="project-card-data project-card-updated"><u>Last Updated:</u><br>${_projectDataObj.lastUpdated}</div> 
+        <div class="project-card-info-container">
+          <div class="project-card-dates">
+            <div class="project-card-data project-card-created"><u>Created:</u> ${_projectDataObj.timeCreated}</div> 
+            <div class="project-card-data project-card-updated"><u>Last Updated:</u> ${_projectDataObj.lastUpdated}</div> 
+          </div>
+          <button class="btn btn-sm ` + (_projectDataObj.private ? "btn-danger" : "btn-success") + ` project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
+          <button class="btn btn-sm ` + (_projectDataObj.open ? "btn-success" : "btn-danger") + ` project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
         </div>
-        <div class="project-card-status-container">
-          <button class="project-card-data project-card-privacy" id="project-card-privacy--${_index}">Privacy: ` + (_projectDataObj.private ? "Private" : "Public") + `</button> 
-          <button class="project-card-data project-card-status" id="project-card-status--${_index}">Status: ` + (_projectDataObj.open ? "Open" : "Closed") + `</button>
-        </div>  
-      </div>
-      <div class="project-card-btn-container">
-        <button class="btn btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
+        <button class="btn btn-sm btn-danger delete-btn" id="project-deleteBtn--${_index}">Delete</button>
       </div>
     </div>`;
 };

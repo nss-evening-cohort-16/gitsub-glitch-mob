@@ -29,7 +29,7 @@ export const newUserObj = (_name, _username, _description, _imgURL = defaultUser
 // Repos Page
 export const newRepoObj = (_repoTitle, _description, _tags, _language) => {
     return {
-        repoTitle: _repoTitle,
+        title: _repoTitle,
         description: _description,
         tags: _tags,
         language: _language,
@@ -47,8 +47,8 @@ export const newProjectObj = (_title, _description, _privacy) => {
     return {
         title: _title,
         description: _description,
-        timeCreated: Date(),
-        lastUpdated: Date(),
+        timeCreated: new Date().toLocaleString(),
+        lastUpdated: new Date().toLocaleString(),
         private: _privacy,
         open: true
     }
