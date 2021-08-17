@@ -231,6 +231,10 @@ break;
             submitNewPackage();            
             break;
 
+        case "package-deleteBtn":
+            deletePackage(targetIndex);
+            break;
+
     // Bio Panel Buttons \\
         // Follow Button
         case "btn-follow":
@@ -334,6 +338,11 @@ const submitNewPackage = () => {
         renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
         document.querySelector("#package-inputForm").reset();
     };
+};
+
+const deletePackage = (_index) => {
+    currentUser.packagesData.splice(_index, 1);
+    renderToDOM("#packages-container", listOfCards(currentUser.packagesData, packageCardTemplate));
 };
 
 // Bio Panel
