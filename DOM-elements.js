@@ -161,12 +161,10 @@ export const pinRepoForm  =
 // Layout
 export const reposContent = `
 <h2 id="repo-container-label">Repository</h2>
-<input id="repo-searchbar" type="text" placeholder="Search...">
+<input class="form-control" id="repo-searchbar" type="text" placeholder="Search...">
 <div id="repos-container">
   <div id="repos-list-header">
-    <button class="repos-sort-btn" id="repos-list-sort-sort">Sort</button>
-    <button class="repos-sort-btn" id="repos-list-sort-closed">Closed</button>
-    <button class="repos-sort-btn" id="repos-list-sort-open">Open</button>
+    <button class="repos-sort-btn" id="repos-list-sort-sort">Search</button>
   </div>
   <div id="repo-list-container"></div>
 </div>
@@ -175,33 +173,37 @@ export const reposContent = `
 // Card Template
 export const repoCardTemplate = (_repoDataObj, _index) => {
   return `
-   <div class="card" id="repos-card--${_index}"> 
+   <div class="panel repo-card" id="repos-card--${_index}"> 
       <div class="repo-body">
-        <div>
-          <h5 class="repo-title">${_repoDataObj.repoTitle}</h5>
+        <div class="panel">
+          <div>
+          <h5 class=" repo-title" id="repo-title-style">${_repoDataObj.title}</h5>
+          </div>
+          <div>
+          <h6 class="repo-text" id="repo-description-style">${_repoDataObj.description}</h6>
+          </div>
         </div>
-        <div>
-          <h6 class="repo-text">${_repoDataObj.description}</h6>
-        </div>
-        <div>
+        <div id="repo-tag-style">
           <p class="repo-tags">${_repoDataObj.tags}</p>
         </div>
-        <div>
-          <p class="repo-language">${_repoDataObj.language}</p>
-          <div> 
-            <button href="#" class="repo-btn repo-btn-starred">0</button>
+          <div class="panel">
+            <p class="repo-language">${_repoDataObj.language}</p>
           </div>
-          <div>
+        <div class="repo-details panel">
+          <div >
+            <button href="#" class=" repo-btn repo-btn-starred">0</button>
+          </div>
+          <div >
             <p>Branches:</p>
-            <p href="#" class="repo-btn repo-btn-branches">0</p>
+            <p href="#" class=" repo-btn repo-btn-branches">0</p>
           </div>
-          <div>
+          <div >
             <p>Issues: </p>
-            <p href="#" class="repo-btn repo-btn-issues">0</p>
+            <p href="#" class=" repo-btn repo-btn-issues">0</p>
           </div>
-          <div>
+          <div >
             <p>Last Updated:</p>
-            <p href="#" class="repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
+            <p href="#" class=" repo-btn repo-btn-lastUpdated">${_repoDataObj.lastUpdated}</p>
           </div>
         </div>
       </div>
@@ -213,7 +215,7 @@ export const repoCardTemplate = (_repoDataObj, _index) => {
 // Form
 export const repoForm =  `
      <form id="repo-inputForm">
-        <div class="mb-3">
+        <div class="mb-3 panel">
             <label for="formGroupExampleInput" class="form-label">Repositories Title:</label>
             <input type="text" class="form-control" id="repo-form-title" placeholder="Input Repositories Title">
             <div class="error-container" id="repo-title-error"></div>

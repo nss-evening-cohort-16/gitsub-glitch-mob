@@ -65,8 +65,8 @@ const renderReposPage = () => {
     renderRepoCards();
 };
 
-const renderRepoCards = () => {
-    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate));
+const renderRepoCards = (_keyFilter, _filterValue) => {
+    renderToDOM("#repo-list-container", listOfCards(currentUser.repoData, repoCardTemplate, _keyFilter, _filterValue));
 };
 
 // Projects Page
@@ -193,6 +193,11 @@ const buttonClicks = (_event) => {
         // Delete Repos button
         case "repo-deleteBtn":
             deleteRepo(targetIndex);
+            break;
+
+        // Submit "Search" button
+        case "repos-list-sort-sort":            
+            searchObjects("#repo-searchbar", renderRepoCards, ["title", "description", "language"])
             break;
 
     // Projects Page Buttons \\
