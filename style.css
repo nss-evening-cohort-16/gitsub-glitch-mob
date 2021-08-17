@@ -201,3 +201,48 @@ h3 {
     width: 25px;
     height: 25px;
 }
+
+
+/* Repos Page */
+
+.repo-card {
+    background-color: var(--backgroundColor);
+    border: 3px solid var(--borderColor);
+    margin: 8px;
+}
+
+.repo-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+#repo-title-style {
+    justify-content: flex-start;
+}
+
+#repo-description-style {
+    justify-content: flex-start;
+
+    background-color: var(--backgroundColor);
+    
+    padding: 16px;
+    border: 1px solid var(--borderColor);
+    border-radius: 5px;
+    margin: 8px 1px;
+}
+
+#repo-tag-style {
+    display: flex;
+}
+
+.form-control {
+    background-color: var(--backgroundColor);
+}
+
+#repo-form-submitBtn, #repos-list-sort-sort{
+    background-color: rgb(136, 141, 150);
+
+    border-radius: 5px;
+    border: 1px solid var(--borderColor);
+    color: white;
+}
