@@ -219,3 +219,11 @@ h3 {
     font-size: 100%;
     display: flex;
 }
+
+.unpinnedbtn{
+    margin-left: 45%;
+    margin-right: 45%;
+    width: 10%;
+    background-color: green;
+    border-radius: 5px;
+}

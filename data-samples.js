@@ -82,13 +82,13 @@ const sampleOrganizations = [
 // Repos
 const sampleRepos = [
     newRepoObj(
-        "Repo NUmber 1",
+        "Repo Number 1",
         "Test for repo 1",
         [],
         "JavaScript"
     ),
     newRepoObj(
-        "Repo NUmber 2",
+        "Repo Number 2",
         "Test for repo 2",
         [],
         "JavaScript"
